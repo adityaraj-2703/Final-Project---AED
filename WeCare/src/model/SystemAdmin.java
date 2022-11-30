@@ -9,5 +9,7 @@ package model;
  * @author adityaraj
  */
 public class SystemAdmin {
-    
+    public static void main(){
+        
+    }
 }
