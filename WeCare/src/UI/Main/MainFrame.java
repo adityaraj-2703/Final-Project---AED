@@ -34,6 +34,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnRegister = new javax.swing.JButton();
         mainFrameworkAreaPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,7 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        txtPassword.setText("jTextField2");
+        txtPassword.setText("Password");
 
         jButton1.setText("Login");
 
@@ -65,15 +66,18 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(mainFramecontrolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainFramecontrolPanelLayout.createSequentialGroup()
-                        .addGroup(mainFramecontrolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
+                        .addComponent(jButton1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(mainFramecontrolPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRegister))))
+            .addGroup(mainFramecontrolPanelLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(mainFramecontrolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         mainFramecontrolPanelLayout.setVerticalGroup(
             mainFramecontrolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,15 +97,23 @@ public class MainFrame extends javax.swing.JFrame {
 
         mainFrameSplitPanel.setLeftComponent(mainFramecontrolPanel);
 
+        jLabel2.setText("We Care, developed by Anupam,Akshita and Aditya");
+
         javax.swing.GroupLayout mainFrameworkAreaPanelLayout = new javax.swing.GroupLayout(mainFrameworkAreaPanel);
         mainFrameworkAreaPanel.setLayout(mainFrameworkAreaPanelLayout);
         mainFrameworkAreaPanelLayout.setHorizontalGroup(
             mainFrameworkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 643, Short.MAX_VALUE)
+            .addGroup(mainFrameworkAreaPanelLayout.createSequentialGroup()
+                .addGap(184, 184, 184)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         mainFrameworkAreaPanelLayout.setVerticalGroup(
             mainFrameworkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 612, Short.MAX_VALUE)
+            .addGroup(mainFrameworkAreaPanelLayout.createSequentialGroup()
+                .addGap(165, 165, 165)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(294, Short.MAX_VALUE))
         );
 
         mainFrameSplitPanel.setRightComponent(mainFrameworkAreaPanel);
@@ -170,6 +182,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JSplitPane mainFrameSplitPanel;
     private javax.swing.JPanel mainFramecontrolPanel;
     private javax.swing.JPanel mainFrameworkAreaPanel;
