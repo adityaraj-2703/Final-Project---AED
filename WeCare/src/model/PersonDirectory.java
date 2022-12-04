@@ -4,11 +4,22 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author anupamaditya
  */
 public class PersonDirectory {
     
-    String Person;
+    private ArrayList<Person> personDirectory;
+
+    public ArrayList<Person> getPersonDirectory() {
+        return personDirectory;
+    }
+
+    public void setPersonDirectory(ArrayList<Person> personDirectory) {
+        this.personDirectory = personDirectory;
+    }
+    
 }
