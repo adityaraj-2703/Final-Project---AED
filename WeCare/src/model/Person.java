@@ -16,6 +16,15 @@ public class Person {
     private String password;
     private String phoneNo;
     private String address;
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public String getfName() {
         return fName;

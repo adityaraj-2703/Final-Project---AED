@@ -258,7 +258,7 @@ public class RegisterPanel extends javax.swing.JPanel {
             }
         });
 
-        cb_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESTAURANT_MANAGER", "COLLEGE_MANAGER", " " }));
 
         lbl_password.setForeground(new java.awt.Color(255, 0, 51));
 
@@ -392,6 +392,17 @@ public class RegisterPanel extends javax.swing.JPanel {
        if (validation());{
         insertDetails();
     }
+       
+        txt_firstName.setText("");
+        txt_userName.setText("");
+        cb_role.setSelectedIndex(0);
+        txt_phoneNo.setText("");
+        txt_address.setText("");
+        txt_age.setText("");
+        txt_emailAddress.setText("");
+        txt_age.setText("");
+       
+       
     }//GEN-LAST:event_btn_signUpActionPerformed
 
     private void txt_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyPressed
