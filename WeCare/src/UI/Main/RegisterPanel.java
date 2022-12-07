@@ -6,6 +6,7 @@ package UI.Main;
 
 
 
+import BusinessLogic.UsersDAO;
 import javax.swing.JOptionPane;
 import java.sql.DriverManager;
 import java.sql.*;
@@ -20,11 +21,13 @@ public class RegisterPanel extends javax.swing.JPanel {
     /**
      * Creates new form RegisterPanel
      */
-    
-     String name, userName, password, role, phoneNo, address, age, emailAddress;
-     int id = 0 ;
+    UsersDAO userDao;
+     String name, userName, password, role, phoneNo, address, emailAddress;
+    int age=0;
+    int id = 0 ;
     public RegisterPanel() {
         initComponents();
+        userDao = new UsersDAO();
     }
 
     /**
@@ -34,25 +37,7 @@ public class RegisterPanel extends javax.swing.JPanel {
      * @return 
      */
     
-    public int getID(){
-        ResultSet rs = null;
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-         Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/NewProject", "root", "Pass1234");
-          String sql  = "select max(userID) from Users";
-          Statement st = conn.createStatement();
-          rs = st.executeQuery(sql);
-          while(rs.next()){
-              
-              id = rs.getInt(1);
-              id++;
-          }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        return id;
-    }
+    
     
     boolean validation(){
         
@@ -63,7 +48,7 @@ public class RegisterPanel extends javax.swing.JPanel {
         role = cb_role.getSelectedItem().toString();
         phoneNo = txt_phoneNo.getText();
         address = txt_address.getText();
-        age = txt_age.getText();
+        age = Integer.parseInt(txt_age.getText());
         emailAddress = txt_emailAddress.getText();
         
         if (name.equals(""))
@@ -87,7 +72,7 @@ public class RegisterPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please enter address ");
             return false;
         }
-        if (age.equals(""))
+        if (age==0)
         {
             JOptionPane.showMessageDialog(this, "Please enter age ");
             return false;
@@ -121,30 +106,13 @@ public class RegisterPanel extends javax.swing.JPanel {
     
     void insertDetails(){
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-         Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/NewProject", "root", "Pass1234");
-          String sql  = "insert into Users values(?,?,?,?,?,?,?,?,?)";
-          PreparedStatement stmt = conn.prepareStatement(sql);
-          stmt.setInt(1,getID());
-          stmt.setString(2,name);
-          stmt.setString(3,emailAddress );
-          stmt.setString(4,userName);
-          stmt.setString(5,password);
-          stmt.setString(6,role);
-          stmt.setString(7,address);        
-          stmt.setString(8, phoneNo);
-          stmt.setString(9, age);
-         
-          int i = stmt.executeUpdate();
+          int i = userDao.insertDetails(name,emailAddress,userName,password,role,address,phoneNo,age);
           if(i>0){
               JOptionPane.showMessageDialog(this, "Record Inserted");
           }
           else{
               JOptionPane.showMessageDialog(this, "Record not Inserted");
-          }
-          
-            
-                    
+          }           
         }
         catch(Exception e){
             e.printStackTrace();
