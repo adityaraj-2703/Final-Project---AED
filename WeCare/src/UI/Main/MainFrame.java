@@ -10,9 +10,10 @@ import java.sql.DriverManager;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import model.Person;
-import model.Restaurant;
+//import model.Restaurant;
 import model.Role;
 import UI.Restaurant.RestAddition;
+import UI.Restaurant.RestAdd;
 /**
  *
  * @author anupamaditya
@@ -57,8 +58,8 @@ public class MainFrame extends javax.swing.JFrame {
              }
              else if(a.equals("RESTAURANT_MANAGER")){
                  p.setRole(Role.RESTAURANT_MANAGER);
-                 RestAddition restaurant = new RestAddition(p);
-                 mainFrameSplitPanel.setRightComponent(restaurant);
+                   RestAdd restAdd = new RestAdd(p);
+                 mainFrameSplitPanel.setRightComponent(restAdd);;
              }
              else if(a.equals("FOOD_SERVICE_ADMIN")){
                  p.setRole(Role.CLOTHES_SERVICE_ADMIN);    

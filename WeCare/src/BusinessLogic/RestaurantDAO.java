@@ -21,8 +21,8 @@ import model.Person;
  */
 public class RestaurantDAO {
     Connection conn;
-    String restName, restAddress, restManager;
-    int id =0;
+    //String restName, restAddress, restManager, restPhoneNo;
+
     public  RestaurantDAO(){
         
     
@@ -40,10 +40,10 @@ public class RestaurantDAO {
     }
     public int getID(){
         ResultSet rs = null;
+        int id =0;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-         Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/NewProject", "root", "Pass1234");
-          String sql  = "select max(RestaurantID) from Users";
+            
+          String sql  = "select max(RestaurantID) from Restaurant";
           Statement st = conn.createStatement();
           rs = st.executeQuery(sql);
           while(rs.next()){
@@ -58,15 +58,17 @@ public class RestaurantDAO {
         return id;
     }
     
-    public int insertDetails(String restName, String restAddress, String restManager) throws SQLException{
+    public int insertDetails(String restName, String restAddress, String restManager, String restPhoneNo) throws SQLException{
         try{
-            String sql  = "insert into Restaurant values(?,?,?,?)";
+            String sql  = "insert into Restaurant values(?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, getID());
             stmt.setString(2,restName);
-            stmt.setString(3,restAddress );
-            stmt.setString(4,restManager );
-            
+            stmt.setString(3,restAddress);
+            stmt.setString(4,restManager);
+            stmt.setString(5,restPhoneNo);
+            int i = stmt.executeUpdate();
+          return i; 
             
         } catch (Exception e) {
              e.printStackTrace();
