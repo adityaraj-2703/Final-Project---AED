@@ -13,6 +13,10 @@ public class Restaurant {
      private String restAddress;
      Person  restManager;
 
+    public Restaurant(Person p) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getRestName() {
         return restName;
     }

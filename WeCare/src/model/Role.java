@@ -9,6 +9,6 @@ package model;
  * @author anupamaditya
  */
 public enum Role {
-    RESTAURANT_MANAGER,COLLEGE_MANAGER
+    RESTAURANT_MANAGER,COLLEGE_MANAGER,USER
     
 }

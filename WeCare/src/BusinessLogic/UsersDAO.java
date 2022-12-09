@@ -61,17 +61,23 @@ public class UsersDAO {
             String role,String address,String phoneNo,int age) throws SQLException{
         
         try{
-          String sql  = "insert into Users values(?,?,?,?,?,?,?,?,?)";
+          String sql  = "insert into Users values(?,?,?,?,?,?,?,?,?,?)";
           PreparedStatement stmt = conn.prepareStatement(sql);
           stmt.setInt(1,getID());
           stmt.setString(2,name);
-          stmt.setString(3,emailAddress );
+          stmt.setString(3,emailAddress);
           stmt.setString(4,userName);
           stmt.setString(5,password);
           stmt.setString(6,role);
           stmt.setString(7,address);        
           stmt.setString(8, phoneNo);
           stmt.setInt(9, age);
+          if(role.equals("USER")){
+              stmt.setString(10,"APPROVED");
+          }
+          else{
+              stmt.setString(10,"PENDING");
+          }
           int i = stmt.executeUpdate();
           return i;        
         }
