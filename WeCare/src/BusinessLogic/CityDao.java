@@ -9,6 +9,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import model.city.City;
+import model.city.Community;
 
 /**
  *
@@ -50,14 +54,14 @@ public class CityDao {
             return count;
     }
 
-    public int createCity(String cid, String name, String state) {
+    public int insertIntoCity(City c) {
         int result=0;
         try{
           String sql  = "insert into city values(?,?,?)";
           PreparedStatement stmt = conn.prepareStatement(sql);
-          stmt.setString(1,cid);
-          stmt.setString(2,name);
-          stmt.setString(3, state);
+          stmt.setString(1,c.getId());
+          stmt.setString(2,c.getName());
+          stmt.setString(3, c.getState());
           result = stmt.executeUpdate();
           
         }
@@ -65,5 +69,54 @@ public class CityDao {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public List<City> getCities() {
+        List<City> cities = new ArrayList<>();
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select count(*) from city";
+              Statement st = conn.createStatement();
+              rs = st.executeQuery(sql);
+              while(rs.next()){
+                  City c =  new City();
+                  c.setId(rs.getString(1));
+                  c.setName(rs.getString(2));
+                  c.setCommunityList(getCommunities(c.getId()));
+                  c.setState(rs.getString(3));
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return cities;
+    }
+
+    private List<Community> getCommunities(String id) {
+        List<Community> communities = new ArrayList<>();
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select count(*) from community where cityId = ?";
+              Statement st = conn.createStatement();
+              rs = st.executeQuery(sql);
+              while(rs.next()){
+                  Community c =  new Community();
+                  c.setCommunityId(rs.getString(1));
+                  c.set(rs.getString(2));
+                  c.setCommunityList(getCommunities(c.getId()));
+                  c.setState(rs.getString(3));
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return cities;
+        
     }
 }

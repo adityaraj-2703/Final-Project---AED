@@ -15,7 +15,7 @@ public class Community {
     private String communityId;
     private String CommunityName;
     private City city;
-    private List<House> houseList;
+    private List<Address> houseList;
     
     public Community(){
        houseList = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Community {
         return city;
     }
 
-    public List<House> getHouseList() {
+    public List<Address> getHouseList() {
         return houseList;
     }
 
@@ -53,7 +53,7 @@ public class Community {
         this.city = city;
     }
 
-    public void setHouseList(List<House> houseList) {
+    public void setHouseList(List<Address> houseList) {
         this.houseList = houseList;
     }
     
@@ -62,16 +62,16 @@ public class Community {
         return this.CommunityName;
     }
 
-    public House addHouse() {
+    public Address addHouse() {
         
-        House h = new House();
+        Address h = new Address();
         houseList.add(h);
         return h;
     }
 
-    public House getHouse(String text) {
-        House h = new House();
-        for(House house : houseList){
+    public Address getHouse(String text) {
+        Address h = new Address();
+        for(Address house : houseList){
             if(house.getHouseId().equals(text)){
                 h = house;
                 break;

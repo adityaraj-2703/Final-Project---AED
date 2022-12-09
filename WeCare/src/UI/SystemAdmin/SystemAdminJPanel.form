@@ -84,6 +84,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manage Enterprise Admins"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageEnterpriseAdminsActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnManagePerson">
               <Properties>

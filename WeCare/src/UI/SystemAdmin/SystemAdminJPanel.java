@@ -5,6 +5,7 @@
 package UI.SystemAdmin;
 
 import UI.City.CityJPanel;
+import model.Data;
 import model.Person;
 
 /**
@@ -17,9 +18,11 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
      * Creates new form SystemAdminJPanel
      */
     Person person;
-    public SystemAdminJPanel(Person p) {
+    Data d;
+    public SystemAdminJPanel(Data d,Person p) {
         initComponents();
         this.person = p;
+        this.d = d;
     }
 
     /**
@@ -49,6 +52,11 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         });
 
         btnManageEnterpriseAdmins.setText("Manage Enterprise Admins");
+        btnManageEnterpriseAdmins.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageEnterpriseAdminsActionPerformed(evt);
+            }
+        });
 
         btnManagePerson.setText("Manage Person");
 
@@ -110,9 +118,15 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
     private void btnManageCitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCitiesActionPerformed
         // TODO add your handling code here:
-        CityJPanel cityPanel = new CityJPanel();
+        CityJPanel cityPanel = new CityJPanel(d);
         jSplitPaneSystemAdmin.setRightComponent(cityPanel);
     }//GEN-LAST:event_btnManageCitiesActionPerformed
+
+    private void btnManageEnterpriseAdminsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseAdminsActionPerformed
+        // TODO add your handling code here:
+        ManageEnterpriseAdmins manageEAdmins = new ManageEnterpriseAdmins(d);
+        
+    }//GEN-LAST:event_btnManageEnterpriseAdminsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
