@@ -27,8 +27,8 @@ public class RestAddition extends javax.swing.JPanel {
      * Creates new form RestAddition
      */
     RestaurantDAO restaurantDao;
-    String restName, restAddress, restManager;
-    int id=0;
+    String restName, restAddress, restManager, restPhoneNo;
+
     
     Person p;    
 
@@ -52,6 +52,7 @@ public class RestAddition extends javax.swing.JPanel {
         restName = txt_RestName.getText();
         restAddress = txt_RestAddress.getText();
         restManager = cb_restManager.getSelectedItem().toString();
+        restPhoneNo = txt_RestPhoneNo.getText();
         
         if (restName.equals(""))
         {
@@ -68,12 +69,7 @@ public class RestAddition extends javax.swing.JPanel {
     
     void insertDetails(){
         try{
-//            if(cb_restManager.getSelectedItem()==null){
-//            JOptionPane.showMessageDialog(this, "Select Hospital");
-//            return;
-//        }
-//        Person person = (Person)cb_restManager.getSelectedItem();
-          int i = restaurantDao.insertDetails(restName, restAddress, restManager);
+          int i = restaurantDao.insertDetails(restName, restAddress, restManager,restPhoneNo);
           if(i>0){
               JOptionPane.showMessageDialog(this, "Record Inserted");
           }
@@ -99,6 +95,9 @@ public class RestAddition extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         cb_restManager = new javax.swing.JComboBox<>();
         btn_CreateRest = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txt_RestPhoneNo = new javax.swing.JTextField();
+        btn_ViewRest = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
 
@@ -135,7 +134,7 @@ public class RestAddition extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Restaurant Address");
+        jLabel5.setText("Restaurant Phone No");
 
         btn_CreateRest.setBackground(new java.awt.Color(0, 51, 51));
         btn_CreateRest.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,6 +142,19 @@ public class RestAddition extends javax.swing.JPanel {
         btn_CreateRest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_CreateRestActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Restaurant Address");
+
+        btn_ViewRest.setBackground(new java.awt.Color(0, 51, 51));
+        btn_ViewRest.setForeground(new java.awt.Color(255, 255, 255));
+        btn_ViewRest.setText("View Details");
+        btn_ViewRest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ViewRestActionPerformed(evt);
             }
         });
 
@@ -162,15 +174,20 @@ public class RestAddition extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(54, 54, 54)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cb_restManager, 0, 132, Short.MAX_VALUE)
-                            .addComponent(txt_RestAddress)
-                            .addComponent(txt_RestName)))
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(41, 41, 41))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(346, 346, 346)
-                        .addComponent(btn_CreateRest)))
+                        .addGap(249, 249, 249)
+                        .addComponent(btn_CreateRest)
+                        .addGap(58, 58, 58)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_ViewRest)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cb_restManager, 0, 132, Short.MAX_VALUE)
+                        .addComponent(txt_RestAddress)
+                        .addComponent(txt_RestName)
+                        .addComponent(txt_RestPhoneNo)))
                 .addGap(63, 261, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -183,15 +200,21 @@ public class RestAddition extends javax.swing.JPanel {
                     .addComponent(txt_RestName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_RestAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_RestAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_restManager, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59)
-                .addComponent(btn_CreateRest)
-                .addGap(0, 100, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_RestPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_CreateRest)
+                    .addComponent(btn_ViewRest))
+                .addGap(0, 94, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -204,22 +227,37 @@ public class RestAddition extends javax.swing.JPanel {
         txt_RestName.setText("");
         txt_RestAddress.setText("");
         cb_restManager.setSelectedIndex(0);
+        txt_RestPhoneNo.setText("");
+        
    
        
        
     }//GEN-LAST:event_btn_CreateRestActionPerformed
 
+    private void btn_ViewRestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ViewRestActionPerformed
+        // TODO add your handling code here:
+//        
+//       RestaurantView restaurantView = new RestaurantView(p);
+//        restaurantView.setVisible(true);
+      
+      
+     
+    }//GEN-LAST:event_btn_ViewRestActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_CreateRest;
+    private javax.swing.JButton btn_ViewRest;
     private javax.swing.JComboBox<Object> cb_restManager;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt_RestAddress;
     private javax.swing.JTextField txt_RestName;
+    private javax.swing.JTextField txt_RestPhoneNo;
     // End of variables declaration//GEN-END:variables
 
     private void populateRestaurantManagers() {
