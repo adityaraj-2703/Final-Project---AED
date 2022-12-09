@@ -9,6 +9,15 @@ package model;
  * @author anupamaditya
  */
 public class Person {
+    private int userID;
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
     private String fName;
     private String lName;
     private String emailAddress;
@@ -17,6 +26,16 @@ public class Person {
     private String phoneNo;
     private String address;
     private Role role;
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
 
     public Role getRole() {
         return role;
