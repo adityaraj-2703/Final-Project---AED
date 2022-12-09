@@ -4,6 +4,7 @@
  */
 package UI.Main;
 
+import UI.SystemAdmin.SystemAdminJPanel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
@@ -41,7 +42,13 @@ public class MainFrame extends javax.swing.JFrame {
          pst.setString(2, password);
          ResultSet rs = pst.executeQuery();  //it will return username and password from database and will store in resultset that comes under sql package
          if (rs.next()){
+             p.setUserID(rs.getInt(1));
              p.setfName(rs.getString(2));
+             p.setEmailAddress(rs.getString(3));
+             p.setUserName(rs.getString(4));
+             p.setAddress(rs.getString(7));
+             p.setPhoneNo(rs.getString(8));
+             p.setAge(rs.getInt(9));
              String a = rs.getString(6);
              if(a.equals("COLLEGE_MANAGER")){
                  p.setRole(Role.COLLEGE_MANAGER);
@@ -51,6 +58,14 @@ public class MainFrame extends javax.swing.JFrame {
                  p.setRole(Role.RESTAURANT_MANAGER);
                  Restaurant restaurant = new Restaurant(p);
                  mainFrameSplitPanel.setRightComponent(restaurant);
+             }
+             else if(a.equals("FOOD_SERVICE_ADMIN")){
+                 p.setRole(Role.CLOTHES_SERVICE_ADMIN);    
+             }
+             else if(a.equals("SYSTEM_ADMIN")){
+                 p.setRole(Role.SYSTEM_ADMIN);
+                 SystemAdminJPanel sysAdmin = new SystemAdminJPanel(p);
+                 mainFrameSplitPanel.setRightComponent(sysAdmin);
              }
              
         
