@@ -6,8 +6,14 @@ package BusinessLogic;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import model.Person;
 
 /**
  *
@@ -15,6 +21,7 @@ import java.sql.Statement;
  */
 public class RestaurantDAO {
     Connection conn;
+    String restName, restAddress, restManager;
     int id =0;
     public  RestaurantDAO(){
         
@@ -27,6 +34,10 @@ public class RestaurantDAO {
         }
     
 }
+    
+    public Connection getCon(){
+        return conn;
+    }
     public int getID(){
         ResultSet rs = null;
         try{
@@ -45,6 +56,45 @@ public class RestaurantDAO {
             e.printStackTrace();
         }
         return id;
+    }
+    
+    public int insertDetails(String restName, String restAddress, String restManager) throws SQLException{
+        try{
+            String sql  = "insert into Restaurant values(?,?,?,?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, getID());
+            stmt.setString(2,restName);
+            stmt.setString(3,restAddress );
+            stmt.setString(4,restManager );
+            
+            
+        } catch (Exception e) {
+             e.printStackTrace();
+        }
+         return 0;
+    }
+
+    public List<Person> getPendingManagers() {
+        List<Person> pList = new ArrayList<>();
+        ResultSet rs = null;
+        try{
+            String sql  = "select user_name from users where Role = ? and Status = ?;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "RESTAURANT_MANAGER");
+            stmt.setString(2, "Pending");
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                Person p = new Person();
+                p.setUserName(rs.getString(1));
+                pList.add(p);
+            }
+            return pList;
+            
+            
+        } catch (Exception e) {
+             e.printStackTrace();
+        }
+        return pList;
     }
     
     

@@ -40,9 +40,9 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txt_RestName" max="32767" attributes="0"/>
-                          <Component id="txt_RestAddress" max="32767" attributes="0"/>
-                          <Component id="cb_restManager" max="32767" attributes="0"/>
+                          <Component id="cb_restManager" pref="132" max="32767" attributes="0"/>
+                          <Component id="txt_RestAddress" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_RestName" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -50,7 +50,7 @@
                       <Component id="btn_CreateRest" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="63" pref="202" max="32767" attributes="0"/>
+              <EmptySpace min="63" pref="261" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -162,13 +162,11 @@
     <Component class="javax.swing.JComboBox" name="cb_restManager">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Item 1 Item 2 Item 3 Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Object&gt;"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btn_CreateRest">
