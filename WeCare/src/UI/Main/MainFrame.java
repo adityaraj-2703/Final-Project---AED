@@ -83,16 +83,16 @@ public class MainFrame extends javax.swing.JFrame {
                  mainFrameSplitPanel.setRightComponent(restAddAdmin);;
              }
              else if(a.equals("RESTAURANT_MANAGER")){
-<<<<<<< HEAD
+
                  Role r = new RestaurantManagerRole();
                  Restaurant restaurant = (Restaurant) r.createWorkArea( new Restaurant(p), d, p);
                  
                  mainFrameSplitPanel.setRightComponent(restaurant);
-=======
+                   //Anupam to change
                  p.setRole(Role.RESTAURANT_MANAGER);
                    RestManagerPanel restAddManager = new RestManagerPanel(p);
                  mainFrameSplitPanel.setRightComponent(restAddManager);;
->>>>>>> 73b15ba309e03e6d6721200e911920417f170e71
+
              }
              else if(a.equals("FOOD_SERVICE_ADMIN")){
                 Role r = new FoodServiceAdminRole();
