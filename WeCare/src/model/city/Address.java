@@ -8,14 +8,14 @@ package model.city;
  *
  * @author adityaraj
  */
-public class House {
-    private String houseId;
+public class Address {
+    private String addressId;
     private String streetAddress;
     private Community community;
     private String pinCode;
 
     public String getHouseId() {
-        return houseId;
+        return addressId;
     }
     
     
@@ -33,7 +33,7 @@ public class House {
     }
 
     public void setHouseId(String houseId) {
-        this.houseId = houseId;
+        this.addressId = houseId;
     }
 
     
@@ -55,6 +55,4 @@ public class House {
     public String toString() {
         return this.streetAddress;
     }
-    
-    
 }

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import model.Data;
 import model.Person;
 //import model.Restaurant;
 import model.Role;
@@ -23,8 +24,10 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
+    Data d;
     public MainFrame() {
         initComponents();
+        d = new Data();
     }
 
     /**
@@ -66,7 +69,7 @@ public class MainFrame extends javax.swing.JFrame {
              }
              else if(a.equals("SYSTEM_ADMIN")){
                  p.setRole(Role.SYSTEM_ADMIN);
-                 SystemAdminJPanel sysAdmin = new SystemAdminJPanel(p);
+                 SystemAdminJPanel sysAdmin = new SystemAdminJPanel(d,p);
                  mainFrameSplitPanel.setRightComponent(sysAdmin);
              }
              
