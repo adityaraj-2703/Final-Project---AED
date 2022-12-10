@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Enterprise.EnterpriseDirectory;
 import model.city.City;
+import model.city.Community;
 
 /**
  *
@@ -44,14 +45,18 @@ public class Data {
     }
 
     public List<City> getCities() {
+        cities  = cityDao.getCities();
         return cities;
     }
+    
+    
 
     public void setCities(List<City> cities) {
         this.cities = cities;
     }
     
     public int createCity(String name,String state){
+        //object definition
         City c = new City();
         c.setId(String.valueOf(cityDao.getCount() + Integer.valueOf("100")));
         c.setName(name);
@@ -63,7 +68,16 @@ public class Data {
         return v;
     }
     
-    
+    public City getCity(String id){
+        City getCity = new City();
+        for(City c : cities){
+            if(c.getId()==id){
+                getCity = c;
+                return getCity;
+            }
+        }
+        return getCity;
+    }
     
 
     public EnterpriseDirectory getEnterpriseDirectory() {
@@ -73,6 +87,44 @@ public class Data {
     public void setEnterpriseDirectory(EnterpriseDirectory enterpriseDirectory) {
         this.enterpriseDirectory = enterpriseDirectory;
     }
+
+    public int updateCity(String id,String name,String state) {
+        City getCity = getCity(id);
+        for(City c : cities){
+            if(c.getId().equals(id)){
+                getCity = c;
+                break;
+            }
+        }
+        
+        int v = cityDao.updateCity(getCity);
+        if(v!=0){
+           getCity.setName(name);
+           getCity.setState(state);
+        }
+        return v;
+        
+        
+        
+        
+        
+    }
+
+    public int addCommunity(String cityId, String communityName) {
+        City c = getCity(cityId);
+        Community comm = new Community();
+        comm.setCommunityId(String.valueOf(cityDao.getComunityCount() + Integer.valueOf("200")));
+        comm.setCommunityName(communityName);
+        comm.setCity(c);
+        int v = cityDao.createCommunity(comm);
+        if(v!=0){
+            c.getCommunityList().add(comm);
+        }
+        return v;
+        
+    }
+
+    
 
     
     

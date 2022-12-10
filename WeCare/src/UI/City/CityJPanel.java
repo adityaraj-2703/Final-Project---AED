@@ -4,7 +4,7 @@
  */
 package UI.City;
 
-import BusinessLogic.CityDao;
+
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +25,11 @@ public class CityJPanel extends javax.swing.JPanel {
     public CityJPanel(Data d) {
         initComponents();
         this.data = d;
-        populateTable();
+        populateCities();
+        populateCitiesTable();
+        populateCommunitiesTable();
+        txtCityId.setEditable(false);
+        txtCityId.setEditable(false);
     }
 
     /**
@@ -54,6 +58,8 @@ public class CityJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         lblCityName = new javax.swing.JLabel();
         lblCityState = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtCityId = new javax.swing.JTextField();
         jPanelManageCommunity = new javax.swing.JPanel();
         btnSaveCommunity = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -66,6 +72,8 @@ public class CityJPanel extends javax.swing.JPanel {
         tblCommunities = new javax.swing.JTable();
         btnViewCommunity = new javax.swing.JButton();
         btnUpdateCommunity = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtCommunityId = new javax.swing.JTextField();
 
         jButton1.setText("Manage City");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -146,41 +154,42 @@ public class CityJPanel extends javax.swing.JPanel {
 
         lblCityState.setText("City State");
 
+        jLabel4.setText("City Id");
+
         javax.swing.GroupLayout jPanelManageCityLayout = new javax.swing.GroupLayout(jPanelManageCity);
         jPanelManageCity.setLayout(jPanelManageCityLayout);
         jPanelManageCityLayout.setHorizontalGroup(
             jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelManageCityLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelManageCityLayout.createSequentialGroup()
-                        .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblCityState)
-                                .addGroup(jPanelManageCityLayout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(178, 178, 178)))
-                            .addGroup(jPanelManageCityLayout.createSequentialGroup()
-                                .addGap(186, 186, 186)
-                                .addComponent(lblCityName)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCityState, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(275, 275, 275))
-                    .addGroup(jPanelManageCityLayout.createSequentialGroup()
-                        .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelManageCityLayout.createSequentialGroup()
-                                .addGap(186, 186, 186)
-                                .addComponent(btnSaveCity))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelManageCityLayout.createSequentialGroup()
                 .addGap(0, 503, Short.MAX_VALUE)
                 .addComponent(btnViewCity)
-                .addGap(18, 18, 18)
-                .addComponent(btnUpdateCity)
-                .addGap(119, 119, 119))
+                .addGap(237, 237, 237))
+            .addGroup(jPanelManageCityLayout.createSequentialGroup()
+                .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelManageCityLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelManageCityLayout.createSequentialGroup()
+                                .addGap(190, 190, 190)
+                                .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCityName)
+                                    .addGroup(jPanelManageCityLayout.createSequentialGroup()
+                                        .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblCityState)
+                                            .addComponent(jLabel4))
+                                        .addGap(111, 111, 111)
+                                        .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtCityState, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(txtCityName, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(txtCityId)))))))
+                    .addGroup(jPanelManageCityLayout.createSequentialGroup()
+                        .addGap(324, 324, 324)
+                        .addComponent(btnSaveCity)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdateCity)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelManageCityLayout.setVerticalGroup(
             jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,22 +197,29 @@ public class CityJPanel extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnViewCity)
-                    .addComponent(btnUpdateCity))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCityName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCityName, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(31, 31, 31)
+                    .addGroup(jPanelManageCityLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnViewCity)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtCityId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addComponent(lblCityName))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelManageCityLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCityState, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCityState, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCityState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCityState))
-                .addGap(55, 55, 55)
-                .addComponent(btnSaveCity)
-                .addGap(84, 84, 84))
+                    .addComponent(btnSaveCity)
+                    .addComponent(btnUpdateCity))
+                .addGap(51, 51, 51))
         );
 
         workAreaCity.add(jPanelManageCity, "card2");
@@ -250,6 +266,8 @@ public class CityJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setText("Community Id");
+
         javax.swing.GroupLayout jPanelManageCommunityLayout = new javax.swing.GroupLayout(jPanelManageCommunity);
         jPanelManageCommunity.setLayout(jPanelManageCommunityLayout);
         jPanelManageCommunityLayout.setHorizontalGroup(
@@ -259,31 +277,32 @@ public class CityJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                        .addGap(461, 461, 461)
-                        .addComponent(btnViewCommunity)
-                        .addGap(51, 51, 51)
-                        .addComponent(btnUpdateCommunity))
-                    .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCommunityCity)
-                            .addComponent(lblCommunityName))
-                        .addGap(54, 54, 54)
-                        .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCommunityName)
-                            .addComponent(jComboBoxCities, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                        .addGap(273, 273, 273)
-                        .addComponent(btnSaveCommunity))
-                    .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnViewCommunity)
+                    .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
+                            .addGap(147, 147, 147)
+                            .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblCommunityCity)
+                                .addComponent(lblCommunityName)
+                                .addComponent(jLabel5))
+                            .addGap(54, 54, 54)
+                            .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtCommunityName)
+                                .addComponent(jComboBoxCities, 0, 150, Short.MAX_VALUE)
+                                .addComponent(txtCommunityId)))
+                        .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
+                            .addGap(273, 273, 273)
+                            .addComponent(btnSaveCommunity)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnUpdateCommunity))
+                        .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
+                            .addGap(238, 238, 238)
+                            .addComponent(jLabel2))
+                        .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
+                            .addGap(63, 63, 63)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanelManageCommunityLayout.setVerticalGroup(
             jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,21 +312,26 @@ public class CityJPanel extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnViewCommunity)
-                    .addComponent(btnUpdateCommunity))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(45, 45, 45)
+                .addComponent(btnViewCommunity)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelManageCommunityLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel5))
+                    .addComponent(txtCommunityId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCommunityName)
                     .addComponent(txtCommunityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCommunityCity)
-                    .addComponent(jComboBoxCities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66)
-                .addComponent(btnSaveCommunity)
+                    .addComponent(jComboBoxCities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCommunityCity))
+                .addGap(46, 46, 46)
+                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSaveCommunity)
+                    .addComponent(btnUpdateCommunity))
                 .addGap(17, 17, 17))
         );
 
@@ -352,6 +376,7 @@ public class CityJPanel extends javax.swing.JPanel {
         txtCityState.setText("");
 
         JOptionPane.showMessageDialog(this, "City Info Saved");
+        populateCitiesTable();
     }//GEN-LAST:event_btnSaveCityActionPerformed
 
     private void btnViewCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCityActionPerformed
@@ -362,57 +387,74 @@ public class CityJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select row to view the details");
             return;
         }
-        //DefaultTableModel model = (DefaultTableModel) tblCities.getModel();
-        //City c = (City) model.getValueAt(selectedRowIndex, 1);
-        //txtCityId.setText(String.valueOf(c.getId()));
-        //txtCityId.setEditable(false);
-        //txtCityName.setText(String.valueOf(c.getName()));
-        txtCityName.setEditable(false);
-        //txtCityState.setText(String.valueOf(c.getState()));
-        txtCityState.setEditable(false);
+        DefaultTableModel model = (DefaultTableModel) tblCities.getModel();
+        City c = (City) model.getValueAt(selectedRowIndex, 1);
+        txtCityId.setText(String.valueOf(c.getId()));
+        txtCityId.setEditable(false);
+        txtCityName.setText(String.valueOf(c.getName()));
+        txtCityName.setEditable(true);
+        txtCityState.setText(String.valueOf(c.getState()));
+        txtCityState.setEditable(true);
+        
     }//GEN-LAST:event_btnViewCityActionPerformed
 
     private void btnUpdateCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCityActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblCities.getSelectedRow();
-        if(selectedRowIndex < 0){
-            JOptionPane.showMessageDialog(this, "Please select row to update the details");
+        try{
+            
+            if(txtCityId.getText().length() == 0 || txtCityName.getText().length()==0 || txtCityState.getText().length()==0){
+                JOptionPane.showMessageDialog(this, "Enter All fields");
+                return;
+            }
+            
+           
+            
+            int v = data.updateCity(String.valueOf(txtCityId.getText()),String.valueOf(txtCityName.getText()),txtCityState.getText());
+            if(v==0){
+                JOptionPane.showMessageDialog(this, "Error in Updating City Data");
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "City Info Updated");
+            txtCityId.setText("");
+            txtCityName.setText("");
+            txtCityState.setText("");
+            populateCitiesTable();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Enter All fields");
             return;
         }
-        //DefaultTableModel model = (DefaultTableModel) tblCities.getModel();
-        //City c = (City) model.getValueAt(selectedRowIndex, 1);
-        //txtCityId.setText(String.valueOf(c.getId()));
-        //txtCityId.setEditable(false);
-        //txtCityName.setText(String.valueOf(c.getName()));
-        txtCityName.setEditable(true);
-        //txtCityState.setText(String.valueOf(c.getState()));
-        txtCityState.setEditable(true);
+        populateCitiesTable();
+        
     }//GEN-LAST:event_btnUpdateCityActionPerformed
 
     private void btnSaveCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCommunityActionPerformed
         // TODO add your handling code here:
 
-        if(jComboBoxCities.getSelectedItem()==null){
-            JOptionPane.showMessageDialog(this, "Select City");
+        if(jComboBoxCities.getSelectedItem()==null || txtCommunityId.getText().length()==0){
+            JOptionPane.showMessageDialog(this, "Enter All Fields");
             return;
         }
         City c = (City)jComboBoxCities.getSelectedItem();
-        Community community = c.addCommunity();
-
+        
+        
         String communityName = txtCommunityName.getText();
         if(communityName.length()==0){
             JOptionPane.showMessageDialog(this, "Enter Community Name");
             return;
         }
-        String cid =  String.valueOf(c.getCommunityList().size() + Integer.parseInt("1000"));
-        community.setCommunityId(cid);
-        community.setCity(c);
-        community.setCommunityName(communityName);
+        int v = data.addCommunity(c.getId(), communityName);
+        
+        
+        if(v==0){
+            JOptionPane.showMessageDialog(this, "Error in creating Community");
+            return;
+        }
 
         txtCommunityName.setText("");
 
         JOptionPane.showMessageDialog(this, "Community Info Saved");
-
+        populateCommunitiesTable();
     }//GEN-LAST:event_btnSaveCommunityActionPerformed
 
     private void btnViewCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCommunityActionPerformed
@@ -449,6 +491,7 @@ public class CityJPanel extends javax.swing.JPanel {
         txtCommunityName.setEditable(true);
         jComboBoxCities.setSelectedItem(c.getCity());
         jComboBoxCities.setEditable(true);
+        populateCommunitiesTable();
     }//GEN-LAST:event_btnUpdateCommunityActionPerformed
 
 
@@ -467,6 +510,8 @@ public class CityJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanelManageCity;
     private javax.swing.JPanel jPanelManageCommunity;
     private javax.swing.JScrollPane jScrollPane1;
@@ -478,17 +523,51 @@ public class CityJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblCommunityName;
     private javax.swing.JTable tblCities;
     private javax.swing.JTable tblCommunities;
+    private javax.swing.JTextField txtCityId;
     private javax.swing.JTextField txtCityName;
     private javax.swing.JTextField txtCityState;
+    private javax.swing.JTextField txtCommunityId;
     private javax.swing.JTextField txtCommunityName;
     private javax.swing.JPanel workAreaCity;
     // End of variables declaration//GEN-END:variables
 
-    private void populateTable() {
+    private void populateCities() {
          List<City> cities = data.getCities();
         jComboBoxCities.removeAllItems();
         for(City c : cities){
             jComboBoxCities.addItem(c);
+        }
+        
+    }
+
+    private void populateCitiesTable() {
+        DefaultTableModel model = (DefaultTableModel) tblCities.getModel();
+        model.setRowCount(0);
+        
+        
+        for(City c : data.getCities()){
+            Object[] row = new Object[3];
+            row[0] = c.getId();
+            row[1] = c;
+            row[2] = c.getState();
+            model.addRow(row);
+        }
+    }
+
+    private void populateCommunitiesTable() {
+        DefaultTableModel model = (DefaultTableModel) tblCities.getModel();
+        model.setRowCount(0);
+        
+        
+        for(City c: data.getCities()){
+            for(Community comm : c.getCommunityList()){
+                Object[] row = new Object[3];
+                row[0] = comm.getCommunityId();
+                row[1] = comm;
+                row[2] = comm.getCity();
+                model.addRow(row);
+            }
+            
         }
     }
 }

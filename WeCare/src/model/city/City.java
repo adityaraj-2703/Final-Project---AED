@@ -5,6 +5,7 @@
 package model.city;
 
 import BusinessLogic.CityDao;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +18,11 @@ public class City {
     private String name;
     private String state;
     private List<Community> communityList;
+    
+    public City(){
+        communityList = new ArrayList<>();
+    }
+    
 
     public String getId() {
         return id;
@@ -49,6 +55,8 @@ public class City {
     public void setCommunityList(List<Community> communityList) {
         this.communityList = communityList;
     }
+
+    
     
     
     

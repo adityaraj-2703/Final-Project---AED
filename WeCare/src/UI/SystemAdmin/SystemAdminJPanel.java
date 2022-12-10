@@ -125,7 +125,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
     private void btnManageEnterpriseAdminsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseAdminsActionPerformed
         // TODO add your handling code here:
         ManageEnterpriseAdmins manageEAdmins = new ManageEnterpriseAdmins(d);
-        
+        jSplitPaneSystemAdmin.setRightComponent(manageEAdmins);
     }//GEN-LAST:event_btnManageEnterpriseAdminsActionPerformed
 
 

@@ -73,26 +73,29 @@ public class CityDao {
 
     public List<City> getCities() {
         List<City> cities = new ArrayList<>();
+        
         ResultSet rs = null;
         int count = 0;
         try{
             
-            String sql  = "select count(*) from city";
+            String sql  = "select * from city";
               Statement st = conn.createStatement();
               rs = st.executeQuery(sql);
               while(rs.next()){
                   City c =  new City();
                   c.setId(rs.getString(1));
                   c.setName(rs.getString(2));
-                  c.setCommunityList(getCommunities(c.getId()));
+                  //c.setCommunityList(getCommunities(c.getId()));
                   c.setState(rs.getString(3));
+                  cities.add(c);
               }
               
             }
             catch(Exception e){
                 e.printStackTrace();
             }
-            return cities;
+        return cities;
+            
     }
 
     private List<Community> getCommunities(String id) {
@@ -101,22 +104,78 @@ public class CityDao {
         int count = 0;
         try{
             
-            String sql  = "select count(*) from community where cityId = ?";
-              Statement st = conn.createStatement();
-              rs = st.executeQuery(sql);
+            String sql  = "select * from community where cityID = ?";
+                
+              PreparedStatement st = conn.prepareStatement(sql);
+              st.setString(1,id);
+              rs = st.executeQuery();
               while(rs.next()){
                   Community c =  new Community();
                   c.setCommunityId(rs.getString(1));
-                  c.set(rs.getString(2));
-                  c.setCommunityList(getCommunities(c.getId()));
-                  c.setState(rs.getString(3));
+                  c.setCommunityName(rs.getString(2));
+                  
+                  
               }
               
             }
             catch(Exception e){
                 e.printStackTrace();
             }
-            return cities;
+            return communities;
         
     }
+
+    public int updateCity(City c) {
+        int result=0;
+        try{
+          String sql  = "update city set cityName = ? and cityState = ? where cityId = ?;";
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setString(1,c.getName());
+          stmt.setString(2,c.getState());
+          stmt.setString(3, c.getId());
+          result = stmt.executeUpdate();
+          
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public int createCommunity(Community c) {
+        int result=0;
+        try{
+          String sql  = "insert into community values(?,?,?)";
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setString(1,c.getCommunityId());
+          stmt.setString(2,c.getCommunityName());
+          stmt.setString(3, c.getCity().getId());
+          result = stmt.executeUpdate();
+          
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public Integer getComunityCount() {
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select count(*) from community";
+              Statement st = conn.createStatement();
+              rs = st.executeQuery(sql);
+              if(rs.next()){
+                  count = rs.getInt(1);
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return count;
+    }
+    
 }
