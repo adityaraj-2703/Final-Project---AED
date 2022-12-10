@@ -13,7 +13,8 @@ import model.Person;
 //import model.Restaurant;
 import model.Role;
 import UI.Restaurant.RestAddition;
-import UI.Restaurant.RestAdd;
+import UI.Restaurant.RestAdminPanel;
+import UI.Restaurant.RestManagerPanel;
 /**
  *
  * @author anupamaditya
@@ -56,10 +57,15 @@ public class MainFrame extends javax.swing.JFrame {
                  p.setRole(Role.COLLEGE_MANAGER);
                  
              }
+             else if(a.equals("RESTAURANT_ADMIN")){
+                 p.setRole(Role.RESTAURANT_ADMIN);
+                   RestAdminPanel restAddAdmin = new RestAdminPanel(p);
+                 mainFrameSplitPanel.setRightComponent(restAddAdmin);;
+             }
              else if(a.equals("RESTAURANT_MANAGER")){
                  p.setRole(Role.RESTAURANT_MANAGER);
-                   RestAdd restAdd = new RestAdd(p);
-                 mainFrameSplitPanel.setRightComponent(restAdd);;
+                   RestManagerPanel restAddManager = new RestManagerPanel(p);
+                 mainFrameSplitPanel.setRightComponent(restAddManager);;
              }
              else if(a.equals("FOOD_SERVICE_ADMIN")){
                  p.setRole(Role.CLOTHES_SERVICE_ADMIN);    
