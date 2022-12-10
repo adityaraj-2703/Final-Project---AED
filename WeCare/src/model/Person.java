@@ -4,6 +4,8 @@
  */
 package model;
 
+import model.Roles.Role;
+
 /**
  *
  * @author anupamaditya
@@ -101,10 +103,11 @@ public class Person {
         this.address = address;
     }
 
+
     @Override
     public String toString() {
         return this.getUserName();
     }
-    
+
     
 }

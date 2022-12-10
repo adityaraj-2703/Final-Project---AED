@@ -23,6 +23,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         initComponents();
         this.person = p;
         this.d = d;
+        
     }
 
     /**
@@ -138,4 +139,5 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JSplitPane jSplitPaneSystemAdmin;
     private javax.swing.JPanel workAreaSystemAdmin;
     // End of variables declaration//GEN-END:variables
+
 }

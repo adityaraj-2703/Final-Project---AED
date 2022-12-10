@@ -23,10 +23,11 @@ public class CityJPanel extends javax.swing.JPanel {
      */
     Data data;
     public CityJPanel(Data d) {
+        
         initComponents();
         this.data = d;
-        populateCities();
         populateCitiesTable();
+        populateCities();
         populateCommunitiesTable();
         txtCityId.setEditable(false);
         txtCityId.setEditable(false);
@@ -50,6 +51,7 @@ public class CityJPanel extends javax.swing.JPanel {
         jPanelManageCity = new javax.swing.JPanel();
         txtCityName = new javax.swing.JTextField();
         txtCityState = new javax.swing.JTextField();
+        txtCityId = new javax.swing.JTextField();
         btnSaveCity = new javax.swing.JButton();
         btnViewCity = new javax.swing.JButton();
         btnUpdateCity = new javax.swing.JButton();
@@ -59,7 +61,6 @@ public class CityJPanel extends javax.swing.JPanel {
         lblCityName = new javax.swing.JLabel();
         lblCityState = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCityId = new javax.swing.JTextField();
         jPanelManageCommunity = new javax.swing.JPanel();
         btnSaveCommunity = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -388,7 +389,7 @@ public class CityJPanel extends javax.swing.JPanel {
             return;
         }
         DefaultTableModel model = (DefaultTableModel) tblCities.getModel();
-        City c = (City) model.getValueAt(selectedRowIndex, 1);
+        City c = (City) model.getValueAt(selectedRowIndex, 0);
         txtCityId.setText(String.valueOf(c.getId()));
         txtCityId.setEditable(false);
         txtCityName.setText(String.valueOf(c.getName()));
@@ -547,8 +548,8 @@ public class CityJPanel extends javax.swing.JPanel {
         
         for(City c : data.getCities()){
             Object[] row = new Object[3];
-            row[0] = c.getId();
-            row[1] = c;
+            row[0] = c;
+            row[1] = c.getName();
             row[2] = c.getState();
             model.addRow(row);
         }
