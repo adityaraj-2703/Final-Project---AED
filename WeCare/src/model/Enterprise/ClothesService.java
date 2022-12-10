@@ -10,4 +10,8 @@ package model.Enterprise;
  */
 public class ClothesService extends Enterprise{
     
+    public ClothesService(EnterpriseType type, String name) {
+        super(type, name);
+    }
+    
 }

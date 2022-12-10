@@ -2,7 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+
 package UI.ClothesService;
+
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Data;
+import model.Enterprise.Enterprise;
+import model.Organisation.Organisation;
+import model.Person;
+import model.city.Address;
+import model.city.City;
 
 /**
  *
@@ -13,8 +26,14 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
     /**
      * Creates new form ClothesServiceAdminPanel
      */
-    public ClothesServiceAdminPanel() {
+    Data d;
+    Person p;
+    public ClothesServiceAdminPanel(Data d, Person p) {
         initComponents();
+        this.d = d;
+        this.p = p;
+        txtOrganisationId.setEditable(false);
+        populateClothesOrganisationTable();
     }
 
     /**
@@ -26,92 +45,237 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jsplitPanelclothesServiceAdmin = new javax.swing.JSplitPane();
-        controlPanelClothesServiceAdmin = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBoxOrganisationType = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        txtOrganisationName = new javax.swing.JTextField();
         btnAddClothesService = new javax.swing.JButton();
-        btnAddRemoveClothesService = new javax.swing.JButton();
-        workAreaClothesServiceAdmin = new javax.swing.JPanel();
+        jComboBoxClothesServiceManager = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblClothesOrganisation = new javax.swing.JTable();
+        jComboBoxLocation = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtOrganisationId = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtPhoneNo = new javax.swing.JTextField();
 
-        jsplitPanelclothesServiceAdmin.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jLabel1.setText("Organisation Type");
 
-        btnAddClothesService.setText("Add Service");
+        jLabel3.setText("Service Manager");
+
+        jComboBoxOrganisationType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Outlets", "Residents", "College", "NGO" }));
+
+        jLabel4.setText("Organisation Name");
+
+        btnAddClothesService.setText("Add Organisation");
         btnAddClothesService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddClothesServiceActionPerformed(evt);
             }
         });
 
-        btnAddRemoveClothesService.setText("Approve/Reject Clothes Service");
-        btnAddRemoveClothesService.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddRemoveClothesServiceActionPerformed(evt);
+        jLabel2.setText("Location");
+
+        tblClothesOrganisation.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "OrganisationId", "Organisation Name", "Organisation Type", "Location", "Organisation Manager", "Phone Number"
             }
-        });
+        ));
+        jScrollPane1.setViewportView(tblClothesOrganisation);
+        if (tblClothesOrganisation.getColumnModel().getColumnCount() > 0) {
+            tblClothesOrganisation.getColumnModel().getColumn(0).setResizable(false);
+            tblClothesOrganisation.getColumnModel().getColumn(2).setResizable(false);
+        }
 
-        javax.swing.GroupLayout controlPanelClothesServiceAdminLayout = new javax.swing.GroupLayout(controlPanelClothesServiceAdmin);
-        controlPanelClothesServiceAdmin.setLayout(controlPanelClothesServiceAdminLayout);
-        controlPanelClothesServiceAdminLayout.setHorizontalGroup(
-            controlPanelClothesServiceAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlPanelClothesServiceAdminLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(btnAddClothesService)
-                .addGap(59, 59, 59)
-                .addComponent(btnAddRemoveClothesService)
-                .addContainerGap(293, Short.MAX_VALUE))
-        );
-        controlPanelClothesServiceAdminLayout.setVerticalGroup(
-            controlPanelClothesServiceAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlPanelClothesServiceAdminLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(controlPanelClothesServiceAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddClothesService)
-                    .addComponent(btnAddRemoveClothesService))
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
+        jButton1.setText("View Organisation");
 
-        jsplitPanelclothesServiceAdmin.setTopComponent(controlPanelClothesServiceAdmin);
+        jButton2.setText("Update Organisation");
 
-        javax.swing.GroupLayout workAreaClothesServiceAdminLayout = new javax.swing.GroupLayout(workAreaClothesServiceAdmin);
-        workAreaClothesServiceAdmin.setLayout(workAreaClothesServiceAdminLayout);
-        workAreaClothesServiceAdminLayout.setHorizontalGroup(
-            workAreaClothesServiceAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 783, Short.MAX_VALUE)
-        );
-        workAreaClothesServiceAdminLayout.setVerticalGroup(
-            workAreaClothesServiceAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
-        );
+        jButton3.setText("Delete Organisation");
 
-        jsplitPanelclothesServiceAdmin.setRightComponent(workAreaClothesServiceAdmin);
+        jLabel5.setText("Organisatin ID");
+
+        jLabel6.setText("Phone No");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jsplitPanelclothesServiceAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton3))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(294, 294, 294)
+                            .addComponent(btnAddClothesService)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton2))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(186, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBoxClothesServiceManager, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxOrganisationType, 0, 150, Short.MAX_VALUE)
+                    .addComponent(txtOrganisationName)
+                    .addComponent(jComboBoxLocation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtOrganisationId)
+                    .addComponent(txtPhoneNo))
+                .addGap(229, 229, 229))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jsplitPanelclothesServiceAdmin)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtOrganisationId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxOrganisationType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOrganisationName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jComboBoxLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBoxClothesServiceManager, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddClothesService)
+                    .addComponent(jButton2))
+                .addGap(36, 36, 36))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddClothesServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClothesServiceActionPerformed
         // TODO add your handling code here:
-        AddClothesServicePanel addClothesService = new AddClothesServicePanel();
-        jsplitPanelclothesServiceAdmin.setRightComponent(addClothesService);
-    }//GEN-LAST:event_btnAddClothesServiceActionPerformed
+        String organisationType = String.valueOf(jComboBoxOrganisationType.getSelectedItem());
+        String organisationName = String.valueOf(txtOrganisationName.getText());
+        Person p = (Person)jComboBoxClothesServiceManager.getSelectedItem();
+        String phoneNo = txtPhoneNo.getText();
+        Address location = (Address)jComboBoxLocation.getSelectedItem();
+        /*
+        if(jComboBoxCities.getSelectedItem()==null){
+            JOptionPane.showMessageDialog(this, "Select City");
+            return;
+        }
+        City c = (City)jComboBoxCities.getSelectedItem();
+        */
+        if(jComboBoxOrganisationType.getSelectedItem()==null || organisationName.length()==0 || phoneNo.length()<10){
+            JOptionPane.showMessageDialog(this, "Enter All fields correctly");
+            return;
+        }
 
-    private void btnAddRemoveClothesServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRemoveClothesServiceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddRemoveClothesServiceActionPerformed
+        int v=0;
+        try {
+            v = d.addOrganisation(organisationType,organisationName,location,p,phoneNo);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClothesServiceAdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(v==0){
+            JOptionPane.showMessageDialog(this, "Error in creating Organisation");
+            return;
+        }
+        txtOrganisationId.setText("");
+        txtOrganisationName.setText("");
+        txtPhoneNo.setText("");
+        jComboBoxClothesServiceManager.setSelectedItem(null);
+        jComboBoxLocation.setSelectedItem(null);
+        jComboBoxOrganisationType.setSelectedItem(null);
+
+        JOptionPane.showMessageDialog(this, "City Info Saved");
+        populateClothesOrganisationTable();
+    }//GEN-LAST:event_btnAddClothesServiceActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddClothesService;
-    private javax.swing.JButton btnAddRemoveClothesService;
-    private javax.swing.JPanel controlPanelClothesServiceAdmin;
-    private javax.swing.JSplitPane jsplitPanelclothesServiceAdmin;
-    private javax.swing.JPanel workAreaClothesServiceAdmin;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<Object> jComboBoxClothesServiceManager;
+    private javax.swing.JComboBox<Object> jComboBoxLocation;
+    private javax.swing.JComboBox<String> jComboBoxOrganisationType;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblClothesOrganisation;
+    private javax.swing.JTextField txtOrganisationId;
+    private javax.swing.JTextField txtOrganisationName;
+    private javax.swing.JTextField txtPhoneNo;
     // End of variables declaration//GEN-END:variables
+
+    private void populateClothesOrganisationTable() {
+        DefaultTableModel model = (DefaultTableModel) tblClothesOrganisation.getModel();
+        model.setRowCount(0);
+        
+        
+        for(Organisation o : d.getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.ClothesService).getOrganisationDirectory().getOrganisationList()){
+            
+            Object[] row = new Object[3];
+            row[0] = o.getOrganisationId();
+            row[1] = o.getOrganisationName();
+            row[2] = o.getOrganisationType();
+            row[3] = o.getAddress().getStreetAddress();
+            row[3] = o.getPerson().getUserName();
+            row[4] = o.getPhoneNo();
+            model.addRow(row);
+        }
+    }
+
+    
 }

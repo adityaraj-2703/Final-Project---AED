@@ -5,18 +5,28 @@
 package model.Organisation;
 
 import model.Person;
+import model.city.Address;
 
 /**
  *
  * @author adityaraj
  */
 public class Organisation {
+    private String organisationId;
     private String organisationName;
-    private String address;
+    private Address location;
     private String organisationType;
     private String phoneNo;
     private Person person;
 
+    public String getOrganisationId() {
+        return organisationId;
+    }
+
+    public void setOrganisationId(String organisationId) {
+        this.organisationId = organisationId;
+    }
+    
     public String getOrganisationName() {
         return organisationName;
     }
@@ -25,12 +35,12 @@ public class Organisation {
         this.organisationName = organisationName;
     }
 
-    public String getAddress() {
-        return address;
+    public Address getAddress() {
+        return location;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddress(Address location) {
+        this.location = location;
     }
 
     public String getOrganisationType() {

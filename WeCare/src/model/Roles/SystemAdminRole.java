@@ -20,7 +20,7 @@ public class SystemAdminRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Data data, Person person) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new SystemAdminJPanel(data, person);
     }
 
     

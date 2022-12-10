@@ -14,16 +14,17 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Person;
+import model.city.Address;
 
 /**
  *
  * @author anupamaditya
  */
-public class RestaurantDAO {
+public class OrganisationDao {
     Connection conn;
     //String restName, restAddress, restManager, restPhoneNo;
 
-    public  RestaurantDAO(){
+    public  OrganisationDao(){
         
     
         try {
@@ -58,15 +59,16 @@ public class RestaurantDAO {
         return id;
     }
     
-    public int insertDetails(String restName, String restAddress, String restManager, String restPhoneNo) throws SQLException{
+    public int insertDetails(String id,String organisationType, String organisationName, Address location, Person serviceManager, String organisationPhoneNo) throws SQLException{
         try{
-            String sql  = "insert into Restaurant values(?,?,?,?,?)";
+            String sql  = "insert into organisation values(?,?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, getID());
-            stmt.setString(2,restName);
-            stmt.setString(3,restAddress);
-            stmt.setString(4,restManager);
-            stmt.setString(5,restPhoneNo);
+            stmt.setString(1, id);
+            stmt.setString(2,organisationType);
+            stmt.setString(3,organisationName);
+            stmt.setString(4,location.getHouseId());
+            stmt.setString(5,serviceManager.getUserName());
+            stmt.setString(6,organisationPhoneNo);
             int i = stmt.executeUpdate();
           return i; 
             
@@ -97,6 +99,26 @@ public class RestaurantDAO {
              e.printStackTrace();
         }
         return pList;
+    }
+
+    public int getCount() {
+        ResultSet rs = null;
+        int id =0;
+        try{
+            
+          String sql  = "select count(*) from Organisation";
+          Statement st = conn.createStatement();
+          rs = st.executeQuery(sql);
+          while(rs.next()){
+              
+              id = rs.getInt(1);
+              id++;
+          }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return id;
     }
     
     

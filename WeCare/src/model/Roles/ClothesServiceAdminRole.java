@@ -4,10 +4,20 @@
  */
 package model.Roles;
 
+import javax.swing.JPanel;
+import model.Data;
+import model.Person;
+import UI.ClothesService.ClothesServiceAdminPanel;
+
 /**
  *
  * @author adityaraj
  */
-public class ClothesServiceAdminRole {
+public class ClothesServiceAdminRole extends Role {
+
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer,Data data, Person person) {
+        return new ClothesServiceAdminPanel(data,person);
+    }
     
 }
