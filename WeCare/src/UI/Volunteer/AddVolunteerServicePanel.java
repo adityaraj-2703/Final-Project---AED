@@ -4,20 +4,46 @@
  */
 package UI.Volunteer;
 
+import BusinessLogic.VolunteerDAO;
+import javax.swing.JOptionPane;
+import model.Person;
+
 /**
  *
  * @author akshitabarot
  */
 public class AddVolunteerServicePanel extends javax.swing.JPanel {
 
+    VolunteerDAO volunteerDAO;
+    String location, volunteerManager;
+
+    Person p;
+          
     /**
      * Creates new form AddVolunteerServicePanel
      */
     public AddVolunteerServicePanel() {
         initComponents();
+        this.p = p;
+        volunteerDAO = new VolunteerDAO();
+        populateVolunteerManager();
         
     }
 
+    
+    boolean validation(){
+        location = txtVolunteerServiceLocation.getText();
+        volunteerManager = jComboBoxVolunteerServiceManager.getSelectedItem().toString();
+        
+        
+        
+        if (location.equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Please enter Location ");
+            return false;
+        }
+        return true;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,4 +125,8 @@ public class AddVolunteerServicePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JTextField txtVolunteerServiceLocation;
     // End of variables declaration//GEN-END:variables
+
+    private void populateVolunteerManager() {
+        
+    }
 }
