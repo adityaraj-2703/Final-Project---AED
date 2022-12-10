@@ -4,6 +4,8 @@
  */
 package model;
 
+import model.Roles.Role;
+
 /**
  *
  * @author anupamaditya
@@ -100,5 +102,9 @@ public class Person {
     public void setAddress(String address) {
         this.address = address;
     }
+
+//    public void setRole(Role.RoleType roleType) {
+//        this.role = roleType;
+//    }
     
 }

@@ -125,13 +125,13 @@ public class CityDao {
         
     }
 
-    public int updateCity(City c) {
+    public int updateCity(City c,String name,String state) {
         int result=0;
         try{
-          String sql  = "update city set cityName = ? and cityState = ? where cityId = ?;";
+          String sql  = "update city set cityName = ? , cityState = ? where cityId = ?";
           PreparedStatement stmt = conn.prepareStatement(sql);
-          stmt.setString(1,c.getName());
-          stmt.setString(2,c.getState());
+          stmt.setString(1,name);
+          stmt.setString(2,state);
           stmt.setString(3, c.getId());
           result = stmt.executeUpdate();
           

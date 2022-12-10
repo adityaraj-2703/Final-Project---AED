@@ -42,6 +42,7 @@ public class Data {
         usersDao = new UsersDAO();
         cities = new ArrayList<>();
         enterpriseDirectory = new EnterpriseDirectory();
+        
     }
 
     public List<City> getCities() {
@@ -71,7 +72,7 @@ public class Data {
     public City getCity(String id){
         City getCity = new City();
         for(City c : cities){
-            if(c.getId()==id){
+            if(c.getId().equals(id)){
                 getCity = c;
                 return getCity;
             }
@@ -90,14 +91,7 @@ public class Data {
 
     public int updateCity(String id,String name,String state) {
         City getCity = getCity(id);
-        for(City c : cities){
-            if(c.getId().equals(id)){
-                getCity = c;
-                break;
-            }
-        }
-        
-        int v = cityDao.updateCity(getCity);
+        int v = cityDao.updateCity(getCity,name,state);
         if(v!=0){
            getCity.setName(name);
            getCity.setState(state);

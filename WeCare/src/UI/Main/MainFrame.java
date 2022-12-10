@@ -10,8 +10,15 @@ import java.sql.DriverManager;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import model.Data;
+import model.Enterprise.Enterprise;
+import model.Organisation.Organisation;
 import model.Person;
-import model.Role;
+import model.Roles.CollegeManagerRole;
+import model.Roles.FoodServiceAdminRole;
+import model.Roles.RestaurantManagerRole;
+import model.Roles.Role;
+import model.Roles.SystemAdminRole;
+import model.city.City;
 
 /**
  *
@@ -23,9 +30,12 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form MainFrame
      */
     Data d;
+    
     public MainFrame() {
         initComponents();
         d = new Data();
+        
+        
     }
 
     /**
@@ -54,20 +64,24 @@ public class MainFrame extends javax.swing.JFrame {
              p.setAge(rs.getInt(9));
              String a = rs.getString(6);
              if(a.equals("COLLEGE_MANAGER")){
-                 p.setRole(Role.COLLEGE_MANAGER);
+                 Role r = new CollegeManagerRole();
+                 p.setRole(r);
+                 
                  
              }
              else if(a.equals("RESTAURANT_MANAGER")){
-                 p.setRole(Role.RESTAURANT_MANAGER);
-                 Restaurant restaurant = new Restaurant(p);
+                 Role r = new RestaurantManagerRole();
+                 Restaurant restaurant = (Restaurant) r.createWorkArea( new Restaurant(p), d, p);
+                 
                  mainFrameSplitPanel.setRightComponent(restaurant);
              }
              else if(a.equals("FOOD_SERVICE_ADMIN")){
-                 p.setRole(Role.CLOTHES_SERVICE_ADMIN);    
+                Role r = new FoodServiceAdminRole();
+                //Foo restaurant = (Restaurant) r.createWorkArea( new Restaurant(p), d, p);
              }
              else if(a.equals("SYSTEM_ADMIN")){
-                 p.setRole(Role.SYSTEM_ADMIN);
-                 SystemAdminJPanel sysAdmin = new SystemAdminJPanel(d,p);
+                 Role r = new SystemAdminRole();
+                 SystemAdminJPanel sysAdmin = (SystemAdminJPanel) r.createWorkArea(new SystemAdminJPanel(d,p), d, p);
                  mainFrameSplitPanel.setRightComponent(sysAdmin);
              }
              

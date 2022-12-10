@@ -56,6 +56,11 @@ public class City {
         this.communityList = communityList;
     }
 
+    @Override
+    public String toString() {
+        return this.id;
+    }
+
     
     
     
