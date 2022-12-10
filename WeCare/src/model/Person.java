@@ -103,8 +103,16 @@ public class Person {
         this.address = address;
     }
 
+<<<<<<< HEAD
 //    public void setRole(Role.RoleType roleType) {
 //        this.role = roleType;
 //    }
+=======
+    @Override
+    public String toString() {
+        return this.getUserName();
+    }
+    
+>>>>>>> 73b15ba309e03e6d6721200e911920417f170e71
     
 }

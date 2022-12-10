@@ -13,6 +13,7 @@ import model.Data;
 import model.Enterprise.Enterprise;
 import model.Organisation.Organisation;
 import model.Person;
+<<<<<<< HEAD
 import model.Roles.CollegeManagerRole;
 import model.Roles.FoodServiceAdminRole;
 import model.Roles.RestaurantManagerRole;
@@ -20,6 +21,13 @@ import model.Roles.Role;
 import model.Roles.SystemAdminRole;
 import model.city.City;
 
+=======
+//import model.Restaurant;
+import model.Role;
+import UI.Restaurant.RestAddition;
+import UI.Restaurant.RestAdminPanel;
+import UI.Restaurant.RestManagerPanel;
+>>>>>>> 73b15ba309e03e6d6721200e911920417f170e71
 /**
  *
  * @author anupamaditya
@@ -69,11 +77,22 @@ public class MainFrame extends javax.swing.JFrame {
                  
                  
              }
+             else if(a.equals("RESTAURANT_ADMIN")){
+                 p.setRole(Role.RESTAURANT_ADMIN);
+                   RestAdminPanel restAddAdmin = new RestAdminPanel(p);
+                 mainFrameSplitPanel.setRightComponent(restAddAdmin);;
+             }
              else if(a.equals("RESTAURANT_MANAGER")){
+<<<<<<< HEAD
                  Role r = new RestaurantManagerRole();
                  Restaurant restaurant = (Restaurant) r.createWorkArea( new Restaurant(p), d, p);
                  
                  mainFrameSplitPanel.setRightComponent(restaurant);
+=======
+                 p.setRole(Role.RESTAURANT_MANAGER);
+                   RestManagerPanel restAddManager = new RestManagerPanel(p);
+                 mainFrameSplitPanel.setRightComponent(restAddManager);;
+>>>>>>> 73b15ba309e03e6d6721200e911920417f170e71
              }
              else if(a.equals("FOOD_SERVICE_ADMIN")){
                 Role r = new FoodServiceAdminRole();
