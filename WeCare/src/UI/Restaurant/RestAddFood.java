@@ -4,7 +4,7 @@
  */
 package UI.Restaurant;
 
-import BusinessLogic.RestaurantDAO;
+import BusinessLogic.OrganisationDao;
 import model.Person;
 
 /**
@@ -16,7 +16,7 @@ public class RestAddFood extends javax.swing.JPanel {
     /**
      * Creates new form RestAddFood
      */
-     RestaurantDAO restaurantDao;
+     OrganisationDao restaurantDao;
       String foodName, foodType, foodQuantity, restName,restAddress, restManager;
 
     
@@ -24,7 +24,7 @@ public class RestAddFood extends javax.swing.JPanel {
     public RestAddFood(Person p) {
         initComponents();
             this.p = p;
-        restaurantDao = new RestaurantDAO();
+        restaurantDao = new OrganisationDao();
     }
 
     /**

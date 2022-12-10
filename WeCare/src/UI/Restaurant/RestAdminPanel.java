@@ -4,7 +4,7 @@
  */
 package UI.Restaurant;
 
-import BusinessLogic.RestaurantDAO;
+import BusinessLogic.OrganisationDao;
 import model.Person;
 
 /**
@@ -19,11 +19,11 @@ public class RestAdminPanel extends javax.swing.JPanel {
     
      Person p;  
      
-     RestaurantDAO restaurantDao;
+     OrganisationDao restaurantDao;
     public RestAdminPanel(Person p) {
         initComponents();
         this.p = p;
-        restaurantDao = new RestaurantDAO();
+        restaurantDao = new OrganisationDao();
     }
 
     /**
@@ -112,8 +112,8 @@ public class RestAdminPanel extends javax.swing.JPanel {
     private void btnAddRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRestaurantActionPerformed
         // TODO add your handling code here:
         
-          RestAddition restAdd = new RestAddition(p);
-          jSplitPane1.setRightComponent(restAdd);
+          //RestAddition restAdd = new RestAddition(p);
+          //jSplitPane1.setRightComponent(restAdd);
                  //mainFrameSplitPanel.setRightComponent(restAdd);
     }//GEN-LAST:event_btnAddRestaurantActionPerformed
 

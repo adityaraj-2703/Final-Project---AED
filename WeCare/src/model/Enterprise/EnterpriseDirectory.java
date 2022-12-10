@@ -25,6 +25,25 @@ public class EnterpriseDirectory {
         this.enterpriseDirectory = enterpriseDirectory;
     }
     
+    public void addEnterprise(){
+        Enterprise e1 = new FoodService(Enterprise.EnterpriseType.FoodService, "FoodService");
+        Enterprise e2 = new ClothesService(Enterprise.EnterpriseType.ClothesService, "ClothesService");
+        Enterprise e3 = new VolunteerService(Enterprise.EnterpriseType.VolunteerService, "VolunteerService");
+        Enterprise e4 = new HousingService(Enterprise.EnterpriseType.HousingService, "HousingService");
+        enterpriseDirectory.add(e1);
+        enterpriseDirectory.add(e2);
+        enterpriseDirectory.add(e3);
+        enterpriseDirectory.add(e4);
+        
+    }
+    public Enterprise getEnterprise(Enterprise.EnterpriseType etype){
+        Enterprise enterprise=null;
+        for(Enterprise e : enterpriseDirectory)
+            if(e.getEnterpriseType() == etype){
+                enterprise = e;
+            }
+        return enterprise;
+    }
     
     
 }

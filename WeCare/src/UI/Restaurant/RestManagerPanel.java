@@ -4,7 +4,7 @@
  */
 package UI.Restaurant;
 
-import BusinessLogic.RestaurantDAO;
+import BusinessLogic.OrganisationDao;
 import model.Person;
 
 /**
@@ -19,12 +19,12 @@ public class RestManagerPanel extends javax.swing.JPanel {
     
       Person p;  
      
-     RestaurantDAO restaurantDao;
+     OrganisationDao restaurantDao;
     public RestManagerPanel(Person p) {
         initComponents();
         
           this.p = p;
-        restaurantDao = new RestaurantDAO();
+        restaurantDao = new OrganisationDao();
     }
 
     /**

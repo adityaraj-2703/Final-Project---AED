@@ -13,7 +13,7 @@ import model.Data;
 import model.Enterprise.Enterprise;
 import model.Organisation.Organisation;
 import model.Person;
-<<<<<<< HEAD
+
 import model.Roles.CollegeManagerRole;
 import model.Roles.FoodServiceAdminRole;
 import model.Roles.RestaurantManagerRole;
@@ -21,13 +21,15 @@ import model.Roles.Role;
 import model.Roles.SystemAdminRole;
 import model.city.City;
 
-=======
+
 //import model.Restaurant;
-import model.Role;
-import UI.Restaurant.RestAddition;
+import model.Roles.Role;
 import UI.Restaurant.RestAdminPanel;
 import UI.Restaurant.RestManagerPanel;
->>>>>>> 73b15ba309e03e6d6721200e911920417f170e71
+import model.Roles.ClothesServiceAdminRole;
+import UI.ClothesService.*;
+import javax.swing.JPanel;
+
 /**
  *
  * @author anupamaditya
@@ -42,7 +44,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         d = new Data();
-        
+        d.getEnterpriseDirectory().addEnterprise();
         
     }
 
@@ -78,7 +80,7 @@ public class MainFrame extends javax.swing.JFrame {
                  
              }
              else if(a.equals("RESTAURANT_ADMIN")){
-                 p.setRole(Role.RESTAURANT_ADMIN);
+                 //p.setRole(Role.RESTAURANT_ADMIN);
                    RestAdminPanel restAddAdmin = new RestAdminPanel(p);
                  mainFrameSplitPanel.setRightComponent(restAddAdmin);;
              }
@@ -89,7 +91,7 @@ public class MainFrame extends javax.swing.JFrame {
                  
                  mainFrameSplitPanel.setRightComponent(restaurant);
                    //Anupam to change
-                 p.setRole(Role.RESTAURANT_MANAGER);
+                 //p.setRole(Role.RESTAURANT_MANAGER);
                    RestManagerPanel restAddManager = new RestManagerPanel(p);
                  mainFrameSplitPanel.setRightComponent(restAddManager);;
 
@@ -100,9 +102,15 @@ public class MainFrame extends javax.swing.JFrame {
              }
              else if(a.equals("SYSTEM_ADMIN")){
                  Role r = new SystemAdminRole();
-                 SystemAdminJPanel sysAdmin = (SystemAdminJPanel) r.createWorkArea(new SystemAdminJPanel(d,p), d, p);
+                 SystemAdminJPanel sysAdmin = (SystemAdminJPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
                  mainFrameSplitPanel.setRightComponent(sysAdmin);
              }
+             else if(a.equals("CLOTHES_SERVICE_ADMIN")){
+                 Role r = new ClothesServiceAdminRole();
+                 ClothesServiceAdminPanel clothesServiceAdmin = (ClothesServiceAdminPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 mainFrameSplitPanel.setRightComponent(clothesServiceAdmin);
+             }
+             
              
         
              

@@ -24,6 +24,9 @@ public class OrganisationDirectory {
     public void setOrganisationList(ArrayList<Organisation> organisationList) {
         this.organisationList = organisationList;
     }
+    public void addOrganisation(Organisation o){
+        organisationList.add(o);
+    }
     
     
     
