@@ -37,6 +37,7 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
         txtOrganisationId.setEditable(false);
         populateAddress();
         populateClothesOrganisationTable();
+        populateServiceManager();
     }
 
     /**
@@ -287,6 +288,14 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
         
         }
         
+    }
+
+    private void populateServiceManager() {
+        List<Person> managers = d.getClothesManagers();
+        jComboBoxClothesServiceManager.removeAllItems();
+        for(Person p : managers){
+            jComboBoxClothesServiceManager.addItem(p);
+        } 
     }
 
     

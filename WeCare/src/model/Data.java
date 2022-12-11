@@ -48,6 +48,7 @@ public class Data {
         cities = new ArrayList<>();
         personDirectory = new PersonDirectory();
         enterpriseDirectory = new EnterpriseDirectory();
+        enterpriseDirectory.addEnterprise();
         
         
     }
@@ -188,14 +189,15 @@ public class Data {
     }
 
     public int createAdmins(String type, Person p, City c) {
-        Enterprise e = enterpriseDirectory.addEnterprise(Enterprise.EnterpriseType.valueOf(type));
+        //Enterprise e = enterpriseDirectory.addEnterprise(Enterprise.EnterpriseType.valueOf(type));
+        Enterprise e = enterpriseDirectory.getEnterprise(Enterprise.EnterpriseType.valueOf(type));
         e.setEnterpriseId(String.valueOf(usersDao.getAdminCount() + Integer.valueOf("10")));
         e.setCity(c);
         e.setPerson(p);
         
         int v = usersDao.createAdmin(e);
         if(v!=0){
-           
+           enterpriseDirectory.getEnterpriseDirectory().add(e);
         }
         
         return v;
@@ -209,6 +211,10 @@ public class Data {
 
     public List<Person> getPendingAdmins() {
         return usersDao.getPendingAdmins();
+    }
+
+    public List<Person> getClothesManagers() {
+        return usersDao.getClothesManagers();
     }
 
 }

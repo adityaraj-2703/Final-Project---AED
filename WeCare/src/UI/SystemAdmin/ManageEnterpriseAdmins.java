@@ -57,7 +57,7 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
 
         jLabel1.setText("Enterprise Type");
 
-        jComboBoxEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FoodService", "ClothesService", "VolunteerService", "HousingService", " " }));
+        jComboBoxEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ClothesService", "VolunteerService", "HousingService", "FoodService", " " }));
 
         jLabel2.setText("City");
 
@@ -150,6 +150,7 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
     private void btnSaveAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAdminActionPerformed
         // TODO add your handling code here:
         String type = (String)jComboBoxEnterpriseType.getSelectedItem();
+        
         Person p = (Person)jComboBoxEnterpriseAdminslist.getSelectedItem();
         City c = (City)jComboBoxEnterpriseCity.getSelectedItem();
         

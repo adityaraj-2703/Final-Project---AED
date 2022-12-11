@@ -286,5 +286,40 @@ public class UsersDAO {
             }
         return p;
     }
+
+    public List<Person> getClothesManagers() {
+        List<Person> pList = new ArrayList<>();
+        ResultSet rs = null;
+        try{
+            String sql  = "select user_name from users where Role in (?,?,?,?) and Status = ?;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "COLLEGE_MANAGER");
+            stmt.setString(2, "OUTLETS_MANAGER");
+            stmt.setString(3, "RESIDENTS_MANAGER");
+            stmt.setString(4, "NGO_MANAGER");
+            stmt.setString(5, "PENDING");
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                Person p =  new Person();
+                p.setUserID(rs.getInt(1));
+                p.setfName(rs.getString(2));
+                p.setEmailAddress(rs.getString(3));
+                p.setUserName(rs.getString(4));
+                p.setAddress(rs.getString(7));
+                p.setPhoneNo(rs.getString(8));
+                p.setAge(rs.getInt(9));
+                p.setStatus(rs.getString(10));
+                pList.add(p);
+            }
+            return pList;
+            
+    
+            
+            
+        } catch (Exception e) {
+             e.printStackTrace();
+        }
+        return pList;
+    }
 }
 
