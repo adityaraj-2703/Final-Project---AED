@@ -60,7 +60,7 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClothesOrganisation = new javax.swing.JTable();
         jComboBoxLocation = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnViewOrganisation = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -93,7 +93,7 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "OrganisationId", "Organisation Name", "Organisation Type", "Location", "Organisation Manager", "Phone Number"
+                "OrganisationId", "Organisation  Type", "Organisation Name", "Location", "Organisation Manager", "Phone Number"
             }
         ));
         jScrollPane1.setViewportView(tblClothesOrganisation);
@@ -102,9 +102,19 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
             tblClothesOrganisation.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jButton1.setText("View Organisation");
+        btnViewOrganisation.setText("View Organisation");
+        btnViewOrganisation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewOrganisationActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Update Organisation");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Delete Organisation");
 
@@ -120,7 +130,7 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
+                        .addComponent(btnViewOrganisation)
                         .addGap(35, 35, 35)
                         .addComponent(jButton3))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +177,7 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnViewOrganisation)
                     .addComponent(jButton3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,7 +227,8 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
 
         int v=0;
         try {
-            v = d.addOrganisation(organisationType,organisationName,location,p,phoneNo,"ClothesService");
+            Enterprise e = d.getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.ClothesService);
+            v = d.addOrganisation(organisationType,organisationName,location,p,phoneNo,"ClothesService",e.getEnterpriseId());
         } catch (SQLException ex) {
             Logger.getLogger(ClothesServiceAdminPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -236,10 +247,66 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
         populateClothesOrganisationTable();
     }//GEN-LAST:event_btnAddClothesServiceActionPerformed
 
+    private void btnViewOrganisationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrganisationActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblClothesOrganisation.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select row to view the details");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblClothesOrganisation.getModel();
+        Organisation o = (Organisation) model.getValueAt(selectedRowIndex, 2);
+        txtOrganisationId.setText(String.valueOf(o.getOrganisationId()));
+        txtOrganisationId.setEditable(false);
+        txtOrganisationName.setText(String.valueOf(o.getOrganisationName()));
+        txtOrganisationName.setEditable(true);
+        txtPhoneNo.setText(String.valueOf(o.getPhoneNo()));
+        txtPhoneNo.setEditable(true);
+        jComboBoxClothesServiceManager.setSelectedItem(String.valueOf(o.getPerson()));
+        jComboBoxClothesServiceManager.setEditable(true);
+        jComboBoxLocation.setSelectedItem(String.valueOf(o.getAddress()));
+        jComboBoxLocation.setEditable(true);
+        jComboBoxOrganisationType.setSelectedItem(String.valueOf(o.getOrganisationType()));
+        jComboBoxOrganisationType.setEditable(true);
+    }//GEN-LAST:event_btnViewOrganisationActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try{
+            
+            if(txtOrganisationId.getText().length() == 0 || txtOrganisationName.getText().length()==0 || txtPhoneNo.getText().length()==0){
+                JOptionPane.showMessageDialog(this, "Enter All fields");
+                return;
+            }
+            
+            Enterprise e = d.getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.ClothesService);
+            int v =d.updateOrganisation(txtOrganisationId.getText(), String.valueOf(jComboBoxOrganisationType.getSelectedItem()), txtOrganisationName.getText(), (Address)jComboBoxLocation.getSelectedItem(),(Person)jComboBoxClothesServiceManager.getSelectedItem(),txtPhoneNo.getText(),"ClothesService",e.getEnterpriseId());
+            //int v = data.updateOrganisation(String.valueOf(txtCityId.getText()),String.valueOf(txtCityName.getText()),txtCityState.getText());
+            if(v==0){
+                JOptionPane.showMessageDialog(this, "Error in Updating City Data");
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "City Info Updated");
+            txtOrganisationId.setText("");
+            txtOrganisationName.setText("");
+            txtPhoneNo.setText("");
+            jComboBoxClothesServiceManager.setSelectedItem(null);
+            jComboBoxLocation.setSelectedItem(null);
+            jComboBoxOrganisationType.setSelectedItem(null);
+            populateClothesOrganisationTable();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Enter All fields");
+            return;
+        }
+        populateClothesOrganisationTable();
+                            
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddClothesService;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnViewOrganisation;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<Object> jComboBoxClothesServiceManager;
@@ -262,15 +329,16 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblClothesOrganisation.getModel();
         model.setRowCount(0);
         
+        d.getOrganisationList();
         
         for(Organisation o : d.getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.ClothesService).getOrganisationDirectory().getOrganisationList()){
-            Object[] row = new Object[3];
+            Object[] row = new Object[6];
             row[0] = o.getOrganisationId();
-            row[1] = o.getOrganisationName();
-            row[2] = o.getOrganisationType();
+            row[1] = o.getOrganisationType();
+            row[2] = o;
             row[3] = o.getAddress().getStreetAddress();
-            row[3] = o.getPerson().getUserName();
-            row[4] = o.getPhoneNo();
+            row[4] = o.getPerson().getUserName();
+            row[5] = o.getPhoneNo();
             model.addRow(row);
         }
     }

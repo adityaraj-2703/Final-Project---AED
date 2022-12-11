@@ -15,9 +15,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Enterprise.Enterprise;
+import model.Organisation.Organisation;
+import model.Organisation.OrganisationDirectory;
 import model.Person;
 import model.Roles.Role;
+import model.city.Address;
 import model.city.City;
+import model.city.Community;
 
 /**
  *
@@ -291,7 +295,7 @@ public class UsersDAO {
         List<Person> pList = new ArrayList<>();
         ResultSet rs = null;
         try{
-            String sql  = "select user_name from users where Role in (?,?,?,?) and Status = ?;";
+            String sql  = "select * from users where Role in (?,?,?,?) and Status = ?;";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, "COLLEGE_MANAGER");
             stmt.setString(2, "OUTLETS_MANAGER");
@@ -318,6 +322,66 @@ public class UsersDAO {
             
         } catch (Exception e) {
              e.printStackTrace();
+        }
+        return pList;
+    }
+    
+    public Address getAddress(String id) {
+        Address add = new Address();
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select * from address where addressId = ?";
+                
+              PreparedStatement st = conn.prepareStatement(sql);
+              st.setString(1,id);
+              rs = st.executeQuery();
+              while(rs.next()){
+                  
+                  add.setAddressId(rs.getString(1));
+                  add.setStreetAddress(rs.getString(2));
+                  add.setPinCode(rs.getString(3));
+                  
+                  
+                  
+                  
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return add;
+        
+    }
+
+    public ArrayList<Organisation> getOrganisation(Enterprise e) {
+        ArrayList<Organisation> pList = new ArrayList<>();
+        ResultSet rs = null;
+        try{
+            String sql  = "select * from organisation where OrganisationEnterprise = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, e.getEnterpriseId());
+            
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                Organisation o = new Organisation();
+                o.setOrganisationId(rs.getString(1));
+                o.setOrganisationType(rs.getString(2));
+                o.setOrganisationName(rs.getString(3));
+                o.setAddress(getAddress(rs.getString(4)));
+                o.setPerson(getUser((rs.getString(5))));
+                o.setPhoneNo(rs.getString(6));
+                
+               
+                pList.add(o);
+            }
+            return pList;
+            
+            
+        } catch (Exception ex) {
+             ex.printStackTrace();
         }
         return pList;
     }

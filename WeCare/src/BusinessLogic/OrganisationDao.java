@@ -59,9 +59,9 @@ public class OrganisationDao {
         return id;
     }
     
-    public int insertDetails(String id,String organisationType, String organisationName, Address location, Person serviceManager, String organisationPhoneNo) throws SQLException{
+    public int insertDetails(String id,String organisationType, String organisationName, Address location, Person serviceManager, String organisationPhoneNo,String eId) throws SQLException{
         try{
-            String sql  = "insert into organisation values(?,?,?,?,?,?)";
+            String sql  = "insert into organisation values(?,?,?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, id);
             stmt.setString(2,organisationType);
@@ -69,6 +69,7 @@ public class OrganisationDao {
             stmt.setString(4,location.getAddressId());
             stmt.setString(5,serviceManager.getUserName());
             stmt.setString(6,organisationPhoneNo);
+            stmt.setString(7,eId);
             int i = stmt.executeUpdate();
           return i; 
             
@@ -119,6 +120,26 @@ public class OrganisationDao {
             e.printStackTrace();
         }
         return id;
+    }
+
+    public int updateDetails(String organisationId, String organisationType, String organisationName, Address address, Person person, String phoneNo, String eId) {
+         int result=0;
+        try{
+          String sql  = "update organisation set organisationType = ? , organisationName = ?, OrganisationAddress = ?, OrganisationManager = ?,OrganisationPhoneNo = ? where organisationId = ?";
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setString(1,organisationType);
+          stmt.setString(2,organisationName);
+          stmt.setString(5, phoneNo);
+          stmt.setString(3, address.getAddressId());
+          stmt.setString(4, person.getUserName());
+          stmt.setString(6, organisationId);
+          result = stmt.executeUpdate();
+          
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
     }
     
     

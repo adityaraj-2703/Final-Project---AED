@@ -156,10 +156,10 @@ public class Data {
         
     }
 
-    public int addOrganisation(String organisationType, String organisationName, Address location, Person p, String phoneNo,String enterpriseType) throws SQLException{
+    public int addOrganisation(String organisationType, String organisationName, Address location, Person p, String phoneNo,String enterpriseType,String eId) throws SQLException{
         Enterprise e = getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.valueOf(enterpriseType));
         String id = String.valueOf(organisationDao.getCount() + Integer.valueOf("1000"));
-        int v = organisationDao.insertDetails(id,organisationType, organisationName, location,p, phoneNo);
+        int v = organisationDao.insertDetails(id,organisationType, organisationName, location,p, phoneNo,eId);
         if(v!=0){
             Organisation o = new Organisation();
             o.setOrganisationId(id);
@@ -215,6 +215,43 @@ public class Data {
 
     public List<Person> getClothesManagers() {
         return usersDao.getClothesManagers();
+    }
+
+    public void getOrganisationList() {
+        /*
+        cities  = cityDao.getCities();
+        for(City c : cities){
+            c.setCommunityList(cityDao.getCommunities(c));
+            for(Community comm : c.getCommunityList()){
+                comm.setHouseList(cityDao.getAddresses(comm));
+            }
+        }
+        return cities;
+        */
+        List<Enterprise> elist = usersDao.getEnterprise();
+        enterpriseDirectory.setEnterpriseDirectory((ArrayList<Enterprise>) elist);
+        for(Enterprise e : elist){
+            e.getOrganisationDirectory().setOrganisationList( usersDao.getOrganisation(e));
+            
+        }
+        
+    }
+
+    public int updateOrganisation(String organisationId, String organisationType, String organisationName, Address address, Person person, String phoneNo,String enterpriseType, String eId) {
+        Enterprise e = getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.valueOf(enterpriseType));
+        
+        int v = organisationDao.updateDetails(organisationId,organisationType, organisationName, address,person, phoneNo,eId);
+        if(v!=0){
+            Organisation o = new Organisation();
+            o.setOrganisationId(organisationId);
+            o.setOrganisationName(organisationName);
+            o.setAddress(address);
+            o.setPerson(person);
+            o.setPhoneNo(phoneNo);
+            o.setOrganisationType(organisationType);
+            e.addOrganisation(o);
+        }
+        return v;
     }
 
 }
