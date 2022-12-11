@@ -313,10 +313,13 @@
         <Component class="javax.swing.JComboBox" name="cb_role">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="6">
                 <StringItem index="0" value="RESTAURANT_MANAGER"/>
                 <StringItem index="1" value="COLLEGE_MANAGER"/>
-                <StringItem index="2" value=" "/>
+                <StringItem index="2" value="FOOD_SERVICE_ADMIN"/>
+                <StringItem index="3" value="CLOTHES_SERVICE_ADMIN"/>
+                <StringItem index="4" value="VOLUNTEER_SERVICE_ADMIN"/>
+                <StringItem index="5" value="HOUSING_SERVICE_ADMIN"/>
               </StringArray>
             </Property>
           </Properties>

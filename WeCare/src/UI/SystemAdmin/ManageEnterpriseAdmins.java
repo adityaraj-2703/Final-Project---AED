@@ -7,7 +7,11 @@ package UI.SystemAdmin;
 import BusinessLogic.CityDao;
 import BusinessLogic.UsersDAO;
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Data;
+import model.Enterprise.Enterprise;
+import model.Person;
 import model.city.City;
 
 /**
@@ -19,15 +23,15 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
     /**
      * Creates new form ManageEnterpriseAdmins
      */
-    CityDao cityDao;
-    UsersDAO userDao;
+    
     Data d;
     public ManageEnterpriseAdmins(Data d) {
         initComponents();
         this.d = d;
-        populateTable();
+        
         populateCity();
         populateAdmins();
+        populateAdminTable();
     }
 
     /**
@@ -45,23 +49,28 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
         jComboBoxEnterpriseCity = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jComboBoxEnterpriseAdminslist = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnSaveAdmin = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblEnterprise = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         jLabel1.setText("Enterprise Type");
 
-        jComboBoxEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FOOD SERVICE ADMIN", "CLOTHES SERVICE ADMIN", "VOLUNTEER SERVICE ADMIN", "HOUSING SERVICE ADMIN" }));
+        jComboBoxEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ClothesService", "VolunteerService", "HousingService", "FoodService", " " }));
 
         jLabel2.setText("City");
 
         jLabel3.setText("Admin");
 
-        jButton1.setText("Save Admin");
+        btnSaveAdmin.setText("Save Admin");
+        btnSaveAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveAdminActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEnterprise.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -72,7 +81,7 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
                 "EnterpriseType", "City", "Enterprise Admin"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblEnterprise);
 
         jButton2.setText("View Admin");
 
@@ -106,7 +115,7 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
                             .addComponent(jComboBoxEnterpriseAdminslist, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(247, 247, 247)
-                        .addComponent(jButton1)))
+                        .addComponent(btnSaveAdmin)))
                 .addContainerGap(170, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -133,14 +142,41 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(btnSaveAdmin)
                 .addContainerGap(229, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSaveAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAdminActionPerformed
+        // TODO add your handling code here:
+        String type = (String)jComboBoxEnterpriseType.getSelectedItem();
+        
+        Person p = (Person)jComboBoxEnterpriseAdminslist.getSelectedItem();
+        City c = (City)jComboBoxEnterpriseCity.getSelectedItem();
+        
+        
+        if(jComboBoxEnterpriseAdminslist.getSelectedItem()==null || jComboBoxEnterpriseCity.getSelectedItem()==null || jComboBoxEnterpriseType.getSelectedItem()==null){
+            JOptionPane.showMessageDialog(this, "Enter All fields");
+            return;
+        }
+
+        int v = d.createAdmins(type,p,c);
+        if(v==0){
+            JOptionPane.showMessageDialog(this, "Enter All fields");
+            return;
+        }
+        jComboBoxEnterpriseCity.setSelectedItem(null);
+        jComboBoxEnterpriseAdminslist.setSelectedItem(null);
+        jComboBoxEnterpriseType.setSelectedItem(null);
+
+        JOptionPane.showMessageDialog(this, "Admin Added");
+        populateAdminTable();
+        
+    }//GEN-LAST:event_btnSaveAdminActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSaveAdmin;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<Object> jComboBoxEnterpriseAdminslist;
@@ -150,22 +186,38 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblEnterprise;
     // End of variables declaration//GEN-END:variables
 
-    private void populateTable() {
-        List<City> cities = cityDao.getCities();
+    
+
+    private void populateCity() {
+        List<City> cities = d.getCities();
         jComboBoxEnterpriseCity.removeAllItems();
         for(City c : cities){
             jComboBoxEnterpriseCity.addItem(c);
         }
     }
 
-    private void populateCity() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private void populateAdmins() {
+        List<Person> users = d.getPendingAdmins();
+        jComboBoxEnterpriseAdminslist.removeAllItems();
+        for(Person p : users){
+            jComboBoxEnterpriseAdminslist.addItem(p);
+        }
     }
 
-    private void populateAdmins() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private void populateAdminTable() {
+        DefaultTableModel model = (DefaultTableModel) tblEnterprise.getModel();
+        model.setRowCount(0);
+        
+        
+        for(Enterprise e : d.getEnterpriseList()){
+            Object[] row = new Object[3];
+            row[0] = e.getEnterpriseType();
+            row[1] = e.getCity();
+            row[2] = e.getPerson();
+            model.addRow(row);
+        }
     }
 }

@@ -49,6 +49,7 @@ public class City {
     }
 
     public List<Community> getCommunityList() {
+        
         return communityList;
     }
 
@@ -58,7 +59,7 @@ public class City {
 
     @Override
     public String toString() {
-        return this.id;
+        return this.name;
     }
 
     

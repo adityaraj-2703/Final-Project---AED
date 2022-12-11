@@ -45,7 +45,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSaveAdmin" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="170" max="32767" attributes="0"/>
@@ -81,7 +81,7 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnSaveAdmin" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="229" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -96,11 +96,12 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxEnterpriseType">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="FOOD SERVICE ADMIN"/>
-            <StringItem index="1" value="CLOTHES SERVICE ADMIN"/>
-            <StringItem index="2" value="VOLUNTEER SERVICE ADMIN"/>
-            <StringItem index="3" value="HOUSING SERVICE ADMIN"/>
+          <StringArray count="5">
+            <StringItem index="0" value="ClothesService"/>
+            <StringItem index="1" value="VolunteerService"/>
+            <StringItem index="2" value="HousingService"/>
+            <StringItem index="3" value="FoodService"/>
+            <StringItem index="4" value=" "/>
           </StringArray>
         </Property>
       </Properties>
@@ -138,10 +139,13 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Object&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnSaveAdmin">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save Admin"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveAdminActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -150,7 +154,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="tblEnterprise">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="3" rowCount="4">

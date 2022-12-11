@@ -39,10 +39,22 @@ public class Enterprise {
             return value;
         }
     }
+    private String EnterpriseId;
+    
     private Person person;
     private City city;
     private OrganisationDirectory organisationDirectory;
 
+    public String getEnterpriseId() {
+        return EnterpriseId;
+    }
+
+    public void setEnterpriseId(String EnterpriseId) {
+        this.EnterpriseId = EnterpriseId;
+    }
+
+    
+    
     public OrganisationDirectory getOrganisationDirectory() {
         return organisationDirectory;
     }
@@ -77,10 +89,11 @@ public class Enterprise {
         this.city = city;
     }
     
-    public Enterprise(EnterpriseType type, String name){
+    public Enterprise(EnterpriseType type){
         
         this.enterpriseType=type;
-        organisationDirectory=new OrganisationDirectory();
+        this.organisationDirectory = new OrganisationDirectory();
+        
     }
     
     public void addOrganisation(Organisation o) {

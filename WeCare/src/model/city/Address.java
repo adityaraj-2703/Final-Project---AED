@@ -14,7 +14,7 @@ public class Address {
     private Community community;
     private String pinCode;
 
-    public String getHouseId() {
+    public String getAddressId() {
         return addressId;
     }
     
@@ -32,7 +32,7 @@ public class Address {
         return pinCode;
     }
 
-    public void setHouseId(String houseId) {
+    public void setAddressId(String houseId) {
         this.addressId = houseId;
     }
 
