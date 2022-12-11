@@ -47,11 +47,18 @@ public class Data {
         usersDao = new UsersDAO();
         cities = new ArrayList<>();
         enterpriseDirectory = new EnterpriseDirectory();
+        enterpriseDirectory.addEnterprise();
         
     }
 
     public List<City> getCities() {
         cities  = cityDao.getCities();
+        for(City c : cities){
+            c.setCommunityList(cityDao.getCommunities(c));
+            for(Community comm : c.getCommunityList()){
+                comm.setHouseList(cityDao.getAddresses(comm));
+            }
+        }
         return cities;
     }
     
@@ -103,10 +110,30 @@ public class Data {
         }
         return v;
         
+     
         
         
         
-        
+    }
+    public Community getCommunity(String id){
+         Community getCommunity = new Community();
+         for(City c : cities){
+             for(Community comm : c.getCommunityList()){
+                 if(comm.getCommunityId().equals(id)){
+                     getCommunity = comm;
+                     return getCommunity;
+                 }
+             }
+         }
+         return getCommunity;
+     }   
+    public int updateCommunity(String id,String name){
+        int v = cityDao.updateCommunity(id,name);
+        if(v!=0){
+            Community getComm = getCommunity(id);
+            getComm.setCommunityName(name);
+        }
+        return v;
     }
 
     public int addCommunity(String cityId, String communityName) {
@@ -140,6 +167,37 @@ public class Data {
         return v;
         
     }
+
+    public int addAddress(String communityId, String streetAddress, String pinCode) {
+        Community c = getCommunity(communityId);
+        Address address = new Address();
+        address.setAddressId(String.valueOf(cityDao.getAddressCount() + Integer.valueOf("300")));
+        address.setStreetAddress(streetAddress);
+        address.setPinCode(pinCode);
+        address.setCommunity(c);
+        int v = cityDao.createAddress(address);
+        if(v!=0){
+            c.getHouseList().add(address);
+        }
+        return v;
+    }
+
+    public int createAdmins(String type, Person p, City c) {
+        Enterprise e = enterpriseDirectory.getEnterprise(Enterprise.EnterpriseType.valueOf(type));
+        c.setId(String.valueOf(usersDao.getAdminCount() + Integer.valueOf("10")));
+        e.setCity(c);
+        e.setPerson(p);
+        int v = usersDao.createAdmin(e);
+        
+        return v;
+        
+    }
+
+    public List<Person> getUsers() {
+        personDirectory.setPersonDirectory(usersDao.getUsers());
+    }
+
+    
 
     
 

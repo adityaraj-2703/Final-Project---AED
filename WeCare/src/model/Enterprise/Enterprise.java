@@ -39,10 +39,22 @@ public class Enterprise {
             return value;
         }
     }
+    private String EnterpriseId;
+    
     private Person person;
     private City city;
     private OrganisationDirectory organisationDirectory;
 
+    public String getEnterpriseId() {
+        return EnterpriseId;
+    }
+
+    public void setEnterpriseId(String EnterpriseId) {
+        this.EnterpriseId = EnterpriseId;
+    }
+
+    
+    
     public OrganisationDirectory getOrganisationDirectory() {
         return organisationDirectory;
     }

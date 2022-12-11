@@ -10,8 +10,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Enterprise.Enterprise;
+import model.Person;
 
 /**
  *
@@ -74,6 +78,7 @@ public class UsersDAO {
           stmt.setString(7,address);        
           stmt.setString(8, phoneNo);
           stmt.setInt(9, age);
+          
           if(role.equals("USER")){
               stmt.setString(10,"APPROVED");
           }
@@ -87,6 +92,80 @@ public class UsersDAO {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public int createAdmin(Enterprise e) {
+        int result=0;
+        try{
+          String sql  = "update users set Status = ? where userName = ?";
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setString(1,"APPROVED");
+          stmt.setString(2,e.getPerson().getUserName());
+          result = stmt.executeUpdate();
+          if(result==1){
+            String sql1 = "insert into Enterprise values(?,?,?,?)";
+            stmt = conn.prepareStatement(sql1);
+            stmt.setString(1, e.getEnterpriseId());
+            stmt.setString(2, e.getEnterpriseType().getValue());
+            stmt.setString(3, e.getCity().getId());
+            stmt.setString(4,e.getPerson().getUserName());
+            result = stmt.executeUpdate();
+          }
+          
+          
+          
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return result;
+    }
+
+    public List<Person> getUsers() {
+        List<Person> pList = new ArrayList<>();
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            Person p = new Person();
+            String sql  = "select * from Users";
+            Statement st = conn.createStatement();
+            rs = st.executeQuery(sql); 
+            if (rs.next()){
+                p.setUserID(rs.getInt(1));
+                p.setfName(rs.getString(2));
+                p.setEmailAddress(rs.getString(3));
+                p.setUserName(rs.getString(4));
+                p.setAddress(rs.getString(7));
+                p.setPhoneNo(rs.getString(8));
+                p.setAge(rs.getInt(9));
+                p.setStatus(rs.getString(10));
+                pList.add(p);
+            }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return pList;
+    }
+
+    public Integer getAdminCount() {
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select count(*) from enterprise";
+              Statement st = conn.createStatement();
+              rs = st.executeQuery(sql);
+              if(rs.next()){
+                  count = rs.getInt(1);
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return count;
     }
     
 }

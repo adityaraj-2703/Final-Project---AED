@@ -72,7 +72,7 @@ public class Community {
     public Address getHouse(String text) {
         Address h = new Address();
         for(Address house : houseList){
-            if(house.getHouseId().equals(text)){
+            if(house.getAddressId().equals(text)){
                 h = house;
                 break;
             }

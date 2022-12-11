@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import model.city.Address;
 import model.city.City;
 import model.city.Community;
 
@@ -98,22 +99,23 @@ public class CityDao {
             
     }
 
-    private List<Community> getCommunities(String id) {
+    public List<Community> getCommunities(City c) {
         List<Community> communities = new ArrayList<>();
         ResultSet rs = null;
         int count = 0;
         try{
             
-            String sql  = "select * from community where cityID = ?";
+            String sql  = "select * from community where communityCityId = ?";
                 
               PreparedStatement st = conn.prepareStatement(sql);
-              st.setString(1,id);
+              st.setString(1,c.getId());
               rs = st.executeQuery();
               while(rs.next()){
-                  Community c =  new Community();
-                  c.setCommunityId(rs.getString(1));
-                  c.setCommunityName(rs.getString(2));
-                  
+                  Community comm =  new Community();
+                  comm.setCommunityId(rs.getString(1));
+                  comm.setCommunityName(rs.getString(2));
+                  comm.setCity(c);
+                  communities.add(comm);
                   
               }
               
@@ -124,6 +126,38 @@ public class CityDao {
             return communities;
         
     }
+    
+    public List<Address> getAddresses(Community c) {
+        List<Address> addresses = new ArrayList<>();
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select * from address where addressCommunityId = ?";
+                
+              PreparedStatement st = conn.prepareStatement(sql);
+              st.setString(1,c.getCommunityId());
+              rs = st.executeQuery();
+              while(rs.next()){
+                  Address comm =  new Address();
+                  comm.setAddressId(rs.getString(1));
+                  comm.setStreetAddress(rs.getString(2));
+                  comm.setPinCode(rs.getString(3));
+                  comm.setCommunity(c);
+                  addresses.add(comm);
+                  
+                  
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return addresses;
+        
+    }
+    
+    
 
     public int updateCity(City c,String name,String state) {
         int result=0;
@@ -177,5 +211,90 @@ public class CityDao {
             }
             return count;
     }
+    /*
+    public List<Community> getCommunities() {
+        List<Community> communities = new ArrayList<>();
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select * from community";
+                
+              Statement st = conn.createStatement();
+              
+              rs = st.executeQuery(sql);
+              while(rs.next()){
+                  Community c =  new Community();
+                  c.setCommunityId(rs.getString(1));
+                  c.setCommunityName(rs.getString(2));
+                  communities.add(c);
+                  
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return communities;
+    }
+    */
+
+    public int updateCommunity(String id, String name) {
+        int result=0;
+        try{
+          String sql  = "update community set communityName = ?  where communityId = ?";
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setString(1,name);
+          stmt.setString(2,id);
+          
+          result = stmt.executeUpdate();
+          
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public int createAddress(Address address) {
+        int result=0;
+        try{
+          String sql  = "insert into address values(?,?,?,?)";
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setString(1,address.getAddressId());
+          stmt.setString(2,address.getStreetAddress());
+          stmt.setString(3, address.getPinCode());
+          stmt.setString(4, address.getCommunity().getCommunityId());
+          result = stmt.executeUpdate();
+          
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public Integer getAddressCount() {
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select count(*) from address";
+              Statement st = conn.createStatement();
+              rs = st.executeQuery(sql);
+              if(rs.next()){
+                  count = rs.getInt(1);
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return count;
+    }
+
+    
+
+    
     
 }
