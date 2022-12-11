@@ -24,8 +24,7 @@ import model.city.City;
 
 //import model.Restaurant;
 import model.Roles.Role;
-import UI.Restaurant.RestAdminPanel;
-import UI.Restaurant.RestManagerPanel;
+
 import model.Roles.ClothesServiceAdminRole;
 import UI.ClothesService.*;
 import javax.swing.JPanel;
@@ -82,14 +81,14 @@ public class MainFrame extends javax.swing.JFrame {
              }
              else if(a.equals("RESTAURANT_ADMIN")){
                  //p.setRole(Role.RESTAURANT_ADMIN);
-                   RestAdminPanel restAddAdmin = new RestAdminPanel(p);
-                 mainFrameSplitPanel.setRightComponent(restAddAdmin);;
+                   //RestAdminPanel restAddAdmin = new RestAdminPanel(p);
+                 //mainFrameSplitPanel.setRightComponent(restAddAdmin);;
              }
              else if(a.equals("RESTAURANT_MANAGER")){
 
                  Role r = new RestaurantManagerRole();
-                 RestManagerPanel restManager = (RestManagerPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
-                 mainFrameSplitPanel.setRightComponent(restManager);
+                 //RestManagerPanel restManager = (RestManagerPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 //mainFrameSplitPanel.setRightComponent(restManager);
 
              }
              else if(a.equals("FOOD_SERVICE_ADMIN")){
