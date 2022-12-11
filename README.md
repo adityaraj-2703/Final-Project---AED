@@ -4,7 +4,7 @@
 
 WeCare is created to use technology and use the power of human relationships to provide back to the society. The purpose of our project is connecting the non-profits and donor in the community with a system which is new, simple, and direct to make an impact on the society. The system connects the homeless people to a network of resources such as food, clothes, housing, and volunteer. The system is capable of managing records of the restaurants in the city, the colleges in the city, and the resident users who register for the service. Our goal is to provide an efficient solution to allocate the resources and make sure that help reaches to the people who need it.
 
-## Problem System:
+## Problem Statement:
 
 For the year 2022, in Massachusetts state alone the number of people experiencing homelessness was 1,545 people. The data was collected on the number of individuals living unsheltered on the street and those staying in emergency shelters, transitional housing, and domestic violence shelter programs. 
 
