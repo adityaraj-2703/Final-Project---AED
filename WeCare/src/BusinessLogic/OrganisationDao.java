@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import model.Organisation.Organisation;
 import model.Person;
 import model.city.Address;
 
@@ -133,6 +134,21 @@ public class OrganisationDao {
           stmt.setString(3, address.getAddressId());
           stmt.setString(4, person.getUserName());
           stmt.setString(6, organisationId);
+          result = stmt.executeUpdate();
+          
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public int deleteDetails(Organisation o, String eId) {
+        int result=0;
+        try{
+          String sql  = "delete from organisation where organisationId = ?";
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setString(1,o.getOrganisationId());
           result = stmt.executeUpdate();
           
         }

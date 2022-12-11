@@ -27,6 +27,11 @@ public class OrganisationDirectory {
     public void addOrganisation(Organisation o){
         organisationList.add(o);
     }
+
+    public void deleteOrganisation(Organisation o) {
+        organisationList.remove(o);
+        
+    }
     
     
     

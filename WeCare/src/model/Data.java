@@ -254,4 +254,15 @@ public class Data {
         return v;
     }
 
+    public int deleteOrganisation(Organisation o,String enterpriseType, String eId) {
+        Enterprise e = getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.valueOf(enterpriseType));
+        
+        int v = organisationDao.deleteDetails(o,eId);
+        if(v!=0){
+            
+            e.getOrganisationDirectory().deleteOrganisation(o);
+        }
+        return v;
+    }
+
 }
