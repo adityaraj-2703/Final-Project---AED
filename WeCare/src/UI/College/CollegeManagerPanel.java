@@ -46,6 +46,7 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
 
         controlPanelCollegeManager.setBackground(new java.awt.Color(204, 204, 255));
 
+        btnAddFood.setBackground(new java.awt.Color(204, 255, 204));
         btnAddFood.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
         btnAddFood.setForeground(new java.awt.Color(0, 0, 102));
         btnAddFood.setText("Add Food");
@@ -55,14 +56,17 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
             }
         });
 
+        btnAddClothes.setBackground(new java.awt.Color(204, 255, 204));
         btnAddClothes.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
         btnAddClothes.setForeground(new java.awt.Color(0, 0, 102));
         btnAddClothes.setText("Add Clothes");
 
+        btnAddVolunteer.setBackground(new java.awt.Color(204, 255, 204));
         btnAddVolunteer.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
         btnAddVolunteer.setForeground(new java.awt.Color(0, 0, 102));
         btnAddVolunteer.setText("Add Volunteer");
 
+        btnAddHousing.setBackground(new java.awt.Color(204, 255, 204));
         btnAddHousing.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
         btnAddHousing.setForeground(new java.awt.Color(0, 0, 102));
         btnAddHousing.setText("Add Housing");
