@@ -79,6 +79,11 @@ public class CityJPanel extends javax.swing.JPanel {
         txtCommunityId = new javax.swing.JTextField();
         jPanelManageAddress = new javax.swing.JPanel();
 
+        controlPanelCity.setBackground(new java.awt.Color(204, 204, 255));
+
+        jButtonManageCity.setBackground(new java.awt.Color(204, 255, 204));
+        jButtonManageCity.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jButtonManageCity.setForeground(new java.awt.Color(0, 0, 102));
         jButtonManageCity.setText("Manage City");
         jButtonManageCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +91,9 @@ public class CityJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageCommunity.setBackground(new java.awt.Color(204, 255, 204));
+        btnManageCommunity.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnManageCommunity.setForeground(new java.awt.Color(0, 0, 102));
         btnManageCommunity.setText("Manage Community");
         btnManageCommunity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +101,9 @@ public class CityJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageAddress.setBackground(new java.awt.Color(204, 255, 204));
+        btnManageAddress.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnManageAddress.setForeground(new java.awt.Color(0, 0, 102));
         btnManageAddress.setText("Manage Address");
         btnManageAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,13 +132,18 @@ public class CityJPanel extends javax.swing.JPanel {
                 .addComponent(btnManageCommunity)
                 .addGap(27, 27, 27)
                 .addComponent(btnManageAddress)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
 
         jSplitPaneManageCity.setLeftComponent(controlPanelCity);
 
         workAreaCity.setLayout(new java.awt.CardLayout());
 
+        jPanelManageCity.setBackground(new java.awt.Color(204, 255, 255));
+
+        btnSaveCity.setBackground(new java.awt.Color(204, 255, 204));
+        btnSaveCity.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnSaveCity.setForeground(new java.awt.Color(0, 0, 102));
         btnSaveCity.setText("Save City");
         btnSaveCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +151,9 @@ public class CityJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewCity.setBackground(new java.awt.Color(204, 255, 204));
+        btnViewCity.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnViewCity.setForeground(new java.awt.Color(0, 0, 102));
         btnViewCity.setText("View City");
         btnViewCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +161,9 @@ public class CityJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUpdateCity.setBackground(new java.awt.Color(204, 255, 204));
+        btnUpdateCity.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnUpdateCity.setForeground(new java.awt.Color(0, 0, 102));
         btnUpdateCity.setText("Update City");
         btnUpdateCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,12 +184,20 @@ public class CityJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblCities);
 
+        jLabel1.setFont(new java.awt.Font("Charter", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Create City");
 
+        lblCityName.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        lblCityName.setForeground(new java.awt.Color(0, 0, 102));
         lblCityName.setText("City Name");
 
+        lblCityState.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        lblCityState.setForeground(new java.awt.Color(0, 0, 102));
         lblCityState.setText("City State");
 
+        jLabel4.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("City Id");
 
         javax.swing.GroupLayout jPanelManageCityLayout = new javax.swing.GroupLayout(jPanelManageCity);
@@ -175,7 +205,7 @@ public class CityJPanel extends javax.swing.JPanel {
         jPanelManageCityLayout.setHorizontalGroup(
             jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelManageCityLayout.createSequentialGroup()
-                .addGap(0, 503, Short.MAX_VALUE)
+                .addGap(0, 498, Short.MAX_VALUE)
                 .addComponent(btnViewCity)
                 .addGap(237, 237, 237))
             .addGroup(jPanelManageCityLayout.createSequentialGroup()
@@ -183,7 +213,6 @@ public class CityJPanel extends javax.swing.JPanel {
                     .addGroup(jPanelManageCityLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelManageCityLayout.createSequentialGroup()
                                 .addGap(190, 190, 190)
@@ -193,13 +222,16 @@ public class CityJPanel extends javax.swing.JPanel {
                                         .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblCityState)
                                             .addComponent(jLabel4))
-                                        .addGap(111, 111, 111)
+                                        .addGap(59, 59, 59)
                                         .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtCityState, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                             .addComponent(txtCityName, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                            .addComponent(txtCityId)))))))
+                                            .addComponent(txtCityId)))))
+                            .addGroup(jPanelManageCityLayout.createSequentialGroup()
+                                .addGap(300, 300, 300)
+                                .addComponent(jLabel1))))
                     .addGroup(jPanelManageCityLayout.createSequentialGroup()
-                        .addGap(324, 324, 324)
+                        .addGap(239, 239, 239)
                         .addComponent(btnSaveCity)
                         .addGap(18, 18, 18)
                         .addComponent(btnUpdateCity)))
@@ -228,7 +260,7 @@ public class CityJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(btnViewCity)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                         .addGroup(jPanelManageCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txtCityId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -239,6 +271,11 @@ public class CityJPanel extends javax.swing.JPanel {
 
         workAreaCity.add(jPanelManageCity, "card2");
 
+        jPanelManageCommunity.setBackground(new java.awt.Color(204, 255, 255));
+
+        btnSaveCommunity.setBackground(new java.awt.Color(204, 255, 204));
+        btnSaveCommunity.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnSaveCommunity.setForeground(new java.awt.Color(0, 0, 102));
         btnSaveCommunity.setText("Save Community");
         btnSaveCommunity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,12 +283,20 @@ public class CityJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Charter", 3, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Community Directory");
 
+        lblCommunityName.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        lblCommunityName.setForeground(new java.awt.Color(0, 0, 102));
         lblCommunityName.setText("Community Name");
 
+        lblCommunityCity.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        lblCommunityCity.setForeground(new java.awt.Color(0, 0, 102));
         lblCommunityCity.setText("Community City");
 
+        jLabel3.setFont(new java.awt.Font("Charter", 3, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setText("View Community");
 
         tblCommunities.setModel(new javax.swing.table.DefaultTableModel(
@@ -267,6 +312,9 @@ public class CityJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblCommunities);
 
+        btnViewCommunity.setBackground(new java.awt.Color(204, 255, 204));
+        btnViewCommunity.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnViewCommunity.setForeground(new java.awt.Color(0, 0, 102));
         btnViewCommunity.setText("View Community");
         btnViewCommunity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,6 +322,9 @@ public class CityJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUpdateCommunity.setBackground(new java.awt.Color(204, 255, 204));
+        btnUpdateCommunity.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnUpdateCommunity.setForeground(new java.awt.Color(0, 0, 102));
         btnUpdateCommunity.setText("Update Community");
         btnUpdateCommunity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,6 +332,8 @@ public class CityJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 102));
         jLabel5.setText("Community Id");
 
         javax.swing.GroupLayout jPanelManageCommunityLayout = new javax.swing.GroupLayout(jPanelManageCommunity);
@@ -288,35 +341,38 @@ public class CityJPanel extends javax.swing.JPanel {
         jPanelManageCommunityLayout.setHorizontalGroup(
             jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                .addGap(350, 350, 350)
-                .addComponent(jLabel3)
+                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
+                        .addGap(350, 350, 350)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
+                        .addGap(231, 231, 231)
+                        .addComponent(jLabel2)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnViewCommunity)
-                    .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                            .addGap(147, 147, 147)
-                            .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblCommunityCity)
-                                .addComponent(lblCommunityName)
-                                .addComponent(jLabel5))
-                            .addGap(54, 54, 54)
-                            .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtCommunityName)
-                                .addComponent(jComboBoxCities, 0, 150, Short.MAX_VALUE)
-                                .addComponent(txtCommunityId)))
-                        .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                            .addGap(273, 273, 273)
-                            .addComponent(btnSaveCommunity)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnUpdateCommunity))
-                        .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                            .addGap(238, 238, 238)
-                            .addComponent(jLabel2))
-                        .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
-                            .addGap(63, 63, 63)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnViewCommunity)
+                        .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
+                                .addGap(147, 147, 147)
+                                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCommunityCity)
+                                    .addComponent(lblCommunityName)
+                                    .addComponent(jLabel5))
+                                .addGap(54, 54, 54)
+                                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCommunityName)
+                                    .addComponent(jComboBoxCities, 0, 150, Short.MAX_VALUE)
+                                    .addComponent(txtCommunityId)))
+                            .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanelManageCommunityLayout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(btnSaveCommunity)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdateCommunity)))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanelManageCommunityLayout.setVerticalGroup(
@@ -328,29 +384,30 @@ public class CityJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnViewCommunity)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelManageCommunityLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel5))
-                    .addComponent(txtCommunityId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel2)
+                .addGap(42, 42, 42)
+                .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtCommunityId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCommunityName)
                     .addComponent(txtCommunityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxCities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCommunityCity))
-                .addGap(46, 46, 46)
+                    .addComponent(lblCommunityCity)
+                    .addComponent(jComboBoxCities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanelManageCommunityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSaveCommunity)
-                    .addComponent(btnUpdateCommunity))
-                .addGap(17, 17, 17))
+                    .addComponent(btnUpdateCommunity)
+                    .addComponent(btnSaveCommunity))
+                .addGap(59, 59, 59))
         );
 
         workAreaCity.add(jPanelManageCommunity, "card3");
+
+        jPanelManageAddress.setBackground(new java.awt.Color(204, 255, 255));
 
         javax.swing.GroupLayout jPanelManageAddressLayout = new javax.swing.GroupLayout(jPanelManageAddress);
         jPanelManageAddress.setLayout(jPanelManageAddressLayout);
@@ -360,7 +417,7 @@ public class CityJPanel extends javax.swing.JPanel {
         );
         jPanelManageAddressLayout.setVerticalGroup(
             jPanelManageAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 586, Short.MAX_VALUE)
         );
 
         workAreaCity.add(jPanelManageAddress, "card4");
@@ -375,7 +432,7 @@ public class CityJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPaneManageCity)
+            .addComponent(jSplitPaneManageCity, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

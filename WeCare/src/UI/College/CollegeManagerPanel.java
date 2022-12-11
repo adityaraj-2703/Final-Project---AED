@@ -44,6 +44,10 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
 
         splitPaneCollege.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        controlPanelCollegeManager.setBackground(new java.awt.Color(204, 204, 255));
+
+        btnAddFood.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnAddFood.setForeground(new java.awt.Color(0, 0, 102));
         btnAddFood.setText("Add Food");
         btnAddFood.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,10 +55,16 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
             }
         });
 
+        btnAddClothes.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnAddClothes.setForeground(new java.awt.Color(0, 0, 102));
         btnAddClothes.setText("Add Clothes");
 
+        btnAddVolunteer.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnAddVolunteer.setForeground(new java.awt.Color(0, 0, 102));
         btnAddVolunteer.setText("Add Volunteer");
 
+        btnAddHousing.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnAddHousing.setForeground(new java.awt.Color(0, 0, 102));
         btnAddHousing.setText("Add Housing");
 
         javax.swing.GroupLayout controlPanelCollegeManagerLayout = new javax.swing.GroupLayout(controlPanelCollegeManager);
@@ -64,18 +74,18 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
             .addGroup(controlPanelCollegeManagerLayout.createSequentialGroup()
                 .addGap(95, 95, 95)
                 .addComponent(btnAddFood)
-                .addGap(29, 29, 29)
+                .addGap(56, 56, 56)
                 .addComponent(btnAddClothes)
-                .addGap(27, 27, 27)
+                .addGap(55, 55, 55)
                 .addComponent(btnAddVolunteer)
-                .addGap(18, 18, 18)
+                .addGap(57, 57, 57)
                 .addComponent(btnAddHousing)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         controlPanelCollegeManagerLayout.setVerticalGroup(
             controlPanelCollegeManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelCollegeManagerLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(controlPanelCollegeManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddFood)
                     .addComponent(btnAddClothes)
@@ -85,6 +95,8 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
         );
 
         splitPaneCollege.setTopComponent(controlPanelCollegeManager);
+
+        workAreaCollegeManager.setBackground(new java.awt.Color(204, 255, 255));
 
         javax.swing.GroupLayout workAreaCollegeManagerLayout = new javax.swing.GroupLayout(workAreaCollegeManager);
         workAreaCollegeManager.setLayout(workAreaCollegeManagerLayout);
@@ -103,7 +115,7 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPaneCollege, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
+            .addComponent(splitPaneCollege)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
