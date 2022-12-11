@@ -66,7 +66,7 @@ public class OrganisationDao {
             stmt.setString(1, id);
             stmt.setString(2,organisationType);
             stmt.setString(3,organisationName);
-            stmt.setString(4,location.getHouseId());
+            stmt.setString(4,location.getAddressId());
             stmt.setString(5,serviceManager.getUserName());
             stmt.setString(6,organisationPhoneNo);
             int i = stmt.executeUpdate();

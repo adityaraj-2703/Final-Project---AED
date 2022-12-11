@@ -57,7 +57,7 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
 
         jLabel1.setText("Enterprise Type");
 
-        jComboBoxEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FOOD SERVICE ADMIN", "CLOTHES SERVICE ADMIN", "VOLUNTEER SERVICE ADMIN", "HOUSING SERVICE ADMIN" }));
+        jComboBoxEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FoodService", "ClothesService", "VolunteerService", "HousingService", " " }));
 
         jLabel2.setText("City");
 
@@ -199,10 +199,10 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
     }
 
     private void populateAdmins() {
-        List<Person> users = d.getUsers();
-        jComboBoxEnterpriseCity.removeAllItems();
+        List<Person> users = d.getPendingAdmins();
+        jComboBoxEnterpriseAdminslist.removeAllItems();
         for(Person p : users){
-            jComboBoxEnterpriseCity.addItem(p);
+            jComboBoxEnterpriseAdminslist.addItem(p);
         }
     }
 
@@ -211,7 +211,7 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for(Enterprise e : d.getEnterpriseDirectory().getEnterpriseDirectory()){
+        for(Enterprise e : d.getEnterpriseList()){
             Object[] row = new Object[3];
             row[0] = e.getEnterpriseType();
             row[1] = e.getCity();

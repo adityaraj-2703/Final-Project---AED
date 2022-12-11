@@ -226,7 +226,7 @@ public class RegisterPanel extends javax.swing.JPanel {
             }
         });
 
-        cb_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESTAURANT_MANAGER", "COLLEGE_MANAGER", " " }));
+        cb_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESTAURANT_MANAGER", "COLLEGE_MANAGER", "FOOD_SERVICE_ADMIN", "CLOTHES_SERVICE_ADMIN", "VOLUNTEER_SERVICE_ADMIN", "HOUSING_SERVICE_ADMIN" }));
 
         lbl_password.setForeground(new java.awt.Color(255, 0, 51));
 

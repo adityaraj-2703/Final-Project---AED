@@ -89,10 +89,11 @@ public class Enterprise {
         this.city = city;
     }
     
-    public Enterprise(EnterpriseType type, String name){
+    public Enterprise(EnterpriseType type){
         
         this.enterpriseType=type;
-        organisationDirectory=new OrganisationDirectory();
+        this.organisationDirectory = new OrganisationDirectory();
+        
     }
     
     public void addOrganisation(Organisation o) {

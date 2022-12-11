@@ -6,6 +6,7 @@
 package UI.ClothesService;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -16,6 +17,7 @@ import model.Organisation.Organisation;
 import model.Person;
 import model.city.Address;
 import model.city.City;
+import model.city.Community;
 
 /**
  *
@@ -33,6 +35,7 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
         this.d = d;
         this.p = p;
         txtOrganisationId.setEditable(false);
+        populateAddress();
         populateClothesOrganisationTable();
     }
 
@@ -201,24 +204,19 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String organisationType = String.valueOf(jComboBoxOrganisationType.getSelectedItem());
         String organisationName = String.valueOf(txtOrganisationName.getText());
-        Person p = (Person)jComboBoxClothesServiceManager.getSelectedItem();
+        Person serviceManager = (Person)jComboBoxClothesServiceManager.getSelectedItem();
         String phoneNo = txtPhoneNo.getText();
         Address location = (Address)jComboBoxLocation.getSelectedItem();
-        /*
-        if(jComboBoxCities.getSelectedItem()==null){
-            JOptionPane.showMessageDialog(this, "Select City");
-            return;
-        }
-        City c = (City)jComboBoxCities.getSelectedItem();
-        */
-        if(jComboBoxOrganisationType.getSelectedItem()==null || organisationName.length()==0 || phoneNo.length()<10){
+        
+        if(jComboBoxOrganisationType.getSelectedItem()==null || organisationName.length()==0 || phoneNo.length()<10
+                || jComboBoxClothesServiceManager.getSelectedItem()==null || jComboBoxLocation.getSelectedItem()==null){
             JOptionPane.showMessageDialog(this, "Enter All fields correctly");
             return;
         }
 
         int v=0;
         try {
-            v = d.addOrganisation(organisationType,organisationName,location,p,phoneNo);
+            v = d.addOrganisation(organisationType,organisationName,location,p,phoneNo,"ClothesService");
         } catch (SQLException ex) {
             Logger.getLogger(ClothesServiceAdminPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -265,7 +263,6 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
         
         
         for(Organisation o : d.getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.ClothesService).getOrganisationDirectory().getOrganisationList()){
-            
             Object[] row = new Object[3];
             row[0] = o.getOrganisationId();
             row[1] = o.getOrganisationName();
@@ -275,6 +272,21 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
             row[4] = o.getPhoneNo();
             model.addRow(row);
         }
+    }
+
+    private void populateAddress() {
+        List<City> cities = d.getCities();
+        jComboBoxLocation.removeAllItems();
+        for(City c : cities){
+            for(Community comm : c.getCommunityList()){
+                for(Address add : comm.getHouseList()){
+                    jComboBoxLocation.addItem(add);
+                }
+                
+            }
+        
+        }
+        
     }
 
     

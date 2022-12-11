@@ -21,7 +21,11 @@ public abstract class Role {
         COLLEGE_MANAGER("COLLEGE_MANAGER"),
         FOOD_SERVICE_ADMIN("FOOD_SERVICE_ADMIN"),
         CLOTHES_SERVICE_ADMIN("CLOTHES_SERVICE_ADMIN"),
-        SYSTEM_ADMIN("SYSTEM_ADMIN");
+        SYSTEM_ADMIN("SYSTEM_ADMIN"),
+        HOUSING_SERVICE_ADMIN("HOUSING_SERVICE_ADMIN"),
+        VOLUNTEER_SERVICE_ADMIN("VOLUNTEER_SERVICE_ADMIN");
+        
+        
         
         private String value;
         

@@ -27,7 +27,7 @@ public class Person {
     private String password;
     private String phoneNo;
     private String address;
-    private Role role;
+    private Role.RoleType role;
     private int age;
     private String status;
 
@@ -50,11 +50,11 @@ public class Person {
     }
     
 
-    public Role getRole() {
+    public Role.RoleType getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(Role.RoleType role) {
         this.role = role;
     }
 

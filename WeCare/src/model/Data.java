@@ -46,8 +46,9 @@ public class Data {
         organisationDao = new OrganisationDao();
         usersDao = new UsersDAO();
         cities = new ArrayList<>();
+        personDirectory = new PersonDirectory();
         enterpriseDirectory = new EnterpriseDirectory();
-        enterpriseDirectory.addEnterprise();
+        
         
     }
 
@@ -95,6 +96,10 @@ public class Data {
 
     public EnterpriseDirectory getEnterpriseDirectory() {
         return enterpriseDirectory;
+    }
+    
+    public List<Enterprise> getEnterpriseList(){
+        return usersDao.getEnterprise();
     }
 
     public void setEnterpriseDirectory(EnterpriseDirectory enterpriseDirectory) {
@@ -150,8 +155,8 @@ public class Data {
         
     }
 
-    public int addOrganisation(String organisationType, String organisationName, Address location, Person p, String phoneNo) throws SQLException{
-        Enterprise e = getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.ClothesService);
+    public int addOrganisation(String organisationType, String organisationName, Address location, Person p, String phoneNo,String enterpriseType) throws SQLException{
+        Enterprise e = getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.valueOf(enterpriseType));
         String id = String.valueOf(organisationDao.getCount() + Integer.valueOf("1000"));
         int v = organisationDao.insertDetails(id,organisationType, organisationName, location,p, phoneNo);
         if(v!=0){
@@ -183,11 +188,15 @@ public class Data {
     }
 
     public int createAdmins(String type, Person p, City c) {
-        Enterprise e = enterpriseDirectory.getEnterprise(Enterprise.EnterpriseType.valueOf(type));
-        c.setId(String.valueOf(usersDao.getAdminCount() + Integer.valueOf("10")));
+        Enterprise e = enterpriseDirectory.addEnterprise(Enterprise.EnterpriseType.valueOf(type));
+        e.setEnterpriseId(String.valueOf(usersDao.getAdminCount() + Integer.valueOf("10")));
         e.setCity(c);
         e.setPerson(p);
+        
         int v = usersDao.createAdmin(e);
+        if(v!=0){
+           
+        }
         
         return v;
         
@@ -195,12 +204,11 @@ public class Data {
 
     public List<Person> getUsers() {
         personDirectory.setPersonDirectory(usersDao.getUsers());
+        return personDirectory.getPersonDirectory();
     }
 
-    
+    public List<Person> getPendingAdmins() {
+        return usersDao.getPendingAdmins();
+    }
 
-    
-
-    
-    
 }

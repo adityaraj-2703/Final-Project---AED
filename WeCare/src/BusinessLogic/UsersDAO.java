@@ -16,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Enterprise.Enterprise;
 import model.Person;
+import model.Roles.Role;
+import model.city.City;
 
 /**
  *
@@ -97,7 +99,7 @@ public class UsersDAO {
     public int createAdmin(Enterprise e) {
         int result=0;
         try{
-          String sql  = "update users set Status = ? where userName = ?";
+          String sql  = "update users set Status = ? where user_Name = ?";
           PreparedStatement stmt = conn.prepareStatement(sql);
           stmt.setString(1,"APPROVED");
           stmt.setString(2,e.getPerson().getUserName());
@@ -121,8 +123,8 @@ public class UsersDAO {
         return result;
     }
 
-    public List<Person> getUsers() {
-        List<Person> pList = new ArrayList<>();
+    public ArrayList<Person> getUsers() {
+        ArrayList<Person> pList = new ArrayList<>();
         ResultSet rs = null;
         int count = 0;
         try{
@@ -167,6 +169,122 @@ public class UsersDAO {
             }
             return count;
     }
+    public List<Person> getPendingAdmins() {
+        ArrayList<Person> pList = new ArrayList<>();
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select * from Users where Status = ? and Role in (?,?,?,?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1,"PENDING");
+            stmt.setString(2,"FOOD_SERVICE_ADMIN");
+            stmt.setString(3,"CLOTHES_SERVICE_ADMIN");
+            stmt.setString(4,"VOLUNTEER_SERVICE_ADMIN");
+            stmt.setString(5,"HOUSING_SERVICE_ADMIN");
+            
+            rs = stmt.executeQuery(); 
+            while (rs.next()){
+                Person p = new Person();
+                p.setUserID(rs.getInt(1));
+                p.setfName(rs.getString(2));
+                p.setEmailAddress(rs.getString(3));
+                p.setUserName(rs.getString(4));
+                p.setRole(Role.RoleType.valueOf(rs.getString(6)));
+                p.setAddress(rs.getString(7));
+                p.setPhoneNo(rs.getString(8));
+                p.setAge(rs.getInt(9));
+                p.setStatus(rs.getString(10));
+                pList.add(p);
+            }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return pList;
+    }
+
+    public List<Enterprise> getEnterprise() {
+        ArrayList<Enterprise> pList = new ArrayList<>();
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select * from Enterprise";
+            Statement st = conn.createStatement();
+            rs = st.executeQuery(sql); 
+            while(rs.next()){
+                
+                String type = rs.getString(2);
+                Enterprise e = new Enterprise(Enterprise.EnterpriseType.valueOf(type));
+                e.setEnterpriseId(rs.getString(1));
+                e.setCity(getCity(rs.getString(3)));
+                e.setPerson(getUser(rs.getString(4)));
+                pList.add(e);
+            }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return pList;
+    }
     
+    
+
+    private Person getUser(String string) {
+        
+        Person p = null;
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select * from users where user_Name = ?";
+              PreparedStatement st = conn.prepareStatement(sql);
+              st.setString(1, string);
+              rs = st.executeQuery();
+              if(rs.next()){
+                p =  new Person();
+                p.setUserID(rs.getInt(1));
+                p.setfName(rs.getString(2));
+                p.setEmailAddress(rs.getString(3));
+                p.setUserName(rs.getString(4));
+                p.setAddress(rs.getString(7));
+                p.setPhoneNo(rs.getString(8));
+                p.setAge(rs.getInt(9));
+                p.setStatus(rs.getString(10));
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        return p;
+    }
+
+    private City getCity(String string) {
+        City p = null;
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select * from city where cityId = ?";
+              PreparedStatement st = conn.prepareStatement(sql);
+              st.setString(1, string);
+              rs = st.executeQuery();
+              if(rs.next()){
+                p =  new City();
+                p.setId(rs.getString(1));
+                p.setName(rs.getString(2));
+                p.setState(rs.getString(3));
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        return p;
+    }
 }
 
