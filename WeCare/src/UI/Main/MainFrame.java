@@ -27,6 +27,7 @@ import model.Roles.Role;
 
 import model.Roles.ClothesServiceAdminRole;
 import UI.ClothesService.*;
+import UI.College.CollegeManagerPanel;
 import javax.swing.JPanel;
 
 /**
@@ -75,7 +76,8 @@ public class MainFrame extends javax.swing.JFrame {
              p.setStatus(rs.getString(10));
              if(a.equals("COLLEGE_MANAGER")){
                  Role r = new CollegeManagerRole();
-                 
+                 CollegeManagerPanel collegeManagerPanel = (CollegeManagerPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 mainFrameSplitPanel.setRightComponent(collegeManagerPanel);
                  
                  
              }

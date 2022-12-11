@@ -4,6 +4,10 @@
  */
 package UI.College;
 
+import UI.FoodService.AddViewFood;
+import model.Data;
+import model.Person;
+
 /**
  *
  * @author anupamaditya
@@ -13,8 +17,12 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
     /**
      * Creates new form CollegeManagerPanel
      */
-    public CollegeManagerPanel() {
+    Data d;
+    Person p;
+    public CollegeManagerPanel(Data d,Person p) {
         initComponents();
+        this.d = d;
+        this.p = p;
     }
 
     /**
@@ -26,19 +34,101 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        splitPaneCollege = new javax.swing.JSplitPane();
+        controlPanelCollegeManager = new javax.swing.JPanel();
+        btnAddFood = new javax.swing.JButton();
+        btnAddClothes = new javax.swing.JButton();
+        btnAddVolunteer = new javax.swing.JButton();
+        btnAddHousing = new javax.swing.JButton();
+        workAreaCollegeManager = new javax.swing.JPanel();
+
+        splitPaneCollege.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        btnAddFood.setText("Add Food");
+        btnAddFood.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddFoodActionPerformed(evt);
+            }
+        });
+
+        btnAddClothes.setText("Add Clothes");
+
+        btnAddVolunteer.setText("Add Volunteer");
+
+        btnAddHousing.setText("Add Housing");
+
+        javax.swing.GroupLayout controlPanelCollegeManagerLayout = new javax.swing.GroupLayout(controlPanelCollegeManager);
+        controlPanelCollegeManager.setLayout(controlPanelCollegeManagerLayout);
+        controlPanelCollegeManagerLayout.setHorizontalGroup(
+            controlPanelCollegeManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(controlPanelCollegeManagerLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(btnAddFood)
+                .addGap(29, 29, 29)
+                .addComponent(btnAddClothes)
+                .addGap(27, 27, 27)
+                .addComponent(btnAddVolunteer)
+                .addGap(18, 18, 18)
+                .addComponent(btnAddHousing)
+                .addContainerGap(240, Short.MAX_VALUE))
+        );
+        controlPanelCollegeManagerLayout.setVerticalGroup(
+            controlPanelCollegeManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelCollegeManagerLayout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addGroup(controlPanelCollegeManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddFood)
+                    .addComponent(btnAddClothes)
+                    .addComponent(btnAddVolunteer)
+                    .addComponent(btnAddHousing))
+                .addGap(37, 37, 37))
+        );
+
+        splitPaneCollege.setTopComponent(controlPanelCollegeManager);
+
+        javax.swing.GroupLayout workAreaCollegeManagerLayout = new javax.swing.GroupLayout(workAreaCollegeManager);
+        workAreaCollegeManager.setLayout(workAreaCollegeManagerLayout);
+        workAreaCollegeManagerLayout.setHorizontalGroup(
+            workAreaCollegeManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 815, Short.MAX_VALUE)
+        );
+        workAreaCollegeManagerLayout.setVerticalGroup(
+            workAreaCollegeManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 489, Short.MAX_VALUE)
+        );
+
+        splitPaneCollege.setRightComponent(workAreaCollegeManager);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 815, Short.MAX_VALUE)
+            .addComponent(splitPaneCollege, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 606, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(splitPaneCollege)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAddFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFoodActionPerformed
+        // TODO add your handling code here:
+        AddViewFood addViewFood = new AddViewFood(d, p);
+        splitPaneCollege.setRightComponent(addViewFood);
+        
+    }//GEN-LAST:event_btnAddFoodActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddClothes;
+    private javax.swing.JButton btnAddFood;
+    private javax.swing.JButton btnAddHousing;
+    private javax.swing.JButton btnAddVolunteer;
+    private javax.swing.JPanel controlPanelCollegeManager;
+    private javax.swing.JSplitPane splitPaneCollege;
+    private javax.swing.JPanel workAreaCollegeManager;
     // End of variables declaration//GEN-END:variables
 }

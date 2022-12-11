@@ -4,6 +4,8 @@
  */
 package model;
 
+import model.Organisation.Organisation;
+
 /**
  *
  * @author anupamaditya
@@ -13,9 +15,28 @@ public class FoodDetails {
     String FoodName;
     String FoodType;
     int  FoodQuantity;
-    String ServiceType;
-    String ServiceName;
+    Organisation org;
+    String foodStatus;
 
+    public String getFoodStatus() {
+        return foodStatus;
+    }
+
+    public void setFoodStatus(String foodStatus) {
+        this.foodStatus = foodStatus;
+    }
+    
+    
+
+    public Organisation getOrg() {
+        return org;
+    }
+
+    public void setOrg(Organisation org) {
+        this.org = org;
+    }
+
+    
     public String getFoodID() {
         return FoodID;
     }
@@ -48,21 +69,14 @@ public class FoodDetails {
         this.FoodQuantity = FoodQuantity;
     }
 
-    public String getServiceType() {
-        return ServiceType;
+    @Override
+    public String toString() {
+        return this.FoodName;
     }
-
-    public void setServiceType(String ServiceType) {
-        this.ServiceType = ServiceType;
-    }
-
-    public String getServiceName() {
-        return ServiceName;
-    }
-
-    public void setServiceName(String ServiceName) {
-        this.ServiceName = ServiceName;
-    }
+    
+    
+    
+    
     
     
     

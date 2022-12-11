@@ -233,7 +233,7 @@ public class FoodServiceAdminPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String organisationType = String.valueOf(jComboBoxOrganisationType.getSelectedItem());
         String organisationName = String.valueOf(txtOrganisationName.getText());
-        Person p = (Person)jComboBoxFoodServiceManager.getSelectedItem();
+        Person pS = (Person)jComboBoxFoodServiceManager.getSelectedItem();
         String phoneNo = txtPhoneNo.getText();
         Address location = (Address)jComboBoxLocation.getSelectedItem();
         /*
@@ -251,7 +251,7 @@ public class FoodServiceAdminPanel extends javax.swing.JPanel {
         int v=0;
         try {
             Enterprise e = d.getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.FoodService);
-            v = d.addOrganisation(organisationType, organisationName, location, p, phoneNo, organisationType,e.getEnterpriseId());
+            v = d.addOrganisation(organisationType, organisationName, location, pS, phoneNo, organisationType,e.getEnterpriseId());
         } catch (SQLException ex ) {
             Logger.getLogger(FoodServiceAdminPanel.class.getName()).log(Level.SEVERE, null, ex);
         }

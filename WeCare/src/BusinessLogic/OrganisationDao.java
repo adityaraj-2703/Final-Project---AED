@@ -61,17 +61,28 @@ public class OrganisationDao {
     }
     
     public int insertDetails(String id,String organisationType, String organisationName, Address location, Person serviceManager, String organisationPhoneNo,String eId) throws SQLException{
+        int result = 0;
         try{
-            String sql  = "insert into organisation values(?,?,?,?,?,?,?)";
+            String sql  = "update users set Status = ? where user_Name = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, id);
-            stmt.setString(2,organisationType);
-            stmt.setString(3,organisationName);
-            stmt.setString(4,location.getAddressId());
-            stmt.setString(5,serviceManager.getUserName());
-            stmt.setString(6,organisationPhoneNo);
-            stmt.setString(7,eId);
-            int i = stmt.executeUpdate();
+            stmt.setString(1,"APPROVED");
+            stmt.setString(2,serviceManager.getUserName());
+            result = stmt.executeUpdate();
+            int i=0;
+            if(result ==1 ){
+                sql  = "insert into organisation values(?,?,?,?,?,?,?)";
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, id);
+                stmt.setString(2,organisationType);
+                stmt.setString(3,organisationName);
+                stmt.setString(4,location.getAddressId());
+                stmt.setString(5,serviceManager.getUserName());
+                stmt.setString(6,organisationPhoneNo);
+                stmt.setString(7,eId);
+                i = stmt.executeUpdate();
+            }
+            
+            
           return i; 
             
         } catch (Exception e) {
@@ -156,6 +167,94 @@ public class OrganisationDao {
             e.printStackTrace();
         }
         return result;
+    }
+    
+    public Address getAddress(String id) {
+        Address add = new Address();
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select * from address where addressId = ?";
+                
+              PreparedStatement st = conn.prepareStatement(sql);
+              st.setString(1,id);
+              rs = st.executeQuery();
+              while(rs.next()){
+                  
+                  add.setAddressId(rs.getString(1));
+                  add.setStreetAddress(rs.getString(2));
+                  add.setPinCode(rs.getString(3));
+                  
+                  
+                  
+                  
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return add;
+        
+    }
+    
+    private Person getUser(String string) {
+        
+        Person p = null;
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select * from users where user_Name = ?";
+              PreparedStatement st = conn.prepareStatement(sql);
+              st.setString(1, string);
+              rs = st.executeQuery();
+              if(rs.next()){
+                p =  new Person();
+                p.setUserID(rs.getInt(1));
+                p.setfName(rs.getString(2));
+                p.setEmailAddress(rs.getString(3));
+                p.setUserName(rs.getString(4));
+                p.setAddress(rs.getString(7));
+                p.setPhoneNo(rs.getString(8));
+                p.setAge(rs.getInt(9));
+                p.setStatus(rs.getString(10));
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        return p;
+    }
+
+    public Organisation getOrganisation(Person p1) {
+        int v=0;
+        Organisation o=null;
+        ResultSet rs = null;
+        try{
+          String sql  = "select * from organisation where OrganisationManager = ?";
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setString(1,p1.getUserName());
+          
+          rs = stmt.executeQuery();
+          if(rs.next()){
+              o = new Organisation();
+              o.setOrganisationId(rs.getString(1));
+              o.setOrganisationType(rs.getString(2));
+              o.setOrganisationName(rs.getString(3));
+              o.setAddress(getAddress(rs.getString(4)));
+              o.setPerson(getUser(rs.getString(5)));
+              
+              
+          }
+          
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return o;
     }
     
     
