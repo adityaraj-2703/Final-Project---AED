@@ -4,6 +4,9 @@
  */
 package model.Roles;
 
+import UI.ClothesService.ClothesServiceAdminPanel;
+
+import UI.College.CollegeManagerPanel;
 import javax.swing.JPanel;
 import model.Data;
 import model.Enterprise.Enterprise;
@@ -19,7 +22,7 @@ public class CollegeManagerRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Data data, Person person) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new CollegeManagerPanel(data,person);
     }
 
     

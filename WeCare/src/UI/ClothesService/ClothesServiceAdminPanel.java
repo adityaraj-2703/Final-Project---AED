@@ -233,7 +233,7 @@ public class ClothesServiceAdminPanel extends javax.swing.JPanel {
         int v=0;
         try {
             Enterprise e = d.getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.ClothesService);
-            v = d.addOrganisation(organisationType,organisationName,location,p,phoneNo,"ClothesService",e.getEnterpriseId());
+            v = d.addOrganisation(organisationType,organisationName,location,serviceManager,phoneNo,"ClothesService",e.getEnterpriseId());
         } catch (SQLException ex) {
             Logger.getLogger(ClothesServiceAdminPanel.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -12,6 +12,10 @@ import java.util.ArrayList;
  */
 public class FoodDirectory {
      private ArrayList<FoodDetails> foodDirectory;
+     
+     public FoodDirectory(){
+         foodDirectory = new ArrayList<>();
+     }
 
     public ArrayList<FoodDetails> getFoodDirectory() {
         return foodDirectory;

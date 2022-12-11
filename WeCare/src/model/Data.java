@@ -5,6 +5,7 @@
 package model;
 
 import BusinessLogic.CityDao;
+import BusinessLogic.FoodDao;
 import BusinessLogic.OrganisationDao;
 
 import BusinessLogic.UsersDAO;
@@ -26,10 +27,21 @@ public class Data {
     private List<City> cities;
     private EnterpriseDirectory enterpriseDirectory;
     private PersonDirectory personDirectory;
+    private FoodDirectory foodDirectory;
+
+    public FoodDirectory getFoodDirectory() {
+        return foodDirectory;
+    }
+
+    public void setFoodDirectory(FoodDirectory foodDirectory) {
+        this.foodDirectory = foodDirectory;
+    }
+    
     
     CityDao cityDao;
     OrganisationDao organisationDao;
     UsersDAO usersDao;
+    FoodDao foodDao;
     public PersonDirectory getPersonDirectory() {
         return personDirectory;
     }
@@ -49,8 +61,8 @@ public class Data {
         personDirectory = new PersonDirectory();
         enterpriseDirectory = new EnterpriseDirectory();
         enterpriseDirectory.addEnterprise();
-        
-        
+        foodDirectory = new FoodDirectory();
+        foodDao = new FoodDao();
     }
 
     public List<City> getCities() {
@@ -263,6 +275,30 @@ public class Data {
             e.getOrganisationDirectory().deleteOrganisation(o);
         }
         return v;
+    }
+
+    public Organisation getOrganisation(Person p1) {
+        return organisationDao.getOrganisation(p1);
+        
+    }
+
+    public int addFood(String name, String foodType, int quantity, Organisation o) {
+        FoodDetails f = new FoodDetails();
+        f.setFoodID(String.valueOf(foodDao.getCount() + Integer.valueOf("1000000")));
+        f.setFoodName(name);
+        f.setFoodQuantity(quantity);
+        f.setFoodType(foodType);
+        f.setOrg(o);
+        f.setFoodStatus("PENDING");
+        int v = foodDao.addFood(f,o);
+        if(v!=0){
+            foodDirectory.getFoodDirectory().add(f);
+            
+        }
+        return v;
+    }
+    public void getFoodDetails(){
+        foodDirectory.setFoodDirectory(foodDao.getFoodDetails());
     }
 
 }
