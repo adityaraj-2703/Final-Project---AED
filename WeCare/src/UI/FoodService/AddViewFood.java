@@ -34,6 +34,7 @@ public class AddViewFood extends javax.swing.JPanel {
           this.d = d;
           o = getOrgansation(p);
           populateFoodsTable();
+          txtFoodId.setEditable(false);
           
         
     }
@@ -188,7 +189,7 @@ public class AddViewFood extends javax.swing.JPanel {
         txtFoodQuantity.setText("");
         jComboBoxFoodType.setSelectedItem("");
 
-        JOptionPane.showMessageDialog(this, "City Info Saved");
+        JOptionPane.showMessageDialog(this, "Food Added Successfully");
         populateFoodsTable();
         
     }//GEN-LAST:event_btnAddFoodActionPerformed

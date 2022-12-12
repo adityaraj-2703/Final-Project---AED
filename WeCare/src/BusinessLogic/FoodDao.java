@@ -161,7 +161,7 @@ public class FoodDao {
         int count = 0;
         try{
             
-            String sql  = "select * from food where foodStatus = ?";
+            String sql  = "select * from food where foodStatus = ? and foodQuantity > 0";
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1,"APPROVED");
               rs = st.executeQuery();

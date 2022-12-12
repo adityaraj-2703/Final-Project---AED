@@ -4,6 +4,7 @@
  */
 package UI.College;
 
+import UI.ClothesService.AddViewClothes;
 import UI.FoodService.AddViewFood;
 import model.Data;
 import model.Person;
@@ -52,6 +53,11 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
         });
 
         btnAddClothes.setText("Add Clothes");
+        btnAddClothes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddClothesActionPerformed(evt);
+            }
+        });
 
         btnAddVolunteer.setText("Add Volunteer");
 
@@ -120,6 +126,12 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
         splitPaneCollege.setRightComponent(addViewFood);
         
     }//GEN-LAST:event_btnAddFoodActionPerformed
+
+    private void btnAddClothesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClothesActionPerformed
+        // TODO add your handling code here:
+        AddViewClothes addViewClothes = new AddViewClothes(d, p);
+        splitPaneCollege.setRightComponent(addViewClothes);
+    }//GEN-LAST:event_btnAddClothesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
