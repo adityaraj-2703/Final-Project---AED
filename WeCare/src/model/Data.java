@@ -30,6 +30,29 @@ public class Data {
     private PersonDirectory personDirectory;
     private FoodDirectory foodDirectory;
     private FoodOrderDirectory foodOrderDirectory;
+    private HousingDirectory housingDirectory;
+    private HousingOrderDirectory housingOrderDirectory;
+
+    public HousingOrderDirectory getHousingOrderDirectory() {
+        return housingOrderDirectory;
+    }
+
+    public void setHousingOrderDirectory(HousingOrderDirectory housingOrderDirectory) {
+        this.housingOrderDirectory = housingOrderDirectory;
+    }
+    
+    
+    
+
+    public HousingDirectory getHousingDirectory() {
+        return housingDirectory;
+    }
+
+    public void setHousingDirectory(HousingDirectory housingDirectory) {
+        this.housingDirectory = housingDirectory;
+    }
+    
+    
 
     public FoodOrderDirectory getFoodOrderDirectory() {
         return foodOrderDirectory;
@@ -77,6 +100,8 @@ public class Data {
         enterpriseDirectory.addEnterprise();
         foodDirectory = new FoodDirectory();
         foodOrderDirectory = new FoodOrderDirectory();
+        housingDirectory = new HousingDirectory();
+        housingOrderDirectory = new HousingOrderDirectory();
         foodDao = new FoodDao();
         orderDao = new OrderDao();
     }
@@ -355,7 +380,71 @@ public class Data {
     }
 
     public List<FoodOrder> getFoodOrderDetails() {
+        //foodOrderDirectory.setFoodOrderDirectory(foodDao.getFoodOrders());
         return orderDao.getFoodOrders();
+    }
+
+    public int addHousing(String date, int beds, Address add) {
+        HousingDetails ho = new HousingDetails();
+        ho.setHousingID(String.valueOf(orderDao.getHousingCount() + Integer.valueOf("100000000")));
+        ho.setHousingAddress(add);
+        ho.setBookingDate(date);
+        ho.setAvailableBeds(beds);
+        ho.setStatus("PENDING");
+        
+        int v = orderDao.addHousing(ho);
+        if(v!=0){
+            housingDirectory.getHousingDirectory().add(ho);
+        }
+        return v;
+        
+    }
+
+    public void getHousingDetails() {
+        housingDirectory.setHousingDirectory(orderDao.getHousingDetails());
+    }
+
+    public int approveHousing(HousingDetails h) {
+        int v = orderDao.approveHouse(h);
+        if(v!=0){
+            h.setStatus("APPROVED");
+        }
+        return v;
+    }
+    
+    public List<HousingDetails> getApprovedHousingDetails() {
+        return orderDao.getApprovedOrderDetails();
+    }
+
+    public int addHousingOrder(HousingDetails f, Person p) {
+        HousingOrder ho = new HousingOrder();
+        ho.setOrderId(String.valueOf(orderDao.getHousingOrderCount() + Integer.valueOf("100000000")));
+        ho.setHousingId(f.getHousingID());
+        ho.setPerson(p);
+        
+        
+        int c = 0;
+        int v = orderDao.addHousingOrder(ho);
+        if(v!=0){
+            
+            c = orderDao.updateHousing(f);
+            if(c!=0){
+                f.setAvailableBeds(f.getAvailableBeds()-1);
+                //housingOrderDirectory.getHousingOrderDirectory().add(fo);
+                housingOrderDirectory.getHousingOrderDirectory().add(ho);
+            }
+            
+            
+            
+            
+            
+        }
+        return c;
+    }
+
+    public List<HousingOrder> getHousingOrderDetails() {
+        //Directory.setFoodDirectory(foodDao.getFoodDetails());
+        return orderDao.getHousingOrders();
     }
 
     

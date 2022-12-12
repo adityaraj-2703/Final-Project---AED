@@ -12,6 +12,10 @@ import java.util.ArrayList;
  */
 public class HousingDirectory {
       private ArrayList<HousingDetails> housingDirectory;
+      
+      public HousingDirectory() {
+         housingDirectory = new ArrayList<>();
+     }
 
     public ArrayList<HousingDetails> getHousingDirectory() {
         return housingDirectory;

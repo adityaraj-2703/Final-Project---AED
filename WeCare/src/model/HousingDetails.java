@@ -12,10 +12,21 @@ import model.city.Address;
  */
 public class HousingDetails {
     String housingID;
-    String housingName;
+    
     Address housingAddress;
     int availableBeds;
     String bookingDate;
+    String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    
 
     public String getBookingDate() {
         return bookingDate;
@@ -34,13 +45,12 @@ public class HousingDetails {
         this.housingID = housingID;
     }
 
-    public String getHousingName() {
-        return housingName;
+    @Override
+    public String toString() {
+        return this.housingID;
     }
 
-    public void setHousingName(String housingName) {
-        this.housingName = housingName;
-    }
+    
 
     public Address getHousingAddress() {
         return housingAddress;

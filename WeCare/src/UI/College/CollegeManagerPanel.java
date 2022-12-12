@@ -6,6 +6,7 @@ package UI.College;
 
 import UI.ClothesService.AddViewClothes;
 import UI.FoodService.AddViewFood;
+import UI.Housing.HousingServiceManagerPanel;
 import model.Data;
 import model.Person;
 
@@ -62,6 +63,11 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
         btnAddVolunteer.setText("Add Volunteer");
 
         btnAddHousing.setText("Add Housing");
+        btnAddHousing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddHousingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout controlPanelCollegeManagerLayout = new javax.swing.GroupLayout(controlPanelCollegeManager);
         controlPanelCollegeManager.setLayout(controlPanelCollegeManagerLayout);
@@ -132,6 +138,12 @@ public class CollegeManagerPanel extends javax.swing.JPanel {
         AddViewClothes addViewClothes = new AddViewClothes(d, p);
         splitPaneCollege.setRightComponent(addViewClothes);
     }//GEN-LAST:event_btnAddClothesActionPerformed
+
+    private void btnAddHousingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddHousingActionPerformed
+        // TODO add your handling code here:
+        HousingServiceManagerPanel addViewHouse = new HousingServiceManagerPanel(d, p);
+        splitPaneCollege.setRightComponent(addViewHouse);
+    }//GEN-LAST:event_btnAddHousingActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

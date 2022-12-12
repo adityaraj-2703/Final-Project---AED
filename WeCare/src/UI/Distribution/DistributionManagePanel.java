@@ -56,6 +56,11 @@ public class DistributionManagePanel extends javax.swing.JPanel {
         jButton3.setText("Assign Volunteer");
 
         jButton4.setText("Lend Place");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout controlPanelDistributionLayout = new javax.swing.GroupLayout(controlPanelDistribution);
         controlPanelDistribution.setLayout(controlPanelDistributionLayout);
@@ -116,6 +121,12 @@ public class DistributionManagePanel extends javax.swing.JPanel {
         DistributeFoodPanel distributeFood = new DistributeFoodPanel(d,p);
         splitPaneDistribution.setRightComponent(distributeFood);
     }//GEN-LAST:event_btnDistributeFoodActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        DistributionHousingPanel distributehouse = new DistributionHousingPanel(d,p);
+        splitPaneDistribution.setRightComponent(distributehouse);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
