@@ -5,6 +5,7 @@
 package model;
 
 import BusinessLogic.CityDao;
+import BusinessLogic.ClothesDao;
 import BusinessLogic.FoodDao;
 import BusinessLogic.OrderDao;
 import BusinessLogic.OrganisationDao;
@@ -30,6 +31,8 @@ public class Data {
     private PersonDirectory personDirectory;
     private FoodDirectory foodDirectory;
     private FoodOrderDirectory foodOrderDirectory;
+    private ClothesDirectory clothesDirectory;
+    private ClothesOrderDirectory ClothesOrderDirectory;
 
     public FoodOrderDirectory getFoodOrderDirectory() {
         return foodOrderDirectory;
@@ -37,6 +40,14 @@ public class Data {
 
     public void setFoodOrderDirectory(FoodOrderDirectory foodOrderDirectory) {
         this.foodOrderDirectory = foodOrderDirectory;
+    }
+    
+    public ClothesOrderDirectory getClothesOrderDirectory() {
+        return ClothesOrderDirectory;
+    }
+
+    public void setClothesOrderDirectory(ClothesOrderDirectory ClothesOrderDirectory) {
+        this.ClothesOrderDirectory = ClothesOrderDirectory;
     }
     
     
@@ -50,12 +61,21 @@ public class Data {
         this.foodDirectory = foodDirectory;
     }
     
+    public ClothesDirectory getClothesDirectory() {
+        return clothesDirectory;
+    }
+
+    public void setClothesDirectory(ClothesDirectory clothesDirectory) {
+        this.clothesDirectory = clothesDirectory;
+    }
+    
     
     CityDao cityDao;
     OrganisationDao organisationDao;
     UsersDAO usersDao;
     FoodDao foodDao;
     OrderDao orderDao;
+    ClothesDao clothesDao;
     public PersonDirectory getPersonDirectory() {
         return personDirectory;
     }
@@ -79,6 +99,9 @@ public class Data {
         foodOrderDirectory = new FoodOrderDirectory();
         foodDao = new FoodDao();
         orderDao = new OrderDao();
+        clothesDao = new ClothesDao();
+        clothesDirectory = new ClothesDirectory();
+        ClothesOrderDirectory = new ClothesOrderDirectory();
     }
 
     public List<City> getCities() {
@@ -329,7 +352,11 @@ public class Data {
     public List<FoodDetails> getApprovedFoodDetails() {
         return foodDao.getApprovedFoodDetails();
     }
-
+    
+    public List<ClothesDetails> getApprovedClothesDetails() {
+        return clothesDao.getApprovedClothesDetails();
+    }
+    
     public int addOrder(FoodDetails f,Person p) {
         FoodOrder fo = new FoodOrder();
         fo.setOrderId(String.valueOf(orderDao.getCount() + Integer.valueOf("10000000")));
@@ -343,21 +370,69 @@ public class Data {
             if(c!=0){
                 f.setFoodQuantity(f.getFoodQuantity()-1);
                 foodOrderDirectory.getFoodOrderDirectory().add(fo);
-            }
-            
-            
-            
-            
-            
+            }         
         }
         return c;
         
     }
+    
+    public int addOrder(ClothesDetails c,Person p) {
+        ClothesOrder co = new ClothesOrder();
+        co.setOrderId(String.valueOf(orderDao.getCountClothes() + Integer.valueOf("10000000")));
+        co.setOrderId(c.getClothesID());
+        co.setPerson(p);
+        int a = 0;
+        int v = orderDao.addOrder(co);
+        if(v!=0){
+           a = clothesDao.updateClothes(c);
+            if(a!=0){
+                c.setClothesQuantity(c.getClothesQuantity()-1);
+                ClothesOrderDirectory.getClothesOrderDirectory().add(co);
+            }         
+        }
+        return a;
+        
+    }
+    
 
     public List<FoodOrder> getFoodOrderDetails() {
         return orderDao.getFoodOrders();
     }
+    
+     public List<ClothesOrder> getClothesOrderDetails() {
+        return orderDao.getClothesOrders();
+    }
 
     
+    public int addClothes(String clothesCategory,int clothesQuantity,String clothesName,Organisation o) {
+        ClothesDetails c = new ClothesDetails();
+        c.setClothesID(String.valueOf(clothesDao.getCount() + Integer.valueOf("1000000")));
+        c.setClothesName(clothesName);
+        c.setClothesQuantity(clothesQuantity);
+        c.setClothesStatus(clothesName);
+        c.setClothesCategory(clothesCategory);
+        c.setOrg(o);
+        c.setClothesStatus("PENDING");
+        int v = clothesDao.addclothes(c,o);
+        if(v!=0){
+            clothesDirectory.getClothesDirectory().add(c);
+            
+        }
+        return v;
+    }
+    
+
+    public void getClothesDetails() {
+        clothesDirectory.setClothesDirectory(clothesDao.getClothesDetails());
+    }
+
+    public int approveClothes(ClothesDetails c) {
+        int v = clothesDao.approveClothes(c);
+        if(v!=0){
+            c.setClothesStatus("APPROVED");
+        }
+        return v;
+    }
+
 
 }

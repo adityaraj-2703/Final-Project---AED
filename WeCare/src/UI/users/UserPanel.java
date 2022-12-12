@@ -52,6 +52,11 @@ public class UserPanel extends javax.swing.JPanel {
         });
 
         btnFindClothes.setText("Find Clothes Near You!");
+        btnFindClothes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindClothesActionPerformed(evt);
+            }
+        });
 
         btnFindVolunteers.setText("Find Volunteers");
 
@@ -103,7 +108,7 @@ public class UserPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPaneUserPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
+            .addComponent(jSplitPaneUserPanel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,6 +121,13 @@ public class UserPanel extends javax.swing.JPanel {
         FindFoodsPanel findFood = new FindFoodsPanel(d, p);
         jSplitPaneUserPanel.setRightComponent(findFood);
     }//GEN-LAST:event_btnFindFoodsActionPerformed
+
+    private void btnFindClothesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindClothesActionPerformed
+        // TODO add your handling code here:
+          FindClothesPanel findClothes = new FindClothesPanel(d, p);
+        jSplitPaneUserPanel.setRightComponent(findClothes);
+        
+    }//GEN-LAST:event_btnFindClothesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,6 +4,11 @@
  */
 package UI.Outlet;
 
+import UI.ClothesService.AddViewClothes;
+import UI.FoodService.AddViewFood;
+import model.Data;
+import model.Person;
+
 /**
  *
  * @author anupamaditya
@@ -13,8 +18,12 @@ public class OutletManagerPanel extends javax.swing.JPanel {
     /**
      * Creates new form OutletManager
      */
-    public OutletManagerPanel() {
+    Data d;
+    Person p;
+    public OutletManagerPanel(Data d, Person p) {
         initComponents();
+         this.d =d;
+        this.p =p;
     }
 
     /**
@@ -26,30 +35,94 @@ public class OutletManagerPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel1 = new javax.swing.JPanel();
+        btnManageFood = new javax.swing.JButton();
+        btnManageClothes = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
-        jButton1.setText("Add and View Clothes");
+        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        btnManageFood.setText("Manage Food");
+        btnManageFood.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageFoodActionPerformed(evt);
+            }
+        });
+
+        btnManageClothes.setText("Manage Clothes");
+        btnManageClothes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageClothesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(btnManageFood, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(164, 164, 164)
+                .addComponent(btnManageClothes, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(249, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnManageFood, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnManageClothes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setTopComponent(jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 815, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
+        );
+
+        jSplitPane1.setRightComponent(jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(314, 314, 314)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(315, Short.MAX_VALUE))
+            .addComponent(jSplitPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(221, 221, 221)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(269, Short.MAX_VALUE))
+            .addComponent(jSplitPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnManageFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFoodActionPerformed
+        // TODO add your handling code here:
+           AddViewFood addViewFood = new AddViewFood(d, p);
+        jSplitPane1.setRightComponent(addViewFood);
+    }//GEN-LAST:event_btnManageFoodActionPerformed
+
+    private void btnManageClothesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageClothesActionPerformed
+        // TODO add your handling code here:
+           AddViewClothes addViewClothes = new AddViewClothes(d, p);
+        jSplitPane1.setRightComponent(addViewClothes);
+    }//GEN-LAST:event_btnManageClothesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnManageClothes;
+    private javax.swing.JButton btnManageFood;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
 }

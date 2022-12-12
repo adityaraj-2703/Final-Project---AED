@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import model.ClothesOrder;
 import model.FoodDetails;
 import model.FoodOrder;
 import model.Person;
@@ -53,6 +54,22 @@ public class OrderDao {
         }
         return 0;
     }
+    
+    public int addOrder(ClothesOrder co) {
+        try{
+          String sql  = "insert into ClothesOrder values(?,?,?)";
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setString(1,co.getOrderId());
+          stmt.setString(2,co.getOrderId());
+          stmt.setString(3,co.getPerson().getUserName());
+          int i = stmt.executeUpdate();
+          return i;        
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
 
     public Integer getCount() {
         ResultSet rs = null;
@@ -60,6 +77,25 @@ public class OrderDao {
         try{
             
             String sql  = "select count(*) from foodOrder";
+              Statement st = conn.createStatement();
+              rs = st.executeQuery(sql);
+              if(rs.next()){
+                  count = rs.getInt(1);
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return count;
+    }
+    
+    public Integer getCountClothes() {
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select count(*) from clothesOrder";
               Statement st = conn.createStatement();
               rs = st.executeQuery(sql);
               if(rs.next()){
@@ -128,6 +164,33 @@ public class OrderDao {
                 e.printStackTrace();
             }
         return foodOrders;
+    }
+    
+     public List<ClothesOrder> getClothesOrders() {
+        ArrayList<ClothesOrder> clothesOrders = new ArrayList<>();
+        
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select * from clothesOrder";
+              Statement st = conn.createStatement();
+              rs = st.executeQuery(sql);
+              while(rs.next()){
+                  ClothesOrder co =  new ClothesOrder();
+                  co.setClothesId(rs.getString(1));
+                  co.setOrderId(rs.getString(2));
+                  co.setPerson(getUser(rs.getString(3)));
+                  //c.setCommunityList(getCommunities(c.getId()));
+                  
+                  clothesOrders.add(co);
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        return clothesOrders;
     }
     
     

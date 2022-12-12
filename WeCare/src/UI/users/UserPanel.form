@@ -16,7 +16,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPaneUserPanel" alignment="0" pref="775" max="32767" attributes="0"/>
+          <Component id="jSplitPaneUserPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -84,6 +84,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Find Clothes Near You!"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFindClothesActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnFindVolunteers">
               <Properties>

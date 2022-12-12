@@ -4,6 +4,11 @@
  */
 package UI.Residents;
 
+import UI.ClothesService.AddViewClothes;
+import UI.FoodService.AddViewFood;
+import model.Data;
+import model.Person;
+
 /**
  *
  * @author anupamaditya
@@ -13,8 +18,12 @@ public class ResidentManagerAdminPanel extends javax.swing.JPanel {
     /**
      * Creates new form ResidentManagerAdminPanel
      */
-    public ResidentManagerAdminPanel() {
+     Data d;
+    Person p;
+    public ResidentManagerAdminPanel(Data d, Person p) {
         initComponents();
+         this.d =d;
+        this.p = p;
     }
 
     /**
@@ -28,21 +37,41 @@ public class ResidentManagerAdminPanel extends javax.swing.JPanel {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnManageFood = new javax.swing.JButton();
+        btnManageClothes = new javax.swing.JButton();
+        btnManageVolunteer = new javax.swing.JButton();
+        btnManageHouse = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jButton1.setText("Manage Food");
+        btnManageFood.setText("Manage Food");
+        btnManageFood.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageFoodActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Manage Clothes");
+        btnManageClothes.setText("Manage Clothes");
+        btnManageClothes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageClothesActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Manage Volunteer");
+        btnManageVolunteer.setText("Manage Volunteer");
+        btnManageVolunteer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageVolunteerActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Manage House");
+        btnManageHouse.setText("Manage House");
+        btnManageHouse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageHouseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -50,13 +79,13 @@ public class ResidentManagerAdminPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addComponent(jButton1)
+                .addComponent(btnManageFood)
                 .addGap(64, 64, 64)
-                .addComponent(jButton2)
+                .addComponent(btnManageClothes)
                 .addGap(45, 45, 45)
-                .addComponent(jButton3)
+                .addComponent(btnManageVolunteer)
                 .addGap(51, 51, 51)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -64,12 +93,11 @@ public class ResidentManagerAdminPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnManageClothes, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnManageVolunteer, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                        .addComponent(btnManageHouse, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                    .addComponent(btnManageFood, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -100,12 +128,35 @@ public class ResidentManagerAdminPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnManageFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFoodActionPerformed
+        // TODO add your handling code here:
+            AddViewFood addViewFood = new AddViewFood(d, p);
+        jSplitPane1.setRightComponent(addViewFood);
+    }//GEN-LAST:event_btnManageFoodActionPerformed
+
+    private void btnManageClothesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageClothesActionPerformed
+        // TODO add your handling code here:
+       AddViewClothes addViewClothes = new AddViewClothes(d, p);
+        jSplitPane1.setRightComponent(addViewClothes);
+        
+    }//GEN-LAST:event_btnManageClothesActionPerformed
+
+    private void btnManageVolunteerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageVolunteerActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnManageVolunteerActionPerformed
+
+    private void btnManageHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageHouseActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnManageHouseActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnManageClothes;
+    private javax.swing.JButton btnManageFood;
+    private javax.swing.JButton btnManageHouse;
+    private javax.swing.JButton btnManageVolunteer;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;

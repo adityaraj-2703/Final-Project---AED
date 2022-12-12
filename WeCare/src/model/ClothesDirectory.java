@@ -13,6 +13,10 @@ import java.util.ArrayList;
 public class ClothesDirectory {
    private ArrayList<ClothesDetails> clothesDirectory; 
 
+   public ClothesDirectory(){
+         clothesDirectory = new ArrayList<>();
+     }
+   
     public ArrayList<ClothesDetails> getClothesDirectory() {
         return clothesDirectory;
     }

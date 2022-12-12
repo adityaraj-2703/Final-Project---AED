@@ -4,6 +4,8 @@
  */
 package model;
 
+import model.Organisation.Organisation;
+
 /**
  *
  * @author anupamaditya
@@ -14,6 +16,34 @@ public class ClothesDetails {
     int clothesQuantity;
     String serviceTYpe;
     String serviceName;
+     Organisation org;
+   String clothesStatus;
+   String clothesName;
+
+    public String getClothesName() {
+        return clothesName;
+    }
+
+    public void setClothesName(String clothesName) {
+        this.clothesName = clothesName;
+    }
+   
+
+    public String getClothesStatus() {
+        return clothesStatus;
+    }
+
+    public void setClothesStatus(String clothesStatus) {
+        this.clothesStatus = clothesStatus;
+    }
+           
+    public Organisation getOrg() {
+        return org;
+    }
+
+    public void setOrg(Organisation org) {
+        this.org = org;
+    }
 
     public String getClothesID() {
         return clothesID;
@@ -55,5 +85,9 @@ public class ClothesDetails {
         this.serviceName = serviceName;
     }
     
+     @Override
+    public String toString() {
+        return this.clothesName;
+    }
     
 }
