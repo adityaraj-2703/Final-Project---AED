@@ -447,6 +447,10 @@ public class Data {
         return orderDao.getHousingOrders();
     }
 
+    public List<Person> getManagers() {
+        return usersDao.getClothesManagers();
+    }
+
     
 
 }

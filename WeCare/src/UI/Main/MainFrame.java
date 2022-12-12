@@ -29,9 +29,14 @@ import model.Roles.ClothesServiceAdminRole;
 import UI.ClothesService.*;
 import UI.College.CollegeManagerPanel;
 import UI.Distribution.DistributionManagePanel;
+import UI.FoodService.FoodServiceAdminPanel;
+import UI.HousingService.HousingServiceAdminPanel;
+import UI.NGO.NGOManagerPanel;
 import UI.users.UserPanel;
 import javax.swing.JPanel;
 import model.Roles.DistributionManagerRole;
+import model.Roles.HousingServiceAdminRole;
+import model.Roles.NGOManagerRole;
 import model.Roles.UserRole;
 
 /**
@@ -104,7 +109,9 @@ public class MainFrame extends javax.swing.JFrame {
                  
              }
              else if(a.equals("FOOD_SERVICE_ADMIN")){
-                
+                Role r = new FoodServiceAdminRole();
+                 FoodServiceAdminPanel foodServiceAdmin = (FoodServiceAdminPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                mainFrameSplitPanel.setRightComponent(foodServiceAdmin);
              }
              else if(a.equals("SYSTEM_ADMIN")){
                  Role r = new SystemAdminRole();
@@ -116,11 +123,22 @@ public class MainFrame extends javax.swing.JFrame {
                  ClothesServiceAdminPanel clothesServiceAdmin = (ClothesServiceAdminPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
                  mainFrameSplitPanel.setRightComponent(clothesServiceAdmin);
              }
+             else if(a.equals("NGO_MANAGER")){
+                 Role r = new NGOManagerRole();
+                 NGOManagerPanel ngoManager = (NGOManagerPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 mainFrameSplitPanel.setRightComponent(ngoManager);
+             }
+             else if(a.equals("HOUSING_SERVICE_ADMIN")){
+                 Role r = new HousingServiceAdminRole();
+                 HousingServiceAdminPanel ngoManager = (HousingServiceAdminPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 mainFrameSplitPanel.setRightComponent(ngoManager);
+             }
              else{
                  Role r = new UserRole();
                  UserPanel userPanel = (UserPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
                  mainFrameSplitPanel.setRightComponent(userPanel);
              }
+             
              
              
         

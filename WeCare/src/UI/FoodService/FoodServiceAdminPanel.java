@@ -15,6 +15,7 @@ import model.Enterprise.Enterprise;
 import model.Organisation.Organisation;
 import model.Organisation.OrganisationDirectory;
 import model.Person;
+import model.TwilioSMSUtil;
 import model.city.Address;
 import model.city.City;
 import model.city.Community;
@@ -251,7 +252,7 @@ public class FoodServiceAdminPanel extends javax.swing.JPanel {
         int v=0;
         try {
             Enterprise e = d.getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.FoodService);
-            v = d.addOrganisation(organisationType, organisationName, location, pS, phoneNo, organisationType,e.getEnterpriseId());
+            v = d.addOrganisation(organisationType, organisationName, location, pS, phoneNo, "FoodService",e.getEnterpriseId());
         } catch (SQLException ex ) {
             Logger.getLogger(FoodServiceAdminPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -259,6 +260,9 @@ public class FoodServiceAdminPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Error in creating Organisation");
             return;
         }
+        TwilioSMSUtil
+                   .sendTextMessage("+18573761902",
+                           "Hi Admin"  + ", " + "Organisation" + organisationName + "Registered");
         txtOrganisationId.setText("");
         txtOrganisationName.setText("");
         txtPhoneNo.setText("");
@@ -369,14 +373,14 @@ public class FoodServiceAdminPanel extends javax.swing.JPanel {
 
     private void populateRestaurantManagers() {
         //left to implement
-         //List<Person> managers = d.getManagers();
+         List<Person> managers = d.getManagers();
         jComboBoxFoodServiceManager.removeAllItems();
-//        for(Person p : managers){
-//            jComboBoxFoodServiceManager.addItem(p);
-//            
-//            
-//            
-//        }
+        for(Person p : managers){
+            jComboBoxFoodServiceManager.addItem(p);
+            
+            
+            
+        }
         
     }
 

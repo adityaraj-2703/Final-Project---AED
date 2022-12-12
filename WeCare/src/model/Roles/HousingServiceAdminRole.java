@@ -4,10 +4,20 @@
  */
 package model.Roles;
 
+import UI.HousingService.HousingServiceAdminPanel;
+import javax.swing.JPanel;
+import model.Data;
+import model.Person;
+
 /**
  *
  * @author adityaraj
  */
-public class HousingServiceAdminRole {
+public class HousingServiceAdminRole extends Role{
+
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, Data data, Person person) {
+        return new HousingServiceAdminPanel(data, person);
+    }
     
 }

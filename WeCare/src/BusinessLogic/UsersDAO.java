@@ -295,13 +295,14 @@ public class UsersDAO {
         List<Person> pList = new ArrayList<>();
         ResultSet rs = null;
         try{
-            String sql  = "select * from users where Role in (?,?,?,?) and Status = ?;";
+            String sql  = "select * from users where Role in (?,?,?,?,?) and Status = ?;";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, "COLLEGE_MANAGER");
             stmt.setString(2, "OUTLETS_MANAGER");
             stmt.setString(3, "RESIDENTS_MANAGER");
             stmt.setString(4, "NGO_MANAGER");
-            stmt.setString(5, "PENDING");
+            stmt.setString(5, "RESTAURANT_MANAGER");
+            stmt.setString(6, "PENDING");
             rs = stmt.executeQuery();
             while(rs.next()){
                 Person p =  new Person();
@@ -385,5 +386,7 @@ public class UsersDAO {
         }
         return pList;
     }
+
+    
 }
 

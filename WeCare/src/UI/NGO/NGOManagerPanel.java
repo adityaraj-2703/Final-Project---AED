@@ -4,6 +4,10 @@
  */
 package UI.NGO;
 
+import UI.FoodService.AddViewFood;
+import model.Data;
+import model.Person;
+
 /**
  *
  * @author anupamaditya
@@ -13,8 +17,12 @@ public class NGOManagerPanel extends javax.swing.JPanel {
     /**
      * Creates new form NGOManagerPanel
      */
-    public NGOManagerPanel() {
+    Data d;
+    Person p;
+    public NGOManagerPanel(Data d, Person p) {
         initComponents();
+        this.d = d;
+        this.p = p;
     }
 
     /**
@@ -26,7 +34,7 @@ public class NGOManagerPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
+        jSplitPaneNGO = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -34,7 +42,7 @@ public class NGOManagerPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
-        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPaneNGO.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jButton1.setText("Manage Food");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -48,6 +56,11 @@ public class NGOManagerPanel extends javax.swing.JPanel {
         jButton4.setText("Manage House");
 
         jButton2.setText("Manage Clothes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -77,7 +90,7 @@ public class NGOManagerPanel extends javax.swing.JPanel {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setTopComponent(jPanel1);
+        jSplitPaneNGO.setTopComponent(jPanel1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -90,25 +103,32 @@ public class NGOManagerPanel extends javax.swing.JPanel {
             .addGap(0, 427, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(jPanel2);
+        jSplitPaneNGO.setRightComponent(jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jSplitPane1)
+                .addComponent(jSplitPaneNGO)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPaneNGO)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        AddViewFood addViewFood = new AddViewFood(d, p);
+        jSplitPaneNGO.setRightComponent(addViewFood);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -118,6 +138,6 @@ public class NGOManagerPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPaneNGO;
     // End of variables declaration//GEN-END:variables
 }

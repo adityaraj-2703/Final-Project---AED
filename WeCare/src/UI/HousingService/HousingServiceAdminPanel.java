@@ -33,6 +33,9 @@ public class HousingServiceAdminPanel extends javax.swing.JPanel {
         initComponents();
         this.d =d;
         this.p =p;
+        populateAddressTable();
+        populateHousingOrganisationTable();
+        populateRestaurantManagers();
     }
 
     /**
@@ -228,8 +231,8 @@ public class HousingServiceAdminPanel extends javax.swing.JPanel {
 
         int v=0;
         try {
-            Enterprise e = d.getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.FoodService);
-            v = d.addOrganisation(organisationType,organisationName,location,p,phoneNo,organisationType,e.getEnterpriseId());
+            Enterprise e = d.getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.HousingService);
+            v = d.addOrganisation(organisationType,organisationName,location,p,phoneNo,"HousingService",e.getEnterpriseId());
         } catch (SQLException ex ) {
             Logger.getLogger(HousingServiceAdminPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -289,14 +292,14 @@ public class HousingServiceAdminPanel extends javax.swing.JPanel {
     }
     private void populateRestaurantManagers() {
         //left to implement
-//         List<Person> managers = d.getManagers();
-//        jComboBoxHousingServiceManager.removeAllItems();
-//        for(Person p : managers){
-//            jComboBoxHousingServiceManager.addItem(p);
-//            
-//            
-//            
-//        }
+         List<Person> managers = d.getManagers();
+        jComboBoxHousingServiceManager.removeAllItems();
+        for(Person p : managers){
+            jComboBoxHousingServiceManager.addItem(p);
+            
+            
+            
+        }
         
     }
 
