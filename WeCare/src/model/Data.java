@@ -6,6 +6,7 @@ package model;
 
 import BusinessLogic.CityDao;
 import BusinessLogic.FoodDao;
+import BusinessLogic.OrderDao;
 import BusinessLogic.OrganisationDao;
 
 import BusinessLogic.UsersDAO;
@@ -28,6 +29,18 @@ public class Data {
     private EnterpriseDirectory enterpriseDirectory;
     private PersonDirectory personDirectory;
     private FoodDirectory foodDirectory;
+    private FoodOrderDirectory foodOrderDirectory;
+
+    public FoodOrderDirectory getFoodOrderDirectory() {
+        return foodOrderDirectory;
+    }
+
+    public void setFoodOrderDirectory(FoodOrderDirectory foodOrderDirectory) {
+        this.foodOrderDirectory = foodOrderDirectory;
+    }
+    
+    
+    //private OrderDirectory orderDirectory;
 
     public FoodDirectory getFoodDirectory() {
         return foodDirectory;
@@ -42,6 +55,7 @@ public class Data {
     OrganisationDao organisationDao;
     UsersDAO usersDao;
     FoodDao foodDao;
+    OrderDao orderDao;
     public PersonDirectory getPersonDirectory() {
         return personDirectory;
     }
@@ -62,7 +76,9 @@ public class Data {
         enterpriseDirectory = new EnterpriseDirectory();
         enterpriseDirectory.addEnterprise();
         foodDirectory = new FoodDirectory();
+        foodOrderDirectory = new FoodOrderDirectory();
         foodDao = new FoodDao();
+        orderDao = new OrderDao();
     }
 
     public List<City> getCities() {
@@ -300,5 +316,48 @@ public class Data {
     public void getFoodDetails(){
         foodDirectory.setFoodDirectory(foodDao.getFoodDetails());
     }
+
+    public int approveFood(FoodDetails f) {
+        
+        int v = foodDao.approveFood(f);
+        if(v!=0){
+            f.setFoodStatus("APPROVED");
+        }
+        return v;
+    }
+
+    public List<FoodDetails> getApprovedFoodDetails() {
+        return foodDao.getApprovedFoodDetails();
+    }
+
+    public int addOrder(FoodDetails f,Person p) {
+        FoodOrder fo = new FoodOrder();
+        fo.setOrderId(String.valueOf(orderDao.getCount() + Integer.valueOf("10000000")));
+        fo.setFoodId(f.getFoodID());
+        fo.setPerson(p);
+        int c = 0;
+        int v = orderDao.addOrder(fo);
+        if(v!=0){
+            
+            c = foodDao.updateFood(f);
+            if(c!=0){
+                f.setFoodQuantity(f.getFoodQuantity()-1);
+                foodOrderDirectory.getFoodOrderDirectory().add(fo);
+            }
+            
+            
+            
+            
+            
+        }
+        return c;
+        
+    }
+
+    public List<FoodOrder> getFoodOrderDetails() {
+        return orderDao.getFoodOrders();
+    }
+
+    
 
 }

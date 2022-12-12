@@ -4,8 +4,7 @@
  */
 package model.Roles;
 
-import UI.College.CollegeManagerPanel;
-import UI.Distribution.DistributionManagePanel;
+import UI.users.UserPanel;
 import javax.swing.JPanel;
 import model.Data;
 import model.Person;
@@ -14,11 +13,11 @@ import model.Person;
  *
  * @author adityaraj
  */
-public class DistributionManagerRole extends Role{
+public class UserRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Data data, Person person) {
-        return new DistributionManagePanel(data,person);
+        return new UserPanel(data,person);
     }
     
 }
