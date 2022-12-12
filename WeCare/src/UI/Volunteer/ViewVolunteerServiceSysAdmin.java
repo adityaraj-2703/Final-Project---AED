@@ -39,6 +39,10 @@ public class ViewVolunteerServiceSysAdmin extends javax.swing.JPanel {
         txtVolunteerServiceLocation = new javax.swing.JTextField();
         jComboBoxVolunteerOrg = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(204, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Charter", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("View Volunteer Service");
 
         tblEncounters.setModel(new javax.swing.table.DefaultTableModel(
@@ -54,6 +58,9 @@ public class ViewVolunteerServiceSysAdmin extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblEncounters);
 
+        btnViewVolunteerService.setBackground(new java.awt.Color(204, 255, 204));
+        btnViewVolunteerService.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnViewVolunteerService.setForeground(new java.awt.Color(0, 0, 102));
         btnViewVolunteerService.setText("View Volunteer Service");
         btnViewVolunteerService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +68,9 @@ public class ViewVolunteerServiceSysAdmin extends javax.swing.JPanel {
             }
         });
 
+        btnUpdateVolunteerService.setBackground(new java.awt.Color(204, 255, 204));
+        btnUpdateVolunteerService.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnUpdateVolunteerService.setForeground(new java.awt.Color(0, 0, 102));
         btnUpdateVolunteerService.setText("Update Volunteer Service");
         btnUpdateVolunteerService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +78,9 @@ public class ViewVolunteerServiceSysAdmin extends javax.swing.JPanel {
             }
         });
 
+        btnDeleteVolunteerService.setBackground(new java.awt.Color(204, 255, 204));
+        btnDeleteVolunteerService.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnDeleteVolunteerService.setForeground(new java.awt.Color(0, 0, 102));
         btnDeleteVolunteerService.setText("Delete Volunteer Service");
         btnDeleteVolunteerService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,10 +88,16 @@ public class ViewVolunteerServiceSysAdmin extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Volunteer Organisation");
 
+        jLabel42.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(0, 0, 102));
         jLabel42.setText("Location");
 
+        jLabel43.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(0, 0, 102));
         jLabel43.setText("Volunteer Manager");
 
         jComboBoxVolunteerOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NGO", "College", "Self" }));
@@ -133,7 +152,7 @@ public class ViewVolunteerServiceSysAdmin extends javax.swing.JPanel {
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel42)
-                        .addGap(18, 22, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(jLabel43)
                         .addGap(99, 99, 99))
                     .addGroup(layout.createSequentialGroup()
