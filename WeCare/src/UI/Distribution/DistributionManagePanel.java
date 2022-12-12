@@ -44,6 +44,10 @@ public class DistributionManagePanel extends javax.swing.JPanel {
 
         splitPaneDistribution.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        controlPanelDistribution.setBackground(new java.awt.Color(204, 204, 255));
+
+        btnDistributeFood.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnDistributeFood.setForeground(new java.awt.Color(0, 0, 102));
         btnDistributeFood.setText("Distribute Food");
         btnDistributeFood.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,10 +55,16 @@ public class DistributionManagePanel extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 102));
         jButton2.setText("Distribute Clothes");
 
+        jButton3.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 102));
         jButton3.setText("Assign Volunteer");
 
+        jButton4.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 0, 102));
         jButton4.setText("Lend Place");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +85,7 @@ public class DistributionManagePanel extends javax.swing.JPanel {
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         controlPanelDistributionLayout.setVerticalGroup(
             controlPanelDistributionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,10 +96,12 @@ public class DistributionManagePanel extends javax.swing.JPanel {
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         splitPaneDistribution.setTopComponent(controlPanelDistribution);
+
+        viewPanelDistribution.setBackground(new java.awt.Color(204, 255, 255));
 
         javax.swing.GroupLayout viewPanelDistributionLayout = new javax.swing.GroupLayout(viewPanelDistribution);
         viewPanelDistribution.setLayout(viewPanelDistributionLayout);
@@ -108,7 +120,7 @@ public class DistributionManagePanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPaneDistribution, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
+            .addComponent(splitPaneDistribution)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

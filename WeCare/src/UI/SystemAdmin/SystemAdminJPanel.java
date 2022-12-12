@@ -45,6 +45,11 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
         jSplitPaneSystemAdmin.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        controlPanelSystemAdmin.setBackground(new java.awt.Color(204, 204, 255));
+
+        btnManageCities.setBackground(new java.awt.Color(204, 255, 204));
+        btnManageCities.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnManageCities.setForeground(new java.awt.Color(0, 0, 102));
         btnManageCities.setText("Manage Cities");
         btnManageCities.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,6 +57,9 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageEnterpriseAdmins.setBackground(new java.awt.Color(204, 255, 204));
+        btnManageEnterpriseAdmins.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnManageEnterpriseAdmins.setForeground(new java.awt.Color(0, 0, 102));
         btnManageEnterpriseAdmins.setText("Manage Enterprise Admins");
         btnManageEnterpriseAdmins.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,8 +67,14 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManagePerson.setBackground(new java.awt.Color(204, 255, 204));
+        btnManagePerson.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnManagePerson.setForeground(new java.awt.Color(0, 0, 102));
         btnManagePerson.setText("Manage Person");
 
+        btnCharts.setBackground(new java.awt.Color(204, 255, 204));
+        btnCharts.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnCharts.setForeground(new java.awt.Color(0, 0, 102));
         btnCharts.setText("Charts");
 
         javax.swing.GroupLayout controlPanelSystemAdminLayout = new javax.swing.GroupLayout(controlPanelSystemAdmin);
@@ -76,7 +90,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
                 .addComponent(btnManagePerson)
                 .addGap(18, 18, 18)
                 .addComponent(btnCharts)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         controlPanelSystemAdminLayout.setVerticalGroup(
             controlPanelSystemAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,10 +101,12 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
                     .addComponent(btnManageEnterpriseAdmins)
                     .addComponent(btnManagePerson)
                     .addComponent(btnCharts))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jSplitPaneSystemAdmin.setTopComponent(controlPanelSystemAdmin);
+
+        workAreaSystemAdmin.setBackground(new java.awt.Color(204, 255, 255));
 
         javax.swing.GroupLayout workAreaSystemAdminLayout = new javax.swing.GroupLayout(workAreaSystemAdmin);
         workAreaSystemAdmin.setLayout(workAreaSystemAdminLayout);

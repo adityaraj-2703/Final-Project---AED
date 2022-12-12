@@ -44,6 +44,11 @@ public class UserPanel extends javax.swing.JPanel {
 
         jSplitPaneUserPanel.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        controlPanelUser.setBackground(new java.awt.Color(204, 204, 255));
+
+        btnFindFoods.setBackground(new java.awt.Color(204, 255, 204));
+        btnFindFoods.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnFindFoods.setForeground(new java.awt.Color(0, 0, 102));
         btnFindFoods.setText("Find Foods Near You!");
         btnFindFoods.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +56,9 @@ public class UserPanel extends javax.swing.JPanel {
             }
         });
 
+        btnFindClothes.setBackground(new java.awt.Color(204, 255, 204));
+        btnFindClothes.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnFindClothes.setForeground(new java.awt.Color(0, 0, 102));
         btnFindClothes.setText("Find Clothes Near You!");
         btnFindClothes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,8 +66,14 @@ public class UserPanel extends javax.swing.JPanel {
             }
         });
 
+        btnFindVolunteers.setBackground(new java.awt.Color(204, 255, 204));
+        btnFindVolunteers.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnFindVolunteers.setForeground(new java.awt.Color(0, 0, 102));
         btnFindVolunteers.setText("Find Volunteers");
 
+        btnFindHousing.setBackground(new java.awt.Color(204, 255, 204));
+        btnFindHousing.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnFindHousing.setForeground(new java.awt.Color(0, 0, 102));
         btnFindHousing.setText("Find Housing");
         btnFindHousing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +94,7 @@ public class UserPanel extends javax.swing.JPanel {
                 .addComponent(btnFindVolunteers)
                 .addGap(18, 18, 18)
                 .addComponent(btnFindHousing)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         controlPanelUserLayout.setVerticalGroup(
             controlPanelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,10 +105,12 @@ public class UserPanel extends javax.swing.JPanel {
                     .addComponent(btnFindClothes)
                     .addComponent(btnFindVolunteers)
                     .addComponent(btnFindHousing))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jSplitPaneUserPanel.setTopComponent(controlPanelUser);
+
+        workAreaUser.setBackground(new java.awt.Color(204, 255, 255));
 
         javax.swing.GroupLayout workAreaUserLayout = new javax.swing.GroupLayout(workAreaUser);
         workAreaUser.setLayout(workAreaUserLayout);
@@ -113,7 +129,7 @@ public class UserPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPaneUserPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
+            .addComponent(jSplitPaneUserPanel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
