@@ -61,6 +61,8 @@ public class AddVolunteerServicePanel extends javax.swing.JPanel {
         jComboBoxVolunteerServiceManager = new javax.swing.JComboBox<>();
         btnAddVolunteerService = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 255));
+
         jLabel2.setText("Volunteer Organisation");
 
         jComboBoxVolunteerOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NGO", "College", "Self" }));

@@ -55,14 +55,25 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Enterprise Type");
 
         jComboBoxEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ClothesService", "VolunteerService", "HousingService", "FoodService", " " }));
 
+        jLabel2.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("City");
 
+        jLabel3.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setText("Admin");
 
+        btnSaveAdmin.setBackground(new java.awt.Color(204, 255, 204));
+        btnSaveAdmin.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnSaveAdmin.setForeground(new java.awt.Color(0, 0, 102));
         btnSaveAdmin.setText("Save Admin");
         btnSaveAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,8 +94,14 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblEnterprise);
 
+        jButton2.setBackground(new java.awt.Color(204, 255, 204));
+        jButton2.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 102));
         jButton2.setText("View Admin");
 
+        jButton3.setBackground(new java.awt.Color(204, 255, 204));
+        jButton3.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 102));
         jButton3.setText("Update Admin");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -104,11 +121,12 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1))
-                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBoxEnterpriseType, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxEnterpriseCity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -143,7 +161,7 @@ public class ManageEnterpriseAdmins extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
                 .addComponent(btnSaveAdmin)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
