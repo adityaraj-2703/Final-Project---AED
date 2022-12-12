@@ -63,14 +63,23 @@ public class AddVolunteerServicePanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 255, 255));
 
+        jLabel2.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Volunteer Organisation");
 
         jComboBoxVolunteerOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NGO", "College", "Self" }));
 
+        jLabel42.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(0, 0, 102));
         jLabel42.setText("Location");
 
+        jLabel43.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(0, 0, 102));
         jLabel43.setText("Volunteer Manager");
 
+        btnAddVolunteerService.setBackground(new java.awt.Color(204, 255, 204));
+        btnAddVolunteerService.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnAddVolunteerService.setForeground(new java.awt.Color(0, 0, 102));
         btnAddVolunteerService.setText("Add Volunteer Service");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

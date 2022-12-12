@@ -33,8 +33,12 @@ public class VolunteerServiceAdminPanel extends javax.swing.JPanel {
 
         jsplitPanelvolunteerServiceAdmin.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        controlPanelVolunteerServiceAdmin.setBackground(new java.awt.Color(204, 204, 255));
         controlPanelVolunteerServiceAdmin.setPreferredSize(new java.awt.Dimension(824, 120));
 
+        btnManageVolunteerService.setBackground(new java.awt.Color(204, 255, 204));
+        btnManageVolunteerService.setFont(new java.awt.Font("Charter", 1, 14)); // NOI18N
+        btnManageVolunteerService.setForeground(new java.awt.Color(0, 0, 102));
         btnManageVolunteerService.setText("Manage Volunteer Services");
         btnManageVolunteerService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,17 +53,19 @@ public class VolunteerServiceAdminPanel extends javax.swing.JPanel {
             .addGroup(controlPanelVolunteerServiceAdminLayout.createSequentialGroup()
                 .addGap(334, 334, 334)
                 .addComponent(btnManageVolunteerService)
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
         controlPanelVolunteerServiceAdminLayout.setVerticalGroup(
             controlPanelVolunteerServiceAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlPanelVolunteerServiceAdminLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelVolunteerServiceAdminLayout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(btnManageVolunteerService)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         jsplitPanelvolunteerServiceAdmin.setTopComponent(controlPanelVolunteerServiceAdmin);
+
+        workAreaVolunteerServiceAdmin.setBackground(new java.awt.Color(204, 255, 255));
 
         javax.swing.GroupLayout workAreaVolunteerServiceAdminLayout = new javax.swing.GroupLayout(workAreaVolunteerServiceAdmin);
         workAreaVolunteerServiceAdmin.setLayout(workAreaVolunteerServiceAdminLayout);
@@ -69,7 +75,7 @@ public class VolunteerServiceAdminPanel extends javax.swing.JPanel {
         );
         workAreaVolunteerServiceAdminLayout.setVerticalGroup(
             workAreaVolunteerServiceAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 487, Short.MAX_VALUE)
+            .addGap(0, 472, Short.MAX_VALUE)
         );
 
         jsplitPanelvolunteerServiceAdmin.setRightComponent(workAreaVolunteerServiceAdmin);
@@ -82,7 +88,7 @@ public class VolunteerServiceAdminPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jsplitPanelvolunteerServiceAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+            .addComponent(jsplitPanelvolunteerServiceAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
