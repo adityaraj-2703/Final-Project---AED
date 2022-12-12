@@ -61,6 +61,11 @@ public class UserPanel extends javax.swing.JPanel {
         btnFindVolunteers.setText("Find Volunteers");
 
         btnFindHousing.setText("Find Housing");
+        btnFindHousing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindHousingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout controlPanelUserLayout = new javax.swing.GroupLayout(controlPanelUser);
         controlPanelUser.setLayout(controlPanelUserLayout);
@@ -124,9 +129,14 @@ public class UserPanel extends javax.swing.JPanel {
 
     private void btnFindClothesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindClothesActionPerformed
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnFindClothesActionPerformed
+
+    private void btnFindHousingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindHousingActionPerformed
+        // TODO add your handling code here:
         FindHousingPanel findHousingPanel = new FindHousingPanel(d, p);
         jSplitPaneUserPanel.setRightComponent(findHousingPanel);
-    }//GEN-LAST:event_btnFindClothesActionPerformed
+    }//GEN-LAST:event_btnFindHousingActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
