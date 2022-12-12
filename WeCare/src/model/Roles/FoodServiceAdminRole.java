@@ -10,6 +10,7 @@ import model.Enterprise.Enterprise;
 import model.Organisation.Organisation;
 import model.Person;
 import model.city.City;
+import UI.FoodService.FoodServiceAdminPanel;
 
 /**
  *
@@ -19,7 +20,7 @@ public class FoodServiceAdminRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Data data, Person person) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return new FoodServiceAdminPanel(data, person);
     }
 
     

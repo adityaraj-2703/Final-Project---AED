@@ -60,7 +60,7 @@ public class OrderDao {
           String sql  = "insert into ClothesOrder values(?,?,?)";
           PreparedStatement stmt = conn.prepareStatement(sql);
           stmt.setString(1,co.getOrderId());
-          stmt.setString(2,co.getOrderId());
+          stmt.setString(2,co.getClothesId());
           stmt.setString(3,co.getPerson().getUserName());
           int i = stmt.executeUpdate();
           return i;        

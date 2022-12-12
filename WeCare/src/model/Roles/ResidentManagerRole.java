@@ -4,10 +4,21 @@
  */
 package model.Roles;
 
+import UI.Residents.ResidentManagerAdminPanel;
+import UI.Restaurant.RestauranManagerPanel;
+import javax.swing.JPanel;
+import model.Data;
+import model.Person;
+
 /**
  *
  * @author adityaraj
  */
-public class ResidentManagerRole {
+public class ResidentManagerRole extends Role {
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, Data data, Person person) {
+       return new ResidentManagerAdminPanel(data, person);
+    }
+
     
 }

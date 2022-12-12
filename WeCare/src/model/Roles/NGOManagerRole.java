@@ -4,10 +4,19 @@
  */
 package model.Roles;
 
+import UI.NGO.NGOManagerPanel;
+import javax.swing.JPanel;
+import model.Data;
+import model.Person;
+
 /**
  *
  * @author adityaraj
  */
-public class NGOManagerRole {
+public class NGOManagerRole extends Role {
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, Data data, Person person) {
+       return new NGOManagerPanel(data, person);
+    }
     
 }

@@ -23,10 +23,13 @@ public abstract class Role {
         CLOTHES_SERVICE_ADMIN("CLOTHES_SERVICE_ADMIN"),
         SYSTEM_ADMIN("SYSTEM_ADMIN"),
         HOUSING_SERVICE_ADMIN("HOUSING_SERVICE_ADMIN"),
-        VOLUNTEER_SERVICE_ADMIN("VOLUNTEER_SERVICE_ADMIN");
-        
-        
-        
+        VOLUNTEER_SERVICE_ADMIN("VOLUNTEER_SERVICE_ADMIN"),
+        DISTRIBUTION_MANAGER("DISTRIBUTION_MANAGER"),
+        OUTLET_MANAGER("OUTLET_MANAGER"),
+        RESIDENT_MANAGER("RESIDENT_MANAGER"),
+        NGO_MANAGER("NGO_MANAGER"),
+        USER("USER");
+                
         private String value;
         
         private RoleType(String value){

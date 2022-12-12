@@ -264,6 +264,10 @@ public class Data {
         return usersDao.getPendingAdmins();
     }
 
+    public List<Person> getPendingManagers() {
+        return usersDao.getPendingManagers();
+    }
+    
     public List<Person> getClothesManagers() {
         return usersDao.getClothesManagers();
     }
@@ -378,8 +382,8 @@ public class Data {
     
     public int addOrder(ClothesDetails c,Person p) {
         ClothesOrder co = new ClothesOrder();
-        co.setOrderId(String.valueOf(orderDao.getCountClothes() + Integer.valueOf("10000000")));
-        co.setOrderId(c.getClothesID());
+        co.setOrderId(String.valueOf(orderDao.getCountClothes() + Integer.valueOf("20000000")));
+        co.setClothesId(c.getClothesID());
         co.setPerson(p);
         int a = 0;
         int v = orderDao.addOrder(co);

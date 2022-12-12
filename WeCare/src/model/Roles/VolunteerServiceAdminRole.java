@@ -4,10 +4,20 @@
  */
 package model.Roles;
 
+import UI.VolunteerService.VolunteerServiceAdminPanel;
+import javax.swing.JPanel;
+import model.Data;
+import model.Person;
+
 /**
  *
- * @author adityaraj
+ * @author anupamaditya
  */
-public class VolunteerServiceAdminRole {
+public class VolunteerServiceAdminRole extends Role {
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, Data data, Person person) {
+        return new VolunteerServiceAdminPanel(data, person);
+    }
+
     
 }

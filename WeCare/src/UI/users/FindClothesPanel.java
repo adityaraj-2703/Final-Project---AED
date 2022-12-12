@@ -152,7 +152,7 @@ public class FindClothesPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         d.getClothesOrderDetails();
         for(ClothesOrder c : d.getClothesOrderDetails()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[3];
             row[0] = c.getClothesId();
             row[1] = c.getOrderId();
             row[2] = c.getPerson();

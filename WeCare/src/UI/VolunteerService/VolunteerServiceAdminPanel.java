@@ -81,6 +81,11 @@ public class VolunteerServiceAdminPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblVolunteerOrganisation);
 
         BtnViewOrganisation.setText("View Organisation");
+        BtnViewOrganisation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnViewOrganisationActionPerformed(evt);
+            }
+        });
 
         BtnDeleteOrganisation.setText("Delete Organisation");
 
@@ -106,6 +111,11 @@ public class VolunteerServiceAdminPanel extends javax.swing.JPanel {
         });
 
         BtnUpdateVolunteerOrganisation.setText("Update Organisation");
+        BtnUpdateVolunteerOrganisation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnUpdateVolunteerOrganisationActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -230,6 +240,62 @@ public class VolunteerServiceAdminPanel extends javax.swing.JPanel {
         populateVolunteerOrganisationTable();
     }//GEN-LAST:event_btnAddVolunteerServiceActionPerformed
 
+    private void BtnViewOrganisationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnViewOrganisationActionPerformed
+        // TODO add your handling code here:
+        
+         int selectedRowIndex = tblVolunteerOrganisation.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select row to view the details");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblVolunteerOrganisation.getModel();
+        Organisation o = (Organisation) model.getValueAt(selectedRowIndex, 0);
+        txtOrganisationId.setText(String.valueOf(o.getOrganisationId()));
+        txtOrganisationId.setEditable(false);
+        txtOrganisationName.setText(String.valueOf(o.getOrganisationName()));
+        txtOrganisationName.setEditable(true);
+        txtPhoneNo.setText(String.valueOf(o.getPhoneNo()));
+        txtPhoneNo.setEditable(true);
+        jComboBoxVolunteerServiceManager.setSelectedItem(String.valueOf(o.getPerson()));
+        jComboBoxVolunteerServiceManager.setEditable(true);
+        jComboBoxLocation.setSelectedItem(String.valueOf(o.getAddress()));
+        jComboBoxLocation.setEditable(true);
+        jComboBoxOrganisationType.setSelectedItem(String.valueOf(o.getOrganisationType()));
+        jComboBoxOrganisationType.setEditable(true);
+    }//GEN-LAST:event_BtnViewOrganisationActionPerformed
+
+    private void BtnUpdateVolunteerOrganisationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateVolunteerOrganisationActionPerformed
+        // TODO add your handling code here:
+        try{
+            
+            if(txtOrganisationId.getText().length() == 0 || txtOrganisationName.getText().length()==0 || txtPhoneNo.getText().length()==0){
+                JOptionPane.showMessageDialog(this, "Enter All fields");
+                return;
+            }
+            
+           Enterprise e = d.getEnterpriseDirectory().getEnterprise(Enterprise.EnterpriseType.FoodService);
+            int v =d.updateOrganisation(txtOrganisationId.getText(), String.valueOf(jComboBoxOrganisationType.getSelectedItem()), txtOrganisationName.getText(), (Address)jComboBoxLocation.getSelectedItem(),(Person)jComboBoxVolunteerServiceManager.getSelectedItem(),txtPhoneNo.getText(),"VolunteerService",e.getEnterpriseId());
+            //int v = data.updateOrganisation(String.valueOf(txtCityId.getText()),String.valueOf(txtCityName.getText()),txtCityState.getText());
+            if(v==0){
+                JOptionPane.showMessageDialog(this, "Error in Updating City Data");
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "City Info Updated");
+            txtOrganisationId.setText("");
+            txtOrganisationName.setText("");
+            txtPhoneNo.setText("");
+            jComboBoxVolunteerServiceManager.setSelectedItem(null);
+            jComboBoxLocation.setSelectedItem(null);
+            jComboBoxOrganisationType.setSelectedItem(null);
+            populateVolunteerOrganisationTable();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Enter All fields");
+            return;
+        }
+        populateVolunteerOrganisationTable();
+    }//GEN-LAST:event_BtnUpdateVolunteerOrganisationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnDeleteOrganisation;
@@ -269,15 +335,13 @@ public class VolunteerServiceAdminPanel extends javax.swing.JPanel {
         }
     }
      private void populateRestaurantManagers() {
-         //left to implement
-//         List<Person> managers = d.getManagers();
-//        jComboBoxVolunteerServiceManager.removeAllItems();
-//        for(Person p : managers){
-//            jComboBoxVolunteerServiceManager.addItem(p);
-//            
-//            
-//            
-//        }
+        //left to implement
+         List<Person> managers = d.getPendingManagers();
+        jComboBoxVolunteerServiceManager.removeAllItems();
+        for(Person p : managers){
+            jComboBoxVolunteerServiceManager.addItem(p);
+            
+        }      
         
     }
 

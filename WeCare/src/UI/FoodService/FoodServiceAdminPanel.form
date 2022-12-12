@@ -70,18 +70,6 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="233" pref="233" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" pref="116" max="-2" attributes="0"/>
-                          <EmptySpace min="72" pref="72" max="-2" attributes="0"/>
-                          <Component id="jComboBoxLocation" min="-2" pref="150" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="233" pref="233" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="114" max="-2" attributes="0"/>
-                          <EmptySpace min="74" pref="74" max="-2" attributes="0"/>
-                          <Component id="jComboBoxFoodServiceManager" min="-2" pref="150" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="233" pref="233" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" pref="114" max="-2" attributes="0"/>
                           <EmptySpace min="74" pref="74" max="-2" attributes="0"/>
                           <Component id="txtPhoneNo" min="-2" pref="150" max="-2" attributes="0"/>
@@ -91,6 +79,24 @@
                           <Component id="btnAddFoodService" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                           <Component id="BtnUpdateOrganisation" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="236" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" pref="114" max="-2" attributes="0"/>
+                                  <EmptySpace min="71" pref="71" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jLabel3" min="-2" pref="116" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jComboBoxLocation" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="jComboBoxFoodServiceManager" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
@@ -136,17 +142,14 @@
                       <Component id="txtOrganisationName" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jComboBoxLocation" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jComboBoxLocation" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBoxFoodServiceManager" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jComboBoxFoodServiceManager" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">

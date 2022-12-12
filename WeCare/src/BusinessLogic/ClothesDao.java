@@ -164,7 +164,7 @@ public class ClothesDao {
         int count = 0;
         try{
             
-            String sql  = "select * from clothes where clothesStatus = ?";
+            String sql  = "select * from clothes where clothesStatus = ? and clothesQuantity > 0";
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1,"APPROVED");
               rs = st.executeQuery();

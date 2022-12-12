@@ -146,6 +146,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="View Organisation"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnViewOrganisationActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BtnDeleteOrganisation">
       <Properties>
@@ -234,6 +237,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Update Organisation"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnUpdateVolunteerOrganisationActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
