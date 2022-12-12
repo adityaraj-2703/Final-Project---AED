@@ -4,6 +4,9 @@
  */
 package UI.Volunteer;
 
+import model.Data;
+import model.Person;
+
 /**
  *
  * @author akshitabarot
@@ -13,8 +16,13 @@ public class VolunteerServiceAdminPanel extends javax.swing.JPanel {
     /**
      * Creates new form VolunteerServiceAdminPanel
      */
-    public VolunteerServiceAdminPanel() {
+    Data d;
+    Person p;
+    public VolunteerServiceAdminPanel(Data d ,Person p) {
         initComponents();
+        this.d = d;
+        this.p = p;
+           
     }
 
     /**

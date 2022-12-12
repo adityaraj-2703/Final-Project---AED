@@ -4,10 +4,20 @@
  */
 package model.Roles;
 
+import UI.Outlet.OutletManagerPanel;
+import javax.swing.JPanel;
+import model.Data;
+import model.Person;
+
 /**
  *
  * @author adityaraj
  */
-public class OutletsManagerRole {
+public class OutletsManagerRole extends Role{
+
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, Data data, Person person) {
+        return new OutletManagerPanel(data, person);
+    }
     
 }

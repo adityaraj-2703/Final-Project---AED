@@ -32,12 +32,17 @@ import UI.Distribution.DistributionManagePanel;
 import UI.FoodService.FoodServiceAdminPanel;
 import UI.HousingService.HousingServiceAdminPanel;
 import UI.NGO.NGOManagerPanel;
+import UI.Outlet.OutletManagerPanel;
+import UI.Restaurant.RestauranManagerPanel;
+import UI.Volunteer.VolunteerServiceAdminPanel;
 import UI.users.UserPanel;
 import javax.swing.JPanel;
 import model.Roles.DistributionManagerRole;
 import model.Roles.HousingServiceAdminRole;
 import model.Roles.NGOManagerRole;
+import model.Roles.OutletsManagerRole;
 import model.Roles.UserRole;
+import model.Roles.VolunteerServiceAdminRole;
 
 /**
  *
@@ -91,15 +96,15 @@ public class MainFrame extends javax.swing.JFrame {
                  
              }
              else if(a.equals("RESTAURANT_ADMIN")){
-                 //p.setRole(Role.RESTAURANT_ADMIN);
-                   //RestAdminPanel restAddAdmin = new RestAdminPanel(p);
-                 //mainFrameSplitPanel.setRightComponent(restAddAdmin);;
+                 
              }
              else if(a.equals("RESTAURANT_MANAGER")){
 
                  Role r = new RestaurantManagerRole();
-                 //RestManagerPanel restManager = (RestManagerPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
-                 //mainFrameSplitPanel.setRightComponent(restManager);
+                 RestauranManagerPanel restManager = (RestauranManagerPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 mainFrameSplitPanel.setRightComponent(restManager);
+
+
 
              }
              else if(a.equals("DISTRIBUTION_MANAGER")){
@@ -132,6 +137,26 @@ public class MainFrame extends javax.swing.JFrame {
                  Role r = new HousingServiceAdminRole();
                  HousingServiceAdminPanel ngoManager = (HousingServiceAdminPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
                  mainFrameSplitPanel.setRightComponent(ngoManager);
+             }
+             else if(a.equals("VOLUNTEER_SERVICE_ADMIN")){
+                 Role r = new VolunteerServiceAdminRole();
+                 VolunteerServiceAdminPanel VolunteerServiceAdmin = (VolunteerServiceAdminPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 mainFrameSplitPanel.setRightComponent(VolunteerServiceAdmin);
+             }
+             else if(a.equals("NGO_MANAGER_ROLE")){
+                 Role r = new NGOManagerRole();
+                 NGOManagerPanel NGOmanager = (NGOManagerPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 mainFrameSplitPanel.setRightComponent(NGOmanager);
+             }
+             else if(a.equals("OUTLET_MANAGER_ROLE")){
+                 Role r = new OutletsManagerRole();
+                 OutletManagerPanel OutletManager = (OutletManagerPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 mainFrameSplitPanel.setRightComponent(OutletManager);
+             }
+             else if(a.equals("RESIDENT_MANAGER_ROLE")){
+                 Role r = new ResidentManagerRole();
+                 ResidentManagerAdminPanel residentManager = (ResidentManagerAdminPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 mainFrameSplitPanel.setRightComponent(residentManager);
              }
              else{
                  Role r = new UserRole();

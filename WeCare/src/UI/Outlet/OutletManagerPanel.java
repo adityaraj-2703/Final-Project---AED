@@ -4,6 +4,9 @@
  */
 package UI.Outlet;
 
+import model.Data;
+import model.Person;
+
 /**
  *
  * @author anupamaditya
@@ -13,8 +16,12 @@ public class OutletManagerPanel extends javax.swing.JPanel {
     /**
      * Creates new form OutletManager
      */
-    public OutletManagerPanel() {
+    Data d;
+    Person p;
+    public OutletManagerPanel(Data d,Person p) {
         initComponents();
+        this.d = d;
+        this.p = p;
     }
 
     /**
