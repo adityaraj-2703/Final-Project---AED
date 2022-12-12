@@ -115,7 +115,7 @@ public class FoodDao {
         int count = 0;
         try{
             
-            String sql  = "select * from food";
+            String sql  = "select * from food where foodQuantity > 0";
               Statement st = conn.createStatement();
               rs = st.executeQuery(sql);
               while(rs.next()){
@@ -136,4 +136,70 @@ public class FoodDao {
             }
         return foods;
     }
+
+    public int approveFood(FoodDetails f) {
+        int result=0;
+        try{
+          String sql  = "update food set foodStatus = ? where foodId = ?";
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setString(1,"APPROVED");
+          stmt.setString(2,f.getFoodID());
+          
+          result = stmt.executeUpdate();
+          
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public List<FoodDetails> getApprovedFoodDetails() {
+        ArrayList<FoodDetails> foods = new ArrayList<>();
+        
+        ResultSet rs = null;
+        int count = 0;
+        try{
+            
+            String sql  = "select * from food where foodStatus = ?";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1,"APPROVED");
+              rs = st.executeQuery();
+              while(rs.next()){
+                  FoodDetails c =  new FoodDetails();
+                  c.setFoodID(rs.getString(1));
+                  c.setFoodName(rs.getString(2));
+                  c.setFoodType(rs.getString(3));
+                  //c.setCommunityList(getCommunities(c.getId()));
+                  c.setFoodQuantity(rs.getInt(4));
+                  c.setOrg(getOrganisation(rs.getString(5)));
+                  c.setFoodStatus(rs.getString(6));
+                  foods.add(c);
+              }
+              
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        return foods;
+    }
+
+    public int updateFood(FoodDetails f) {
+        int result=0;
+        try{
+          String sql  = "update food set foodQuantity = ? where foodId = ?";
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setInt(1,f.getFoodQuantity()-1);
+          stmt.setString(2,f.getFoodID());
+          
+          result = stmt.executeUpdate();
+          
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    
 }

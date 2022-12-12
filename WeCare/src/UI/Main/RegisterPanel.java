@@ -77,10 +77,13 @@ public class RegisterPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please enter age ");
             return false;
         }
+        else{
+            return true;
+        }
         
         
         
-        return true;
+        
         
     }
     
@@ -226,7 +229,7 @@ public class RegisterPanel extends javax.swing.JPanel {
             }
         });
 
-        cb_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESTAURANT_MANAGER", "COLLEGE_MANAGER", "FOOD_SERVICE_ADMIN", "CLOTHES_SERVICE_ADMIN", "VOLUNTEER_SERVICE_ADMIN", "HOUSING_SERVICE_ADMIN" }));
+        cb_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USER", "RESTAURANT_MANAGER", "COLLEGE_MANAGER", "FOOD_SERVICE_ADMIN", "CLOTHES_SERVICE_ADMIN", "VOLUNTEER_SERVICE_ADMIN", "HOUSING_SERVICE_ADMIN", "DISTRIBUTION_MANAGER" }));
 
         lbl_password.setForeground(new java.awt.Color(255, 0, 51));
 

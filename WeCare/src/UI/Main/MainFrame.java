@@ -28,7 +28,11 @@ import model.Roles.Role;
 import model.Roles.ClothesServiceAdminRole;
 import UI.ClothesService.*;
 import UI.College.CollegeManagerPanel;
+import UI.Distribution.DistributionManagePanel;
+import UI.users.UserPanel;
 import javax.swing.JPanel;
+import model.Roles.DistributionManagerRole;
+import model.Roles.UserRole;
 
 /**
  *
@@ -93,6 +97,12 @@ public class MainFrame extends javax.swing.JFrame {
                  //mainFrameSplitPanel.setRightComponent(restManager);
 
              }
+             else if(a.equals("DISTRIBUTION_MANAGER")){
+                 Role r = new DistributionManagerRole();
+                 DistributionManagePanel distributioManagerPanel = (DistributionManagePanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 mainFrameSplitPanel.setRightComponent(distributioManagerPanel);
+                 
+             }
              else if(a.equals("FOOD_SERVICE_ADMIN")){
                 
              }
@@ -105,6 +115,11 @@ public class MainFrame extends javax.swing.JFrame {
                  Role r = new ClothesServiceAdminRole();
                  ClothesServiceAdminPanel clothesServiceAdmin = (ClothesServiceAdminPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
                  mainFrameSplitPanel.setRightComponent(clothesServiceAdmin);
+             }
+             else{
+                 Role r = new UserRole();
+                 UserPanel userPanel = (UserPanel) r.createWorkArea(mainFrameworkAreaPanel, d, p);
+                 mainFrameSplitPanel.setRightComponent(userPanel);
              }
              
              
